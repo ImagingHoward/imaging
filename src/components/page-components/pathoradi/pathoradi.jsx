@@ -20,9 +20,6 @@ const PathoRadi = () => {
         register="Upload"
       />
       <div className={classes.wrapper}>
-        {/* <div className={classes.navPath}> 
-          HOME » <strong>PathoRadi</strong>
-        </div> */}
         <SearchBox />
         <div className={classes.blockHeader}>
           <div>
