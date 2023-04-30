@@ -1,0 +1,30 @@
+@mixin wrapper()
+    max-width: 70rem
+    margin-right: auto
+    margin-left: auto
+    margin-bottom: 50px
+    padding: 1.25rem
+
+@mixin navPath()
+    color: #635c81
+    margin-bottom: 50px
+
+@mixin  blockHeader()
+    font-size: 1.4rem
+    font-weight: 700
+    margin-bottom: 20px
+    background: #003A63
+    color: #fff
+    & > div
+        padding: 1rem 1rem
+        display: flex
+        align-items: center
+        & > svg
+            margin-right: 10px
+
+.wrapper
+    @include wrapper()
+    .navPath
+        @include navPath()
+    .blockHeader
+        @include blockHeader()

@@ -1,0 +1,121 @@
+@mixin wrapper()
+    position: relative
+    max-width: 70rem
+    margin-right: auto
+    margin-left: auto
+    // margin-bottom: 50px
+    padding: 1.25rem 1.25rem 5rem 1.25rem
+
+@mixin navPath()
+    color: #635c81
+    margin-bottom: 50px
+
+@mixin content()
+    padding: 20px 20px
+
+@mixin  blockHeader()
+    display: flex
+    justify-content: space-between
+    align-items: center
+    // padding-right: 30px
+    font-size: 1.4rem
+    font-weight: 700
+    margin-bottom: 20px
+    background: #003A63
+    color: #fff
+    & > div
+        padding: 1rem 1rem
+        display: flex
+        align-items: center
+        & > svg
+            margin-right: 10px
+    & > .more
+        background: rgba(0, 0, 0, 0.2)
+        height: 100%
+        font-size: 1.2rem
+        &:hover
+            & > a
+                text-decoration: underline
+            .narrow
+                background-color: rgb(244, 204, 4)
+        .flex
+            display: flex
+            justify-content: center
+            align-items: flex-end
+        .narrow
+            margin-left: 10px
+            border-radius: 50%
+            width: 25px
+            height: 25px
+            color: #000
+            background: #fff
+            display: flex
+            justify-content: center
+            align-items: center
+    @media screen and (max-width: 690px)
+        flex-direction: column
+        & > .more
+            justify-content: center
+            width: 100%
+
+@mixin feture()
+    display: flex
+    margin: 20px 0
+    gap: 20px
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-weight: 600
+    & > div
+        padding: 30px 40px
+        flex: 1
+        color: #12619a
+        background-color: #fff
+        // text-align: center
+    .icon
+        display: flex
+        justify-content: center
+        padding: 60px 0
+    @media screen and (max-width: 690px)
+        flex-direction: column
+
+@mixin registerSection()
+    border-radius: 15px
+    margin: 50px 0 0 0
+    background-color: #00254a
+    color: #fff
+    font-family: Inter, Arial, Helvetica, sans-serif
+    font-weight: 900
+    font-size: 2rem
+    line-height: 1.5
+    padding: 30px 60px
+    display: flex
+    justify-content: space-between
+    & > .register
+        border-radius: 40px
+        border: 0
+        cursor: pointer
+        font-size: 1rem
+        font-weight: 600
+        outline: 0
+        text-align: center
+        text-transform: uppercase
+        white-space: nowrap
+        background: #00d9ff
+        padding: 20px 30px
+        margin: 20px 0
+    @media screen and (max-width: 690px)
+        flex-direction: column
+        padding: 30px 30px
+        text-align: center
+
+.wrapper
+    @include wrapper()
+    .navPath
+        @include navPath()
+    .blockHeader
+        @include blockHeader()
+    .content
+        @include content()
+        & > .feture
+            @include feture()
+    .registerSection
+        @include registerSection()
