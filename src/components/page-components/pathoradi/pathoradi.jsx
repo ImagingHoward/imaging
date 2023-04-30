@@ -35,12 +35,7 @@ const PathoRadi = () => {
               </div>
             </a>
           </div>
-          {/* <div><a href="./pathoradi/ihc"> IHC </a></div> */}
         </div>
-
-        {/* <div className={classes.content}>
-            An interactive web server for AI-assisted radiologic-pathologic image analysis, correlation and visualization
-        </div> */}
         <div className={classes.content}>
           Radiological imaging is a critical part of healthcare services which
           physicians rely heavily upon in the medical decision-making process. A
