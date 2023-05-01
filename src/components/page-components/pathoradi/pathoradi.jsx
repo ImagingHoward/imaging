@@ -1,15 +1,14 @@
 import React from "react";
 import classes from "./pathoradi.module.sass";
+
 import Hero from "../../base-components/hero/hero.component";
+import SearchBox from "./searchBox/search-box.component";
 
 import { GiBrain } from "react-icons/gi";
 import { FcPieChart } from "react-icons/fc";
 import { AiFillCode } from "react-icons/ai";
 import { MdWeb } from "react-icons/md";
 import { HiArrowRight } from "react-icons/hi";
-
-import background from "../../../assets/images/HomePage.jpg";
-import SearchBox from "./searchBox/search-box.component";
 
 const PathoRadi = () => {
   return (
