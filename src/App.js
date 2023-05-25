@@ -31,6 +31,8 @@ import Upload from "./components/page-components/pathoradi/upload/upload.compone
 import Mandy from "./components/page-components/people/person/mandy.component";
 import Sunny from "./components/page-components/people/person/sunny.component";
 
+import NewPathoRadi from "./components/page-components/new-pathoradi/new-pathoradi.compoment";
+
 function App() {
   return (
     <>
@@ -103,6 +105,8 @@ function App() {
           <Route exact path="/pathoradi" element={<PathoRadi />} />
           <Route exact path="/pathoradi/ihc" element={<Ihc />} />
           <Route exact path="/pathoradi/upload" element={<Upload />} />
+
+          <Route exact path="/new-pathoradi" element={<NewPathoRadi />} />
         </Routes>
       </Router>
       <Footer />
