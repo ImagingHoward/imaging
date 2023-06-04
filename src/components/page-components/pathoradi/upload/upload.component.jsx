@@ -103,7 +103,7 @@ const Upload = () => {
                   name="project"
                   placeholder="Project name"
                   value={toUpload.project}
-                  onChange={handleChange}
+                  setToUploa={handleChange}
                 />
               </div>
               <div className={classes.field}>
@@ -114,7 +114,7 @@ const Upload = () => {
                   name="thickness"
                   placeholder="Thickness"
                   value={toUpload.thickness}
-                  onChange={handleChange}
+                  setToUploa={setToUploa}
                 />
               </div>
               <div className={classes.field}>
@@ -125,7 +125,7 @@ const Upload = () => {
                   name="pixel"
                   placeholder="Pixel"
                   value={toUpload.pixel}
-                  onChange={handleChange}
+                  setToUploa={setToUploa}
                 />
               </div>
               <div className={classes.field}>
@@ -136,7 +136,7 @@ const Upload = () => {
                   name="sample"
                   placeholder="sample"
                   value={toUpload.sample}
-                  onChange={handleChange}
+                  setToUploa={setToUploa}
                 />
               </div>
               <div className={classes.field}>
