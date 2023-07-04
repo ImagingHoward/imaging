@@ -1,16 +1,16 @@
 import React from "react";
 import classes from "./morstainai.module.sass";
-import NavBar from "./base/navbar/nav-bar.component";
-import Hero from "./base/hero/hero.component";
+import NavBar from "../base/navbar/nav-bar.component";
+import Hero from "./hero/hero.component";
 
-import background from "./assets/home_hero.png";
-import contentbg1 from "./assets/1_section_1214x509.png";
-import contentbg2 from "./assets/2_section_1214x509.png";
-import contentbg3 from "./assets/3_section_1214x509.png";
-import icon1 from "./assets/1_icon_50x50.png";
-import icon2 from "./assets/2_icon_50x50.png";
-import icon3 from "./assets/3_icon_50x50.png";
-import Content from "./base/content/content.component";
+import background from "../assets/home_hero.png";
+import contentbg1 from "../assets/1_section_1214x509.png";
+import contentbg2 from "../assets/2_section_1214x509.png";
+import contentbg3 from "../assets/3_section_1214x509.png";
+import icon1 from "../assets/1_icon_50x50.png";
+import icon2 from "../assets/2_icon_50x50.png";
+import icon3 from "../assets/3_icon_50x50.png";
+import Content from "./content/content.component";
 
 const MorStainAI = () => {
   return (
@@ -30,6 +30,7 @@ const MorStainAI = () => {
           heading="Automated Quantification"
           blur="Give it a try on your microglial image!"
           button="UPLOAD YOUR DATA"
+          url="morstainai/upload"
         />
         <Content
           contentbg={contentbg2}

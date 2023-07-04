@@ -7,7 +7,7 @@ const NavBar = () => {
     function handleResize() {
       let x = document.getElementById("myLinks");
       let w = document.documentElement.clientWidth;
-      if (w >= 1350) {
+      if (w >= 890) {
         x.style.display = "flex";
       } else {
         x.style.display = "none";

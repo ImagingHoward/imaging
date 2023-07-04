@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./content.module.sass";
 
-const Content = ({ contentbg, icon, heading, blur, button }) => {
+const Content = ({ contentbg, icon, heading, blur, button, url }) => {
   return (
     <div className={classes.wrapper}>
       <div
@@ -17,8 +17,7 @@ const Content = ({ contentbg, icon, heading, blur, button }) => {
             </div>
             <div className={classes.blur}>{blur}</div>
             <div className={classes.button}>
-                <a>{button}</a>
-                
+                <a href={url}>{button}</a>
             </div>
         </div>
         <div></div>

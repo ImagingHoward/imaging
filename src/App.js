@@ -33,7 +33,8 @@ import Sunny from "./components/page-components/people/person/sunny.component";
 
 import { UploadForm } from "./components/page-components/pathoradi/form/form.component";
 
-import MorStainAI from "./components/page-components/morstainai/morstainai.component";
+import MorStainAI from "./components/page-components/morstainai/home/morstainai.component";
+import ImageUpload from "./components/page-components/morstainai/upload/upload.component";
 
 function App() {
   return (
@@ -104,13 +105,13 @@ function App() {
           <Route exact path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
 
-          <Route exact path="/pathoradi" element={<PathoRadi />} />
+          {/* <Route exact path="/pathoradi" element={<PathoRadi />} />
           <Route exact path="/pathoradi/ihc" element={<Ihc />} />
           <Route exact path="/pathoradi/upload" element={<Upload />} />
-
-          <Route exact path="/pathoradi/form" element={<UploadForm />} />
+          <Route exact path="/pathoradi/form" element={<UploadForm />} /> */}
 
           <Route exact path="/morstainai" element={<MorStainAI />} />
+          <Route exact path="/morstainai/upload" element={<ImageUpload />} />
         </Routes>
       </Router>
       {/* <Footer /> */}

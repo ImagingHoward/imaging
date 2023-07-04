@@ -5,7 +5,7 @@
 
 @mixin content()
     position: relative
-    height: 450px
+    height: 519px
     display: flex
     align-items: center
     justify-content: space-between
@@ -52,6 +52,7 @@
     justify-content: flex-end
     padding-top: 100px
     & > a
+        z-index: 10
         border-radius: 40px
         border: 0
         cursor: pointer
@@ -64,8 +65,9 @@
         background: #17b5b7
         padding: 10px 30px
         color: #fff
-    
-
+        &:hover
+          background: #156b6c
+          
 .wrapper
     @include wrapper()
     & > .content

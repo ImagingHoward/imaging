@@ -19,7 +19,7 @@ const Hero = ({ background, logo, title, blur, button }) => {
             
             </div>
           </div>
-          <a href="./pathoradi/upload" className={classes.button}>
+          <a href="./morstainai" className={classes.button}>
                 {button}
               </a>
         </li>
