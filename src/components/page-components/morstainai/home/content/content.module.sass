@@ -19,7 +19,7 @@
     flex-direction: column
     justify-content: center
     padding: 4rem
-    &::after
+    &::after 
         content: ""
         position: absolute
         top: 0
@@ -30,6 +30,10 @@
         background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%)
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000',endColorstr='#bf000000',GradientType=0)
         z-index: 0
+    @media screen and (max-width: 890px)
+        width: 80rem
+        &::after
+             width: 100%
 
 @mixin heading()
     display: flex

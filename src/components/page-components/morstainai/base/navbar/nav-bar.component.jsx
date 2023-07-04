@@ -31,7 +31,7 @@ const NavBar = () => {
       <header className={classes.siteHeader}>
         <div className={classes.compartment}>
           <h3>
-            <a href="/">MorStainAI</a>
+            <a href="/morstainai">MorStainAI</a>
           </h3>
         </div>
         <a className={classes.faBars} onClick={menuExpand}>
