@@ -1,0 +1,80 @@
+@mixin wrapper()
+    margin: 0 auto
+    max-width: 80rem
+    padding: 20px 0
+
+@mixin content()
+    position: relative
+    height: 450px
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+@mixin section()
+    // background-color: #29303d
+    // opacity: 0.5
+    width: 40rem
+    height: 100%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 4rem
+    &::after
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        width: 50%
+        height: 100%
+        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.3)100%)
+        background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%)
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000',endColorstr='#bf000000',GradientType=0)
+        z-index: 0
+
+@mixin heading()
+    display: flex
+    align-items: center
+    color: #fff
+    font-size: 1.6rem
+    font-weight: 600
+    z-index: 5
+    & > img
+        margin-right: 10px
+
+@mixin blur()
+    color: #fff
+    font-size: 1.2rem
+    padding: 30px 0 0 0
+    width: 70%
+
+@mixin button()
+    display: flex
+    justify-content: flex-end
+    padding-top: 100px
+    & > a
+        border-radius: 40px
+        border: 0
+        cursor: pointer
+        font-size: 0.9rem
+        font-weight: 600
+        outline: 0
+        text-align: center
+        text-transform: uppercase
+        white-space: nowrap
+        background: #17b5b7
+        padding: 10px 30px
+        color: #fff
+    
+
+.wrapper
+    @include wrapper()
+    & > .content
+        @include content()
+        & > .section
+            @include section()
+            & > .heading
+                @include heading()
+            & > .blur
+                @include blur()
+            & > .button
+                @include button()

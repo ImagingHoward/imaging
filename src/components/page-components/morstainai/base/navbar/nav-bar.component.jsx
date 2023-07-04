@@ -40,16 +40,16 @@ const NavBar = () => {
         <nav className={classes.nav} id="myLinks">
           <ul>
             <li>
-              <a href="/">About</a>
+              <a href="/morstainai">About</a>
             </li>
             <li>
-              <a href="/Services">Services</a>
+              <a href="/morstainai">Services</a>
             </li>
             <li>
-              <a href="/Services">Support</a>
+              <a href="/morstainai">Support</a>
             </li>
             <li>
-              <a href="/Services">Contant Us</a>
+              <a href="/morstainai">Contant Us</a>
             </li>
           </ul>
         </nav>
