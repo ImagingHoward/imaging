@@ -1,5 +1,8 @@
 import React from "react";
 import classes from "./positions.module.sass";
+
+import NavBar from "../../base-components/navbar/nav-bar.component";
+import Footer from "../../base-components/footer/footer.component";
 import Hero from "../../base-components/hero/hero.component";
 
 import { BsFillPersonLinesFill } from "react-icons/bs";
@@ -9,6 +12,7 @@ import background from "../../../assets/images/Positions.jpg";
 const Positions = () => {
   return (
     <>
+      <NavBar />
       <Hero background={background} title="" />
       <div className={classes.wrapper}>
         <div className={classes.navPath}>
@@ -23,6 +27,7 @@ const Positions = () => {
           Currently, there are no scheduled events planned.
         </div>
       </div>
+      <Footer />
     </>
   );
 };

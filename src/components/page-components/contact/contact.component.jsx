@@ -1,5 +1,8 @@
 import React from "react";
 import classes from "./contact.module.sass";
+
+import NavBar from "../../base-components/navbar/nav-bar.component";
+import Footer from "../../base-components/footer/footer.component";
 import Hero from "../../base-components/hero/hero.component";
 
 import { FiMapPin } from "react-icons/fi";
@@ -12,6 +15,7 @@ import background from "../../../assets/images/Direction.jpg";
 const Contact = () => {
   return (
     <>
+      <NavBar />
       <Hero background={background} title="" />
       <div className={classes.wrapper}>
         <div className={classes.navPath}>
@@ -86,6 +90,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

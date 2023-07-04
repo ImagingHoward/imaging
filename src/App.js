@@ -33,12 +33,12 @@ import Sunny from "./components/page-components/people/person/sunny.component";
 
 import { UploadForm } from "./components/page-components/pathoradi/form/form.component";
 
-import NewPathoRadi from "./components/page-components/new-pathoradi/new-pathoradi.compoment";
+import MorStainAI from "./components/page-components/morstainai/morstainai.component";
 
 function App() {
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -110,10 +110,10 @@ function App() {
 
           <Route exact path="/pathoradi/form" element={<UploadForm />} />
 
-          <Route exact path="/new-pathoradi" element={<NewPathoRadi />} />
+          <Route exact path="/morstainai" element={<MorStainAI />} />
         </Routes>
       </Router>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

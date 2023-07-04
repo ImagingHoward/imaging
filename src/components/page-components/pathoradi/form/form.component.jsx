@@ -41,6 +41,8 @@ export const UploadForm = () => {
       })
       .then((res) => {
         console.log(res.data.insertId);
+        // upload image to blob storage
+        
         methods.reset();
         setSuccess(true);
       });

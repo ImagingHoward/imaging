@@ -1,5 +1,8 @@
 import React from "react";
 import classes from "./facilities.module.sass";
+
+import NavBar from "../../base-components/navbar/nav-bar.component";
+import Footer from "../../base-components/footer/footer.component";
 import Hero from "../../base-components/hero/hero.component";
 
 import { ImLab } from "react-icons/im";
@@ -13,6 +16,7 @@ import IVISSpectrum2 from "../../../assets/images/imaging-facilities-IVISSpectru
 const Facilities = () => {
   return (
     <>
+      <NavBar />
       <Hero background={background} title="" />
       <div className={classes.wrapper}>
         <div className={classes.navPath}>
@@ -169,6 +173,7 @@ const Facilities = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

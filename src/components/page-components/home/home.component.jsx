@@ -7,6 +7,8 @@ import { MdOutlineEventAvailable } from "react-icons/md";
 import { GoMegaphone } from "react-icons/go";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 
+import NavBar from "../../base-components/navbar/nav-bar.component";
+import Footer from "../../base-components/footer/footer.component";
 import Hero from "../../base-components/hero/hero.component";
 import background from "../../../assets/images/HomePage.jpg";
 
@@ -18,6 +20,7 @@ import research_chd from "../../../assets/images/research_chd-1.jpg";
 const Home = () => {
   return (
     <>
+      <NavBar /> 
       <Hero
         background={background}
         title="Howard University Molecular Imaging Laboratory"
@@ -210,6 +213,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

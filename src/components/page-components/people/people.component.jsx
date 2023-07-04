@@ -1,5 +1,8 @@
 import React from "react";
 import classes from "./people.module.sass";
+
+import NavBar from "../../base-components/navbar/nav-bar.component";
+import Footer from "../../base-components/footer/footer.component";
 import Hero from "../../base-components/hero/hero.component";
 
 import { IoPersonCircleSharp } from "react-icons/io5";
@@ -12,6 +15,7 @@ import PeopleList from "../../../data/people-list";
 const People = () => {
   return (
     <>
+      <NavBar />
       <Hero background={background} title="" />
       <div className={classes.wrapper}>
         <div className={classes.navPath}>
@@ -50,6 +54,7 @@ const People = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 };
