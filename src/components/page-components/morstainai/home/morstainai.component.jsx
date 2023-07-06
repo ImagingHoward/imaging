@@ -20,7 +20,7 @@ const MorStainAI = () => {
         background={background}
         logo="MorStainAI"
         title="AI Stain of Cell Morphology on Whole Brain"
-        blur=" MorStainAI is a website-as-a-service software package that can count & quantify morphological phenotypes of cells, even on low magnification imuunohistochemistry images."
+        blur=" MorStainAI is a website-as-a-service software package that can count & quantify morphological phenotypes of cells, even on low magnification immunohistochemistry images."
         button="Learn more"
       />
       <div className={classes.wrapper}>
