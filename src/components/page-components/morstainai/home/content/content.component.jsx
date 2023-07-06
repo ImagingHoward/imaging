@@ -7,7 +7,7 @@ const Content = ({ contentbg, icon, heading, blur, button, url }) => {
       <div
         className={classes.content}
         style={{
-          background: `url(${contentbg})`,
+          background: `url(${contentbg}) center center / cover no-repeat`,
         }}
       >
         <div className={classes.section}>
