@@ -4,11 +4,11 @@
     padding: 20px 0
 
 @mixin content()
-    // position: relative
+    position: relative
     height: 519px
-    // display: flex
-    // align-items: center
-    // justify-content: space-between
+    display: flex
+    align-items: center
+    justify-content: space-between
 
 @mixin section()
     // background-color: #29303d
@@ -19,17 +19,17 @@
     flex-direction: column
     justify-content: center
     padding: 4rem
-    // &::after 
-    //     content: ""
-    //     position: absolute
-    //     top: 0
-    //     left: 0
-    //     width: 50%
-    //     height: 100%
-    //     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.3)100%)
-    //     background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%)
-    //     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000',endColorstr='#bf000000',GradientType=0)
-    //     z-index: 0
+    &::after 
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        width: 50%
+        height: 100%
+        // background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.3)100%)
+        // background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%)
+        // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000',endColorstr='#bf000000',GradientType=0)
+        // z-index: 0
     @media screen and (max-width: 890px)
         width: 80rem
         &::after
@@ -53,7 +53,7 @@
 
 @mixin button()
     display: flex
-    justify-content: flex-end
+    // justify-content: flex-end
     padding-top: 100px
     & > a
         z-index: 10
