@@ -4,9 +4,9 @@ import NavBar from "../base/navbar/nav-bar.component";
 import Hero from "./hero/hero.component";
 
 import background from "../assets/home_hero.png";
-import contentbg1 from "../assets/1_section_1214x509.png";
-import contentbg2 from "../assets/2_section_1214x509.png";
-import contentbg3 from "../assets/3_section_1214x509.png";
+import contentbg1 from "../assets/1_section.png";
+import contentbg2 from "../assets/2_section.png";
+import contentbg3 from "../assets/3_section.png";
 import icon1 from "../assets/1_icon_50x50.png";
 import icon2 from "../assets/2_icon_50x50.png";
 import icon3 from "../assets/3_icon_50x50.png";
