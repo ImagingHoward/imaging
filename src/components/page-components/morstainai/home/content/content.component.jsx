@@ -7,7 +7,7 @@ const Content = ({ contentbg, icon, heading, blur, button, url }) => {
       <div
         className={classes.content}
         style={{
-          background: `url(${contentbg}) center center / cover no-repeat`,
+          background: `url(${contentbg})`,
         }}
       >
         <div className={classes.section}>
@@ -20,7 +20,6 @@ const Content = ({ contentbg, icon, heading, blur, button, url }) => {
                 <a href={url}>{button}</a>
             </div>
         </div>
-        <div></div>
       </div>
     </div>
   );
