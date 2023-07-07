@@ -40,16 +40,19 @@ const NavBar = () => {
         <nav className={classes.nav} id="myLinks">
           <ul>
             <li>
-              <a href="/morstainai">About</a>
+              <a href="/morstainai">ABOUT</a>
             </li>
             <li>
-              <a href="/morstainai">Services</a>
+              <a href="/morstainai">SERVICES</a>
             </li>
             <li>
-              <a href="/morstainai">Support</a>
+              <a href="/morstainai">SUPPORT</a>
             </li>
             <li>
-              <a href="/morstainai">Contant Us</a>
+              <a href="/morstainai">CONTACT US</a>
+            </li>
+            <li>
+              <a href="/morstainai/user">SIGNIN/SINGUP</a>
             </li>
           </ul>
         </nav>

@@ -35,6 +35,7 @@ import { UploadForm } from "./components/page-components/pathoradi/form/form.com
 
 import MorStainAI from "./components/page-components/morstainai/home/morstainai.component";
 import ImageUpload from "./components/page-components/morstainai/upload/upload.component";
+import User from "./components/page-components/morstainai/user/user.component";
 
 function App() {
   return (
@@ -112,6 +113,8 @@ function App() {
 
           <Route exact path="/morstainai" element={<MorStainAI />} />
           <Route exact path="/morstainai/upload" element={<ImageUpload />} />
+
+          <Route exact path="/morstainai/user" element={<User />} />
         </Routes>
       </Router>
       {/* <Footer /> */}
