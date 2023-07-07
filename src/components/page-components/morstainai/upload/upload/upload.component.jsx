@@ -22,6 +22,7 @@ const Upload = () => {
   const [submit, setSubmit] = useState(false);
 
   const updateUploadedFiles = (files) => {
+    console.log(files)
     setToUpload({ ...toUpload, rawImages: files });
   };
 

@@ -11,6 +11,8 @@ import {
   pixel_validation,
 } from "../../../../../utils/inputValidations";
 
+import uploadFileToBlob from "../../../../../utils/fileUpload";
+
 import FileUpload from "../upload/file-upload/file-upload.component";
 
 import axios from "axios";
@@ -28,7 +30,7 @@ export const UploadForm = () => {
     images: [],
   });
 
-  const onSubmit = methods.handleSubmit((data) => {
+  const onSubmit = methods.handleSubmit(async (data) => {
     const localURL = "http://localhost:3000/uploadInfo/create";
     const prURL = process.env.REACT_APP_PATHO_RADI_URL;
 
@@ -47,6 +49,12 @@ export const UploadForm = () => {
         methods.reset();
         setSuccess(true);
       });
+
+
+    const containerName = "uploaded";
+
+    const fileString = await uploadFileToBlob(toUpload.username, toUpload.rawImages);
+    console.log("url string:", fileString);
   });
 
   const buttonStyling = agree
@@ -55,7 +63,7 @@ export const UploadForm = () => {
 
   const updateUploadedFiles = (files) => {
     console.log(files);
-    setToUpload({ ...toUpload, images: files.map((file) => file.name).join(",") });
+    setToUpload({ ...toUpload, images: files.map((file) => file.name).join(","), rawImages: files });
   };
 
   return (
