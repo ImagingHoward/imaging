@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@azure/storage-blob": "^12.14.0",
+    "@hookform/resolvers": "^3.1.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -21,7 +22,8 @@
     "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
     "sass": "^1.56.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "dev": "env-cmd -f .env.local react-scripts start",

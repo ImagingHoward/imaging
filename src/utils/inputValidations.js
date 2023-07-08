@@ -24,6 +24,61 @@ export const name_validation = {
   },
 }
 
+export const firstname_validation = {
+  name: 'firstname',
+  label: 'First Name',
+  type: 'text',
+  id: 'firstname',
+  placeholder: 'write your first name ...',
+  validation: {
+    required: {
+      value: true,
+      message: 'required',
+    },
+    maxLength: {
+      value: 30,
+      message: '30 characters max',
+    },
+  },
+}
+
+export const lastname_validation = {
+  name: 'lastname',
+  label: 'Last Name',
+  type: 'text',
+  id: 'lasttname',
+  placeholder: 'write your last name ...',
+  validation: {
+    required: {
+      value: true,
+      message: 'required',
+    },
+    maxLength: {
+      value: 30,
+      message: '30 characters max',
+    },
+  },
+}
+
+export const organization_validation = {
+  name: 'organization',
+  label: 'Rrganization',
+  type: 'text',
+  id: 'organization',
+  placeholder: 'write your organization ...',
+  validation: {
+    required: {
+      value: true,
+      message: 'required',
+    },
+    maxLength: {
+      value: 30,
+      message: '30 characters max',
+    },
+  },
+}
+
+
 export const desc_validation = {
   name: 'description',
   label: 'description',
@@ -49,14 +104,26 @@ export const password_validation = {
   id: 'password',
   placeholder: 'type password ...',
   validation: {
-    required: {
-      value: true,
-      message: 'required',
-    },
+    required: "You must specify a password",
     minLength: {
       value: 6,
-      message: 'min 6 characters',
-    },
+      message: "Password must have at least 6 characters"
+    }
+  },
+}
+
+export const comfirmpassword_validation = {
+  name: 'comfirmpassword',
+  label: 'comfirmpassword',
+  type: 'password',
+  id: 'comfirmpassword',
+  placeholder: 'type comfirm password ...',
+  validation: {
+    required: "You must specify a comfirm password",
+    minLength: {
+      value: 6,
+      message: "Password must have at least 6 characters"
+    }
   },
 }
 

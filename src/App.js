@@ -37,6 +37,7 @@ import MorStainAI from "./components/page-components/morstainai/home/morstainai.
 import ImageUpload from "./components/page-components/morstainai/upload/upload.component";
 import SignUp from "./components/page-components/morstainai/user/signup/signup.component";
 import SignIn from "./components/page-components/morstainai/user/signin/signin.component";
+import SignUpForm from "./components/page-components/morstainai/user/sign-form/signup-form.component";
 
 function App() {
   return (
@@ -117,6 +118,7 @@ function App() {
 
           <Route exact path="/morstainai/user" element={<SignIn />} />
           <Route exact path="/morstainai/user/singup" element={<SignUp />} />
+          <Route exact path="/morstainai/user/register" element={<SignUpForm />} />
           
         </Routes>
       </Router>
