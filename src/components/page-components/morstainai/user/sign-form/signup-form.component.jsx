@@ -1,47 +1,27 @@
-import React, { useState }  from "react";
+import React, { useRef } from "react";
+import ReactDOM from "react-dom";
+import { useForm } from "react-hook-form";
+
 import classes from "./signup-form.module.sass";
 
 import NavBar from "../../base/navbar/nav-bar.component";
 import background from "../../assets/signin.png";
 
-import { FormProvider, useForm } from "react-hook-form";
-import { GrMail } from "react-icons/gr";
-
-import { Input } from "../../../../base-components/singup/Input";
-
-import {
-  name_validation,
-  email_validation,
-  firstname_validation,
-  lastname_validation,
-  organization_validation,
-  password_validation,
-  comfirmpassword_validation
-} from "../../../../../utils/inputValidations";
-
 const SignUpForm = () => {
-  
-  const methods = useForm();
-  const [success, setSuccess] = useState(false);
-  const [agree, setAgree] = useState(false);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    watch,
+  } = useForm({});
 
-  const [userInfo, setUserInfo] = useState({
-    firstname: "",
-    lastname: "",
-    organization: "",
-    email: "",
-    password: "",
-    comfirmpassword: ""
-  });
+  const password = useRef({});
 
-  const onSubmit = methods.handleSubmit(async (data) => {
-    
-  });
+  password.current = watch("password", "");
 
-  const buttonStyling = agree
-    ? "p-5 rounded-md bg-blue-600 font-semibold text-white flex items-center gap-1 hover:bg-blue-800"
-    : "p-5 rounded-md bg-gray-600 font-semibold text-white flex items-center gap-1";
-
+  const onSubmit = async (data) => {
+    alert(JSON.stringify(data));
+  };
 
   return (
     <>
@@ -64,73 +44,97 @@ const SignUpForm = () => {
           </div>
         </div>
 
-        <FormProvider {...methods}>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            noValidate
-            autoComplete="off"
-            className="container"
-          >
-            <div className="grid gap-5 md:grid-cols-2">
-              <Input
-                {...firstname_validation}
-                value={userInfo.firstname}
-                userInfo={userInfo}
-                setUserInfo={setUserInfo}
-              />
-              <Input
-                {...lastname_validation}
-                value={userInfo.lastname}
-                userInfo={userInfo}
-                setUserInfo={setUserInfo}
-              />
-              <Input
-                {...organization_validation}
-                value={userInfo.organization}
-                userInfo={userInfo}
-                setUserInfo={setUserInfo}
-              />
-              <Input
-                {...email_validation}
-                value={userInfo.email}
-                userInfo={userInfo}
-                setUserInfo={setUserInfo}
-              />
-              <Input
-                {...password_validation}
-                value={userInfo.password}
-                userInfo={userInfo}
-                setUserInfo={setUserInfo}
-              />
-              <Input
-                {...comfirmpassword_validation}
-                value={userInfo.password_repeat}
-                userInfo={userInfo}
-                setUserInfo={setUserInfo}
-              />
-            </div>
-            <div className="mt-5">
-              <div className="font-semibold mb-6 flex items-center gap-1">
-                <input
-                  type="checkbox"
-                  onClick={() => {
-                    setAgree(!agree);
-                  }}
-                />{" "}
-                Agree: xxxxxxxxxxxxxxxxxxxxxxxxx
-              </div>
-              <div className="flex justify-end">
-                <button
-                  onClick={onSubmit}
-                  className={buttonStyling}
-                  disabled={!agree ? true : false}
-                >
-                  Register
-                </button>
-              </div>
-            </div>
-          </form>
-        </FormProvider>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <label>First Name</label>
+          <input
+            name="firstname"
+            type="text"
+            id="firstname"
+            {...register("firstname", {
+              required: "required",
+              maxLength: {
+                value: 30,
+                message: "30 characters max",
+              },
+            })}
+          />
+          {errors.firstname && <p>{errors.firstname.message}</p>}
+
+          <label>Last Name</label>
+          <input
+            name="lastname"
+            type="text"
+            id="lastname"
+            {...register("lastname", {
+              required: "required",
+              maxLength: {
+                value: 30,
+                message: "30 characters max",
+              },
+            })}
+          />
+          {errors.lastname && <p>{errors.lastname.message}</p>}
+
+          <label>Organization</label>
+          <input
+            name="organization"
+            type="text"
+            id="organization"
+            {...register("organization", {
+              required: "required",
+              maxLength: {
+                value: 30,
+                message: "30 characters max",
+              },
+            })}
+          />
+          {errors.organization && <p>{errors.organization.message}</p>}
+
+          <label>Email</label>
+          <input
+            name="email"
+            type="text"
+            id="email"
+            {...register("email", {
+              required: "required",
+              pattern: {
+                value:
+                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                message: 'not valid',
+              },
+            })}
+          />
+          {errors.email && <p>{errors.email.message}</p>}
+
+          <label>Password</label>
+          <input
+            name="password"
+            type="password"
+            id="password"
+            {...register("password", {
+              required: "You must specify a password",
+              minLength: {
+                value: 8,
+                message: "Password must have at least 8 characters",
+              },
+            })}
+          />
+          {errors.password && <p>{errors.password.message}</p>}
+
+          <label>Comfirm password</label>
+          <input
+            name="cpassword"
+            type="password"
+            id="cpassword"
+            {...register("cpassword", {
+              validate: (value) =>
+                value === password.current || "The passwords do not match",
+            })}
+          />
+          {errors.cpassword && <p>{errors.cpassword.message}</p>}
+
+          <input type="submit" onClick={handleSubmit(onSubmit)} />
+        </form>
       </div>
     </>
   );
