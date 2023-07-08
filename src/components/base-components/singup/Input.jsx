@@ -31,11 +31,15 @@ export const Input = ({
   const {
     register,
     formState: { errors },
-    getValues
+    getValues,
+    watch
   } = useFormContext()
 
   const inputErrors = findInputError(errors, name)
   const isInvalid = isFormInvalid(inputErrors)
+
+  // const password = useRef({});
+  // password.current = watch("password", "password_repeat");
 
   const input_tailwind =
     'p-5 font-medium rounded-md w-full border border-slate-300 placeholder:opacity-60'
@@ -43,7 +47,7 @@ export const Input = ({
     const handleChange = (e) => {
       setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
     };
-    
+
   return (
     <div className={cn('flex flex-col w-full gap-2', className)}>
       <div className="flex justify-between">
@@ -69,12 +73,11 @@ export const Input = ({
         ></textarea>
       ) 
       : (
-        name === "comfirmpassword"
+        name === "password_repeat"
         ?(
           <input
-          id={id}
-          name={name}
-          type={type}
+          name="password_repeat"
+          type="password"
           className={cn(input_tailwind)}
           placeholder={placeholder}
           {...register(name, {

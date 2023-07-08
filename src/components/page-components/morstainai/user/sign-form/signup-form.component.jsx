@@ -104,7 +104,7 @@ const SignUpForm = () => {
               />
               <Input
                 {...comfirmpassword_validation}
-                value={userInfo.comfirmpassword}
+                value={userInfo.password_repeat}
                 userInfo={userInfo}
                 setUserInfo={setUserInfo}
               />

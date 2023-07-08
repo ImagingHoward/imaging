@@ -33,7 +33,7 @@ export const firstname_validation = {
   validation: {
     required: {
       value: true,
-      message: 'required',
+      message: 'firstname required',
     },
     maxLength: {
       value: 30,
@@ -51,7 +51,7 @@ export const lastname_validation = {
   validation: {
     required: {
       value: true,
-      message: 'required',
+      message: 'lastname required',
     },
     maxLength: {
       value: 30,
@@ -69,7 +69,7 @@ export const organization_validation = {
   validation: {
     required: {
       value: true,
-      message: 'required',
+      message: 'organization required',
     },
     maxLength: {
       value: 30,
@@ -113,17 +113,14 @@ export const password_validation = {
 }
 
 export const comfirmpassword_validation = {
-  name: 'comfirmpassword',
-  label: 'comfirmpassword',
+  name: 'password_repeat',
+  label: 'Password Repeat',
   type: 'password',
-  id: 'comfirmpassword',
+  id: 'password_repeat',
   placeholder: 'type comfirm password ...',
   validation: {
-    required: "You must specify a comfirm password",
-    minLength: {
-      value: 6,
-      message: "Password must have at least 6 characters"
-    }
+    validate: value =>
+    value === getValues("password") || "The passwords do not match"
   },
 }
 
@@ -164,7 +161,7 @@ export const email_validation = {
   validation: {
     required: {
       value: true,
-      message: 'required',
+      message: 'email required',
     },
     pattern: {
       value:
