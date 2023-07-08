@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import classes from "./nav-bar.module.sass";
 import { FaBars } from "react-icons/fa";
 
+import { BsFillPersonFill } from "react-icons/bs";
+
 const NavBar = () => {
   useEffect(() => {
     function handleResize() {
@@ -51,9 +53,13 @@ const NavBar = () => {
             <li>
               <a href="/morstainai">CONTACT US</a>
             </li>
-            <li>
-              <a href="/morstainai/user">SIGNIN/SINGUP</a>
+            <li className={classes.login}>
+              <BsFillPersonFill size={25} />
+              <a href="/morstainai/user">SIGNIN</a>
             </li>
+            {/* <li>
+              <a href="/morstainai/user/singup">SIGNUP</a>
+            </li> */}
           </ul>
         </nav>
       </header>
