@@ -21,8 +21,8 @@ const Reset = () => {
   if (!email && !token) return (window.location = "/morstainai/user");
 
   useEffect(() => {
-    // const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
-    const morstainURL = "http://localhost:3000";
+    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
+    // const morstainURL = "http://localhost:3000";
 
     axios
       .get(`${morstainURL}/resetPassword?email=${email}&token=${token}`)
@@ -46,9 +46,9 @@ const Reset = () => {
   password.current = watch("password", "");
 
   const onSubmit = async (data) => {
-    // const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
-    const morstainURL = "http://localhost:3000";
-    console.log(data)
+    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
+    // const morstainURL = "http://localhost:3000";
+    // console.log(data)
 
     axios
       .post(`${morstainURL}/resetPassword/update`, {
