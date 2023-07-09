@@ -38,16 +38,16 @@ const SignUpForm = () => {
         setSuccess(true);
       });
 
-
-    // Email --> reset password page(email + token)
-
+    //-------------------------
     // Sign in
     // Post email/password 
-    // return: allow (true/false)
+    // return: allow (true/false) userUser()
 
     // check sign in or not to dsipaly user name on navbar!!
 
     // log out
+
+    // user manage page
     
     // alert(JSON.stringify(data));
   };
