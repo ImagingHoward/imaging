@@ -26,33 +26,29 @@ const SignUpForm = () => {
     // console.log(data)
 
     axios
-      .post(`http://localhost:3000/userInfo/create`, {
+      .post(`${prURL}`, {
         firstname: data.firstname,
         lastname: data.lastname,
         organization: data.organization,
         email: data.email,
-        password: data.password,
+        // password: data.password,
       })
       .then((res) => {
         //console.log(res.data.insertId);
         setSuccess(true);
       });
 
-    // create token and time stampe
 
-    // Email --> login(signin) link
+    // Email --> reset password page(email + token)
 
     // Sign in
-    // Post email/password allow: true
+    // Post email/password 
+    // return: allow (true/false)
 
     // check sign in or not to dsipaly user name on navbar!!
 
     // log out
-
-    // forget password
-    // post email --> updated token
-    // email --> reset password
-
+    
     // alert(JSON.stringify(data));
   };
 
@@ -75,7 +71,7 @@ const SignUpForm = () => {
         </div>
         {success ? (
           <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
-            Comfirm Email has been sent. Please check with your Email.
+            Form has been submitted successfully
           </p>
         ) : (
           <form onSubmit={(e) => e.preventDefault()}>
@@ -142,7 +138,7 @@ const SignUpForm = () => {
             />
             {errors.email && <p>{errors.email.message}</p>}
 
-            <label>Password</label>
+            {/* <label>Password</label>
             <input
               name="password"
               type="password"
@@ -167,7 +163,7 @@ const SignUpForm = () => {
                   value === password.current || "The passwords do not match",
               })}
             />
-            {errors.cpassword && <p>{errors.cpassword.message}</p>}
+            {errors.cpassword && <p>{errors.cpassword.message}</p>} */}
 
             <input type="submit" onClick={handleSubmit(onSubmit)} />
           </form>
