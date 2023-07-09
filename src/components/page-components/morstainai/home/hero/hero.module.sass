@@ -10,13 +10,17 @@
         // clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%)
 
 @mixin hero()
-    position: relative
+    // position: relative
     // border: 1px solid !important
     background-position: 50% 50% !important
     background-size: cover!important
     min-height: 817px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
     & > .button
-        position: absolute
+        // position: absolute
         border: 1px solid #fff
         cursor: pointer
         font-size: 1rem
@@ -25,10 +29,10 @@
         background: #101820
         padding: 5px 40px
         color: #fff
-        left: 50%
-        margin-top: -50px
-        margin-left: -80px
-        bottom: 50px
+        // left: 50%
+        margin-top: 20px
+        // margin-left: -80px
+        // bottom: 50px
     @media screen and (max-width: 1024px)
         min-height: 750px
     @media screen and (max-width: 890px)
@@ -58,10 +62,10 @@
             max-width: 40rem
             color: #feb7fe
         & > h3
-            padding-top: 80px
+            padding-top: 60px
             font-size: 1.8rem
             font-weight: 400
-            line-height: 1.8
+            line-height: 1.5
             color: #fff
             float: right
         @media screen and (max-width: 890px)
