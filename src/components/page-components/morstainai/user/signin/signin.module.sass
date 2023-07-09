@@ -67,13 +67,36 @@
     width: 350px
     font-size: 1.3rem
     color: #7b7a7a
+    margin-bottom: 10px
+
+@mixin button()
+    display: flex
+    // justify-content: flex-end
+    padding-top: 20px
+    & > a
+        z-index: 10
+        border-radius: 40px
+        border: 0
+        cursor: pointer
+        font-size: 0.9rem
+        font-weight: 600
+        outline: 0
+        text-align: center
+        text-transform: uppercase
+        white-space: nowrap
+        background: #17b5b7
+        padding: 10px 30px
+        color: #fff
+        &:hover
+          background: #156b6c
+    
 
 @mixin rememberme()
     display: flex
     align-items: center
     font-size: 1.2rem
     font-weight: 400
-    padding: 30px 0
+    padding: 20px 0
     & > .checkbox
         width: 20px
         height: 20px
@@ -84,6 +107,7 @@
     color: #27b7b9
     font-size: 1.2rem
     cursor: pointer
+    padding-bottom: 20px
 
 .wrapper
     @include wrapper()
@@ -100,7 +124,9 @@
         & > .morstainid
             @include morstainid()
             & > .input
-                @include input
+                @include input()
+        & > .button
+            @include button()
         & > .rememberme
             @include rememberme()
         & > .forget

@@ -27,7 +27,12 @@ const SignIn = () => {
           <div className={classes.subtitle}>Manage Your MorStain ID</div>
           <div className={classes.morstainid}>
             <input placeholder="MorStain ID" className={classes.input} />
-            <HiArrowRight size={25} />
+            {/* <HiArrowRight size={25} /> */}
+            <input placeholder="Password" className={classes.input} />
+            <input placeholder="Comfirm Password" className={classes.input} />
+          </div>
+          <div className={classes.button}>
+            <a href="/morstainai">Sign In</a>
           </div>
           <div className={classes.rememberme}>
             <input type="checkbox" className={classes.checkbox} />
