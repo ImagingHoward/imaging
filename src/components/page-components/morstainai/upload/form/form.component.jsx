@@ -31,11 +31,14 @@ export const UploadForm = () => {
   });
 
   const onSubmit = methods.handleSubmit(async (data) => {
-    const localURL = "http://localhost:3000/uploadInfo/create";
-    const prURL = process.env.REACT_APP_PATHO_RADI_URL;
+    // const localURL = "http://localhost:3000/uploadInfo/create";
+    // const prURL = process.env.REACT_APP_PATHO_RADI_URL;
+
+    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
+    // const morstainURL = "http://localhost:3000";
 
     axios
-      .post(`${prURL}`, {
+      .post(`${morstainURL}/uploadInfo/create`, {
         username: toUpload.username,
         email: toUpload.email,
         thickness: toUpload.thickness,

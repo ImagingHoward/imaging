@@ -21,12 +21,12 @@ const SignUpForm = () => {
   password.current = watch("password", "");
 
   const onSubmit = async (data) => {
-    // const localURL = "http://localhost:3000/userInfo/create";
-    const prURL = process.env.REACT_APP_USERINFO_URL;
-    // console.log(data)
+
+    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
+    // const morstainURL = "http://localhost:3000";
 
     axios
-      .post(`${prURL}`, {
+      .post(`${morstainURL}/userInfo/create`, {
         firstname: data.firstname,
         lastname: data.lastname,
         organization: data.organization,
@@ -71,7 +71,7 @@ const SignUpForm = () => {
         </div>
         {success ? (
           <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
-            Form has been submitted successfully
+            Thank you for register. Please check your Email.
           </p>
         ) : (
           <form onSubmit={(e) => e.preventDefault()}>
@@ -164,8 +164,8 @@ const SignUpForm = () => {
               })}
             />
             {errors.cpassword && <p>{errors.cpassword.message}</p>} */}
-
-            <input type="submit" onClick={handleSubmit(onSubmit)} />
+            
+            <input type="submit" onClick={handleSubmit(onSubmit)} value="Register" />
           </form>
         )}
       </div>

@@ -17,20 +17,21 @@
 
 @mixin signin()
     margin: auto
-    width: 50%
+    // width: 50%
     display: flex
     flex-direction: column
     align-items: center
-    @media screen and (max-width: 890px)
-        width: 100%
-        max-width: 50%
-        margin: 0 auto
-        @media screen and (max-width: 1024px)
-            max-width: 65%
-        @media screen and (max-width: 890px)
-            max-width: 80%
+    // @media screen and (max-width: 890px)
+    //     width: 100%
+    //     max-width: 50%
+    //     margin: 0 auto
+    //     @media screen and (max-width: 1024px)
+    //         max-width: 65%
+    //     @media screen and (max-width: 890px)
+    //         max-width: 80%
     & > form
-        width: 50%
+        max-width: 450px
+        width: 85%
         margin: 0 auto
         p
             color: #bf1650
@@ -57,7 +58,7 @@
             padding: 20px
             font-size: 16px
             font-weight: 100
-            letter-spacing: 10px
+            letter-spacing: 6px
             text-align: center
         button[type="submit"]:hover,
         input[type="submit"]:hover

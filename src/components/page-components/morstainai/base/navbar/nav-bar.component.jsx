@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./nav-bar.module.sass";
 import { FaBars } from "react-icons/fa";
 
 import { BsFillPersonFill } from "react-icons/bs";
 
 const NavBar = () => {
+  const [authUser, setAuthUsers] = useState(
+    JSON.parse(localStorage.getItem("MORSTAIN_USER_PROFILE")) || ""
+  );
+
   useEffect(() => {
     function handleResize() {
       let x = document.getElementById("myLinks");
@@ -17,6 +21,7 @@ const NavBar = () => {
     }
     window.addEventListener("resize", handleResize);
     handleResize();
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -55,11 +60,23 @@ const NavBar = () => {
             </li>
             <li className={classes.login}>
               <BsFillPersonFill size={25} />
-              <a href="/morstainai/user">SIGNIN</a>
+              {authUser.firstname || authUser.lastname ? (
+                <a href="/morstainai">
+                  {" "}
+                  {authUser.firstname} {authUser.lastname}{" "}
+                </a>
+              ) : (
+                <a href="/morstainai/user">SIGNIN</a>
+              )}
             </li>
-            {/* <li>
-              <a href="/morstainai/user/singup">SIGNUP</a>
-            </li> */}
+            {(authUser.firstname || authUser.lastname) && (
+              <li>
+                <a href="/morstainai" onClick={()=>{
+                  localStorage.removeItem("MORSTAIN_USER_PROFILE");
+                  setAuthTokens("");
+                }}>Log Out</a>
+              </li>
+            )}
           </ul>
         </nav>
       </header>

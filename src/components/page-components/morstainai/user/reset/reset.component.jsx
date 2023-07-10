@@ -48,7 +48,6 @@ const Reset = () => {
   const onSubmit = async (data) => {
     const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
     // const morstainURL = "http://localhost:3000";
-    // console.log(data)
 
     axios
       .post(`${morstainURL}/resetPassword/update`, {
@@ -123,7 +122,7 @@ const Reset = () => {
                 {errors.cpassword && <p>{errors.cpassword.message}</p>}
               </div>
 
-              <input type="submit" onClick={handleSubmit(onSubmit)} />
+              <input type="submit" onClick={handleSubmit(onSubmit)} value="Reset Password" />
             </form>
           ) : (
             <div className={classes.error}>
