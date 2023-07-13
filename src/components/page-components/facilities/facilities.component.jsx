@@ -146,7 +146,7 @@ const Facilities = () => {
                 <td>$600</td>
               </tr>
               <tr>
-                <td>Image Processing and Analysis</td>
+                <td>Imaging Service and Data Analysis</td>
                 <td>$70</td>
                 <td>-</td>
               </tr>
