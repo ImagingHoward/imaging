@@ -122,7 +122,9 @@ const SignIn = () => {
             <input type="checkbox" className={classes.checkbox} />
             Remember me
           </div>
-          <div className={classes.forget}>Forget Morstain ID or Password?</div>
+          <div className={classes.forget}>
+            <a href="/morstainai/user/forget-password"> Forget Morstain ID or Password?</a>
+           </div>
         </div>
       </div>
     </>
