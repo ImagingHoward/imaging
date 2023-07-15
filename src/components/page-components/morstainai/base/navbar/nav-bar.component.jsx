@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import classes from "./nav-bar.module.sass";
 import { FaBars } from "react-icons/fa";
 
@@ -25,6 +25,22 @@ const NavBar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const ref = useRef();
+
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      // If the menu is open and the clicked target is not within the menu,
+      // then close the menu
+      if (ref.current && !ref.current.contains(e.target) ) {
+        let x = document.getElementById("myLinks");
+        x.style.display = "none";
+      }
+    };
+
+    document.addEventListener("mousedown", checkIfClickedOutside);
+    return () => window.removeEventListener("mousedown", checkIfClickedOutside);
+  }, []);
+
   const menuExpand = () => {
     let x = document.getElementById("myLinks");
     if (x.style.display === "flex") {
@@ -34,7 +50,7 @@ const NavBar = () => {
     }
   };
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} ref={ref}>
       <header className={classes.siteHeader}>
         <div className={classes.compartment}>
           <h3>
