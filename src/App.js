@@ -40,6 +40,7 @@ import SignIn from "./components/page-components/morstainai/user/signin/signin.c
 import SignUpForm from "./components/page-components/morstainai/user/sign-form/signup-form.component";
 import Reset from "./components/page-components/morstainai/user/reset/reset.component";
 import ForgetPassword from "./components/page-components/morstainai/user/forget-password/forget-password.component";
+import DashBoard from "./components/page-components/morstainai/user/dashboard/dashboard.component";
 
 // export const UserContext = React.createContext(null);
 
@@ -135,6 +136,11 @@ function App() {
               exact
               path="/morstainai/user/forget-password"
               element={<ForgetPassword />}
+            />
+            <Route
+              exact
+              path="/morstainai/user/dashboard"
+              element={<DashBoard />}
             />
           </Routes>
         {/* </UserContext.Provider> */}
