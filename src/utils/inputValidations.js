@@ -62,7 +62,7 @@ export const lastname_validation = {
 
 export const organization_validation = {
   name: 'organization',
-  label: 'Rrganization',
+  label: 'Organization',
   type: 'text',
   id: 'organization',
   placeholder: 'write your organization ...',
@@ -70,6 +70,24 @@ export const organization_validation = {
     required: {
       value: true,
       message: 'organization required',
+    },
+    maxLength: {
+      value: 30,
+      message: '30 characters max',
+    },
+  },
+}
+
+export const project_validation = {
+  name: 'project',
+  label: 'Project',
+  type: 'text',
+  id: 'project',
+  placeholder: 'write your project ...',
+  validation: {
+    required: {
+      value: true,
+      message: 'project required',
     },
     maxLength: {
       value: 30,

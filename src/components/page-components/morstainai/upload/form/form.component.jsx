@@ -1,7 +1,10 @@
 import { useState } from "react";
+import classes from "./form.module.sass";
+
 import { FormProvider, useForm } from "react-hook-form";
 import { GrMail } from "react-icons/gr";
 import { BsFillCheckSquareFill } from "react-icons/bs";
+import { FaUserCog } from "react-icons/fa";
 
 import { Input } from "../../../../base-components/pathoradi/Input";
 import {
@@ -9,6 +12,7 @@ import {
   email_validation,
   slide_validation,
   pixel_validation,
+  project_validation,
 } from "../../../../../utils/inputValidations";
 
 import uploadFileToBlob from "../../../../../utils/fileUpload";
@@ -24,15 +28,27 @@ export const UploadForm = () => {
   const [agree, setAgree] = useState(false);
   const user = UseUserContext();
 
+  // Create a function for reusable perpose
+  const generateRandomString = (myLength) => {
+    const chars =
+      "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890";
+    const randomArray = Array.from(
+      { length: myLength },
+      (v, k) => chars[Math.floor(Math.random() * chars.length)]
+    );
+
+    const randomString = randomArray.join("");
+    return randomString;
+  };
+
   const [toUpload, setToUpload] = useState({
-    username:  `${
-      user.info
-        .firstname
-    } ${user.info.lastname}`,
-    email:  
-      user.info
-        .email
-    ,
+    username: `${user.info.firstname} ${user.info.lastname}`,
+    email: user.info.email,
+    project: `MorStain-${
+      new Date().getMonth() + 1
+    }${new Date().getDate()}${new Date().getFullYear()}-${generateRandomString(
+      5
+    )}`,
     thickness: "",
     pixel: "",
     images: [],
@@ -51,6 +67,7 @@ export const UploadForm = () => {
       .post(`${morstainURL}/uploadInfo/create`, {
         username: toUpload.username,
         email: toUpload.email,
+        project: toUpload.project,
         thickness: toUpload.thickness,
         pixel: toUpload.pixel,
         images: toUpload.images,
@@ -68,6 +85,7 @@ export const UploadForm = () => {
 
     const fileString = await uploadFileToBlob(
       toUpload.username,
+      toUpload.project,
       toUpload.rawImages
     );
     console.log("url string:", fileString);
@@ -94,33 +112,25 @@ export const UploadForm = () => {
         </p>
       ) : (
         <FormProvider {...methods}>
-          <div>
-            UserName:{toUpload.username}
-          </div>
-          <div>
-            Email:{toUpload.email}
-          </div>
           <form
             onSubmit={(e) => e.preventDefault()}
             noValidate
             autoComplete="off"
             className="container"
           >
-            <div className="grid gap-5 md:grid-cols-2">
-              {/* <Input
-                {...name_validation}
-                value={user.info.firstname}
-                toUpload={toUpload}
-                setToUpload={setToUpload}
-                // disabled={true}
-              />
+            <div className={classes.userInfo}>
+              <FaUserCog size={25} /> 
+              <p>UserName: {toUpload.username}</p>
+              <p>Email: {toUpload.email}</p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-1">
               <Input
-                {...email_validation}
-                value={user.info.email}
+                {...project_validation}
+                value={toUpload.project}
                 toUpload={toUpload}
                 setToUpload={setToUpload}
-                // disabled={true}
-              /> */}
+              />
+
               <Input
                 {...slide_validation}
                 value={toUpload.thickness}

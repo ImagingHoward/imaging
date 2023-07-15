@@ -1,7 +1,7 @@
 import { BlobServiceClient } from "@azure/storage-blob";
 
 // <snippet_createBlobInContainer>
-const createBlobInContainer = async (username, file) => {
+const createBlobInContainer = async (username, project, file) => {
   const containerName = `uploaded`;
   const sasToken = process.env.REACT_APP_AZURE_STORAGE_SAS_TOKEN;
   const storageAccountName = process.env.REACT_APP_AZURE_STORAGE_RESOURCE_NAME;
@@ -14,7 +14,7 @@ const createBlobInContainer = async (username, file) => {
   // get BlobService = notice `?` is pulled out of sasToken - if created in Azure portal
   const blobService = new BlobServiceClient(uploadUrl);
   // get Container - full public read access
-  const containerClient = blobService.getContainerClient(`uploaded/${username}`);
+  const containerClient = blobService.getContainerClient(`uploaded/${username}/${project}`);
   // </snippet_get_client>
 
   // create blobClient for container
@@ -29,12 +29,12 @@ const createBlobInContainer = async (username, file) => {
 // </snippet_createBlobInContainer>
 
 // <snippet_uploadFileToBlob>
-const uploadFileToBlob = async (username, files) => {
+const uploadFileToBlob = async (username, project, files) => {
   if (!files) return;
 
   files.forEach(async (file) => {
     // upload file
-    await createBlobInContainer(username, file);
+    await createBlobInContainer(username, project, file);
   });
 };
 // </snippet_uploadFileToBlob>
