@@ -16,15 +16,23 @@ import uploadFileToBlob from "../../../../../utils/fileUpload";
 import FileUpload from "../upload/file-upload/file-upload.component";
 
 import axios from "axios";
+import UseUserContext from "../../../../../hook/auth/user.hook";
 
 export const UploadForm = () => {
   const methods = useForm();
   const [success, setSuccess] = useState(false);
   const [agree, setAgree] = useState(false);
+  const user = UseUserContext();
 
   const [toUpload, setToUpload] = useState({
-    username: "",
-    email: "",
+    username:  `${
+      user.info
+        .firstname
+    } ${user.info.lastname}`,
+    email:  
+      user.info
+        .email
+    ,
     thickness: "",
     pixel: "",
     images: [],
@@ -37,6 +45,8 @@ export const UploadForm = () => {
     const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
     // const morstainURL = "http://localhost:3000";
 
+    const userid = user.info.userid;
+
     axios
       .post(`${morstainURL}/uploadInfo/create`, {
         username: toUpload.username,
@@ -44,19 +54,22 @@ export const UploadForm = () => {
         thickness: toUpload.thickness,
         pixel: toUpload.pixel,
         images: toUpload.images,
+        userid: userid,
       })
       .then((res) => {
         console.log(res.data.insertId);
         // upload image to blob storage
-        
+
         methods.reset();
         setSuccess(true);
       });
 
-
     const containerName = "uploaded";
 
-    const fileString = await uploadFileToBlob(toUpload.username, toUpload.rawImages);
+    const fileString = await uploadFileToBlob(
+      toUpload.username,
+      toUpload.rawImages
+    );
     console.log("url string:", fileString);
   });
 
@@ -66,7 +79,11 @@ export const UploadForm = () => {
 
   const updateUploadedFiles = (files) => {
     console.log(files);
-    setToUpload({ ...toUpload, images: files.map((file) => file.name).join(","), rawImages: files });
+    setToUpload({
+      ...toUpload,
+      images: files.map((file) => file.name).join(","),
+      rawImages: files,
+    });
   };
 
   return (
@@ -77,6 +94,12 @@ export const UploadForm = () => {
         </p>
       ) : (
         <FormProvider {...methods}>
+          <div>
+            UserName:{toUpload.username}
+          </div>
+          <div>
+            Email:{toUpload.email}
+          </div>
           <form
             onSubmit={(e) => e.preventDefault()}
             noValidate
@@ -84,18 +107,20 @@ export const UploadForm = () => {
             className="container"
           >
             <div className="grid gap-5 md:grid-cols-2">
-              <Input
+              {/* <Input
                 {...name_validation}
-                value={toUpload.username}
+                value={user.info.firstname}
                 toUpload={toUpload}
                 setToUpload={setToUpload}
+                // disabled={true}
               />
               <Input
                 {...email_validation}
-                value={toUpload.email}
+                value={user.info.email}
                 toUpload={toUpload}
                 setToUpload={setToUpload}
-              />
+                // disabled={true}
+              /> */}
               <Input
                 {...slide_validation}
                 value={toUpload.thickness}

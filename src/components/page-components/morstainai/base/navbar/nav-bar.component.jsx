@@ -3,11 +3,10 @@ import classes from "./nav-bar.module.sass";
 import { FaBars } from "react-icons/fa";
 
 import { BsFillPersonFill } from "react-icons/bs";
+import UseUserContext from "../../../../../hook/auth/user.hook";
 
 const NavBar = () => {
-  const [authUser, setAuthUsers] = useState(
-    JSON.parse(localStorage.getItem("MORSTAIN_USER_PROFILE")) || ""
-  );
+  const user = UseUserContext();
 
   useEffect(() => {
     function handleResize() {
@@ -76,16 +75,16 @@ const NavBar = () => {
             </li>
             <li className={classes.login}>
               <BsFillPersonFill size={25} />
-              {authUser.firstname || authUser.lastname ? (
+              {user.info.firstname || user.info.lastname ? (
                 <a href="/morstainai">
                   {" "}
-                  {authUser.firstname} {authUser.lastname}{" "}
+                  {user.info.firstname} {user.info.lastname}{" "}
                 </a>
               ) : (
                 <a href="/morstainai/user">SIGNIN</a>
               )}
             </li>
-            {(authUser.firstname || authUser.lastname) && (
+            {(user.info.firstname || user.info.lastname) && (
               <li>
                 <a href="/morstainai" onClick={()=>{
                   localStorage.removeItem("MORSTAIN_USER_PROFILE");

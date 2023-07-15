@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import classes from "./signin.module.sass";
 
 import NavBar from "../../base/navbar/nav-bar.component";
@@ -9,8 +9,11 @@ import { HiArrowRight } from "react-icons/hi";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
+// import { UserContext } from '../../../../../App';
+
 const SignIn = () => {
   const [allow, SetAllow] = useState(null);
+  // const { user, setUser } = useContext(UserContext);
 
   const {
     register,
@@ -34,10 +37,13 @@ const SignIn = () => {
         password: data.password,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         localStorage.setItem("MORSTAIN_USER_PROFILE", JSON.stringify(res.data));
-        if(res.data.allow)
-          return (window.location = "/morstainai")
+        if(res.data.allow){
+          // setUser(res.data);
+          // console.log(user);
+          return (window.location = "/morstainai");
+        }
         else
           SetAllow(false);
       });
@@ -60,8 +66,7 @@ const SignIn = () => {
             MorStainAI
           </div>
           <div className={classes.title}>MorStain ID</div>
-          <div cl
-          assName={classes.subtitle}>Manage Your MorStain ID</div>
+          <div className={classes.subtitle}>Manage Your MorStain ID</div>
 
           {allow === false && 
           <div className={classes.error}>Email or Password is Invalid!</div>}

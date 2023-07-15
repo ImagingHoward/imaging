@@ -23,7 +23,8 @@ export const Input = ({
   className,
   value,
   toUpload,
-  setToUpload
+  setToUpload,
+  // disabled
 }) => {
   const {
     register,
@@ -73,6 +74,7 @@ export const Input = ({
           {...register(name, validation)}
           value={value}
           onChange={handleChange}
+          // disabled={disabled}
         />
       )}
     </div>
