@@ -7,6 +7,9 @@ import NoAccess from "../no-access/no-access.component";
 
 import { FaUserCog } from "react-icons/fa";
 import { FcSearch } from "react-icons/fc";
+import { FaDownload } from "react-icons/fa";
+import { ImDownload } from "react-icons/im";
+import { FaCloudUploadAlt } from "react-icons/fa";
 
 import axios from "axios";
 
@@ -35,9 +38,6 @@ const DashBoard = () => {
     });
   }, [setProjects]);
 
-  // sort by
-
-  // search filter
 
   const filterProject = (e) => {
     const filterVal = e.target.value;
@@ -53,7 +53,6 @@ const DashBoard = () => {
     // setKeyword(e.target.value)
   };
 
-  // uploaded result
 
   return (
     <>
@@ -102,7 +101,7 @@ const DashBoard = () => {
                 <th>Pixel</th>
                 <th>Images</th> */}
                 <th>Status</th>
-                <th></th>
+                <th>Result</th>
               </tr>
               {filterprojects.map((project, idx) => (
                 <tr key={`project_${idx}`}>
@@ -111,12 +110,25 @@ const DashBoard = () => {
                       {project.firstname} {project.lastname}
                     </td>
                   )}
-                  <td>{project.project}</td>
+                  <td style={{ display: "flex" }}>
+                    {role === "admin" && <ImDownload size={14} />}
+                    <p style={{ marginLeft: "5px", cursor: "pointer" }}>
+                      {project.project}
+                    </p>
+                  </td>
                   {/* <td>{project.thickness}</td>
                   <td>{project.pixel}</td>
                   <td>{project.images}</td> */}
                   <td>{project.status}</td>
-                  <td>View</td>
+                  <td>
+                    {role === "admin" ? (
+                      <a href="/morstainai/user/dashboard">
+                        <FaCloudUploadAlt size={25} />
+                      </a>
+                    ) : (
+                      <a href="/morstainai/user/dashboard">View</a>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -41,8 +41,6 @@ const DashBoardUsers = () => {
   //   );
   // };
 
-  // search
-
   const filterUsers = (e) => {
     const filterVal = e.target.value;
     setFilterusers(
