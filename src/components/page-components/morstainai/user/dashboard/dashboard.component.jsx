@@ -45,8 +45,8 @@ const DashBoard = () => {
       projects.filter(
         (project) =>
           project.project.includes(filterVal) ||
-          project.firstname.includes(filterVal) ||
-          project.lastname.includes(filterVal) ||
+          (role === "admin" && project.firstname.includes(filterVal)) ||
+          (role === "admin" && project.lastname.includes(filterVal)) ||
           project.status.includes(filterVal)
       )
     );
