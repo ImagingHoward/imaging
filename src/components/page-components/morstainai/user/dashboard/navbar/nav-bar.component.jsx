@@ -3,7 +3,7 @@ import classes from "./nav-bar.module.sass";
 import { FaBars } from "react-icons/fa";
 
 import { BsFillPersonFill } from "react-icons/bs";
-import UseUserContext from "../../../../../hook/auth/user.hook";
+import UseUserContext from "../../../../../../hook/auth/user.hook";
 
 const NavBar = () => {
   const user = UseUserContext();
@@ -61,18 +61,13 @@ const NavBar = () => {
         </a>
         <nav className={classes.nav} id="myLinks">
           <ul>
-            <li>
-              <a href="/morstainai">ABOUT</a>
+            {/* <li>
+              <a href="/morstainai">PROJECT</a>
             </li>
             <li>
-              <a href="/morstainai">SERVICES</a>
-            </li>
-            <li>
-              <a href="/morstainai">SUPPORT</a>
-            </li>
-            <li>
-              <a href="/morstainai">CONTACT US</a>
-            </li>
+              <a href="/morstainai">SETTING</a>
+            </li> */}
+
             <li className={classes.login}>
               <BsFillPersonFill size={25} />
               {user.info.firstname || user.info.lastname ? (

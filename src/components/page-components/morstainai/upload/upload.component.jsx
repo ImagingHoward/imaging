@@ -10,7 +10,7 @@ import NoAccess from "../user/no-access/no-access.component";
 
 const ImageUpload = () => {
   const user = UseUserContext();
-  console.log(user.info)
+  // console.log(user.info)
 
   if(!user.info) 
     return <NoAccess />

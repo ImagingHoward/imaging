@@ -41,6 +41,7 @@ import SignUpForm from "./components/page-components/morstainai/user/sign-form/s
 import Reset from "./components/page-components/morstainai/user/reset/reset.component";
 import ForgetPassword from "./components/page-components/morstainai/user/forget-password/forget-password.component";
 import DashBoard from "./components/page-components/morstainai/user/dashboard/dashboard.component";
+import DashBoardUsers from "./components/page-components/morstainai/user/dashboard/users.component";
 
 // export const UserContext = React.createContext(null);
 
@@ -141,6 +142,11 @@ function App() {
               exact
               path="/morstainai/user/dashboard"
               element={<DashBoard />}
+            />
+            <Route
+              exact
+              path="/morstainai/user/dashboard/users"
+              element={<DashBoardUsers />}
             />
           </Routes>
         {/* </UserContext.Provider> */}
