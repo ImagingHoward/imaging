@@ -85,7 +85,7 @@ export const UploadForm = () => {
 
     // console.log(toUpload.images);
 
-    const images = toUpload.images.map(image => `${STORAGE_URL}/${toUpload.project}/${toUpload.username}/${image}`).join(', ')
+    const images = toUpload.images.map(image => `${STORAGE_URL}/${toUpload.username}/${toUpload.project}/${image}`).join(', ')
 
     // console.log(images)
 
@@ -120,7 +120,8 @@ export const UploadForm = () => {
       toUpload.project,
       toUpload.rawImages
     );
-    console.log("url string:", fileString);
+
+    // console.log("url string:", fileString);
   });
 
   const buttonStyling = agree
