@@ -31,6 +31,7 @@ const DashBoard = () => {
       role === "admin"
         ? `${morstainURL}/uploadInfo/`
         : `${morstainURL}/uploadInfo/${user.info.userid}`;
+        
 
     axios.get(`${qery}`).then((res) => {
       setProjects([...res.data]);
@@ -40,6 +41,7 @@ const DashBoard = () => {
 
 
   const filterProject = (e) => {
+    console.log(e.target.value)
     const filterVal = e.target.value;
     setFilterprojects(
       projects.filter(
@@ -111,7 +113,7 @@ const DashBoard = () => {
                     </td>
                   )}
                   <td style={{ display: "flex" }}>
-                    {role === "admin" && <ImDownload size={14} />}
+                    {/* {role === "admin" && <ImDownload size={14} />} */}
                     <p style={{ marginLeft: "5px", cursor: "pointer" }}>
                       {project.project}
                     </p>
@@ -121,13 +123,7 @@ const DashBoard = () => {
                   <td>{project.images}</td> */}
                   <td>{project.status}</td>
                   <td>
-                    {role === "admin" ? (
-                      <a href="/morstainai/user/dashboard">
-                        <FaCloudUploadAlt size={25} />
-                      </a>
-                    ) : (
-                      <a href="/morstainai/user/dashboard">View</a>
-                    )}
+                    <a href="/morstainai/user/dashboard">View</a>
                   </td>
                 </tr>
               ))}

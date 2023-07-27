@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./form.module.sass";
+import cn from "classnames";
 
 import { FormProvider, useForm } from "react-hook-form";
 import { GrMail } from "react-icons/gr";
@@ -13,6 +14,13 @@ import {
   slide_validation,
   pixel_validation,
   project_validation,
+  species_validation,
+  treatment_validation,
+  organ_validation,
+  organ_other_validation,
+  anatomical_validation,
+  strain_validation,
+  structure_validation,
 } from "../../../../../utils/inputValidations";
 
 import uploadFileToBlob from "../../../../../utils/fileUpload";
@@ -49,10 +57,19 @@ export const UploadForm = () => {
     }${new Date().getDate()}${new Date().getFullYear()}-${generateRandomString(
       5
     )}`,
-    thickness: "",
     pixel: "",
+    slide: "",
+    species: "rat",
+    strain: "",
+    organ: "brain",
+    anatomical: "Cerebral Cortex",
+    structure: "",
+    treatment: "",
     images: [],
+    status: "",
   });
+
+  console.log(toUpload)
 
   const onSubmit = methods.handleSubmit(async (data) => {
     // const localURL = "http://localhost:3000/uploadInfo/create";
@@ -62,21 +79,28 @@ export const UploadForm = () => {
     // const morstainURL = "http://localhost:3000";
 
     const userid = user.info.userid;
+    console.log(data)
 
     axios
       .post(`${morstainURL}/uploadInfo/create`, {
         username: toUpload.username,
-        email: toUpload.email,
         project: toUpload.project,
-        thickness: toUpload.thickness,
         pixel: toUpload.pixel,
+        slide: toUpload.slide,
+        species: toUpload.species,
+        strain: toUpload.strain,
+        organ: toUpload.organ !== 'other' ? toUpload.organ : toUpload.other,
+        anatomical: toUpload.anatomical,
+        structure: toUpload.structure,
+        treatment: toUpload.treatment,
         images: toUpload.images,
+        status: toUpload.status,
         userid: userid,
+        email: user.info.email
       })
       .then((res) => {
         console.log(res.data.insertId);
-        // upload image to blob storage
-
+        
         methods.reset();
         setSuccess(true);
       });
@@ -104,6 +128,21 @@ export const UploadForm = () => {
     });
   };
 
+  const input_tailwind =
+    "p-5 font-medium rounded-md w-full border border-slate-300 placeholder:opacity-60";
+
+  useEffect(()=>{
+    
+    if(document.getElementById('organ').value === 'other'){
+      document.getElementById('other').style.display = 'block'
+    }
+    else
+      document.getElementById('other').style.display = 'none'
+
+  },[toUpload, setToUpload])
+
+
+
   return (
     <>
       {success ? (
@@ -119,21 +158,14 @@ export const UploadForm = () => {
             className="container"
           >
             <div className={classes.userInfo}>
-              <FaUserCog size={25} /> 
+              <FaUserCog size={25} />
               <p>UserName: {toUpload.username}</p>
               <p>Email: {toUpload.email}</p>
             </div>
-            <div className="grid gap-5 md:grid-cols-1">
+            <div className="grid gap-5 md:grid-cols-1 my-5">
               <Input
                 {...project_validation}
                 value={toUpload.project}
-                toUpload={toUpload}
-                setToUpload={setToUpload}
-              />
-
-              <Input
-                {...slide_validation}
-                value={toUpload.thickness}
                 toUpload={toUpload}
                 setToUpload={setToUpload}
               />
@@ -143,6 +175,76 @@ export const UploadForm = () => {
                 toUpload={toUpload}
                 setToUpload={setToUpload}
               />
+
+              <Input
+                {...slide_validation}
+                value={toUpload.slide}
+                toUpload={toUpload}
+                setToUpload={setToUpload}
+              />
+
+              <Input
+                {...species_validation}
+                value={toUpload.species}
+                toUpload={toUpload}
+                setToUpload={setToUpload}
+              />
+
+              <Input
+                {...strain_validation}
+                value={toUpload.strain}
+                toUpload={toUpload}
+                setToUpload={setToUpload}
+              />
+
+              <Input
+                {...organ_validation}
+                value={toUpload.organ}
+                toUpload={toUpload}
+                setToUpload={setToUpload}
+              />
+
+              <Input
+                {...organ_other_validation}
+                value={toUpload.organ_other}
+                toUpload={toUpload}
+                setToUpload={setToUpload}
+                className={classes.organOther}
+              />
+
+              <Input
+                {...anatomical_validation}
+                value={toUpload.anatomical}
+                toUpload={toUpload}
+                setToUpload={setToUpload}
+              />
+
+              <Input
+                {...structure_validation}
+                value={toUpload.structure}
+                toUpload={toUpload}
+                setToUpload={setToUpload}
+              />
+
+              <Input
+                {...treatment_validation}
+                value={toUpload.treatment}
+                toUpload={toUpload}
+                setToUpload={setToUpload}
+              />
+
+              {/* <label for="species" className="font-semibold capitalize">*Species</label>
+
+              <select name="species" id="species" className={cn(input_tailwind)}>
+                <option value="rat">rat</option>
+                <option value="mouse">mouse</option>
+                <option value="primate">primate</option>
+                <option value="bovine">bovine</option>
+
+                <option value="pig">pig</option>
+                <option value="bovine">other</option>
+              </select> */}
+
               {/* <Input {...password_validation} /> */}
               {/* <Input {...desc_validation} className="md:col-span-2" /> */}
             </div>

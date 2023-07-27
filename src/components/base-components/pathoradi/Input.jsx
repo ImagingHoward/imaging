@@ -11,6 +11,7 @@ import { findInputError, isFormInvalid } from '../../../utils'
 import { useFormContext } from 'react-hook-form'
 import { AnimatePresence, motion } from 'framer-motion'
 import { MdError } from 'react-icons/md'
+import { BiDownArrow } from "react-icons/bi";
 
 export const Input = ({
   name,
@@ -24,6 +25,7 @@ export const Input = ({
   value,
   toUpload,
   setToUpload,
+  selection
   // disabled
 }) => {
   const {
@@ -35,9 +37,12 @@ export const Input = ({
   const isInvalid = isFormInvalid(inputErrors)
 
   const input_tailwind =
-    'p-5 font-medium rounded-md w-full border border-slate-300 placeholder:opacity-60'
+    'cursor-pointer p-5 font-medium rounded-md w-full border border-slate-300 placeholder:opacity-60'
+
+  const select_tailwind="cursor-pointer font-medium rounded border-2 text-gray-600 h-14 w-full pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
 
     const handleChange = (e) => {
+
       setToUpload({ ...toUpload, [e.target.name]: e.target.value });
     };
 
@@ -64,19 +69,33 @@ export const Input = ({
           placeholder={placeholder}
           {...register(name, validation)}
         ></textarea>
-      ) : (
-        <input
-          id={id}
-          name={name}
-          type={type}
-          className={cn(input_tailwind)}
-          placeholder={placeholder}
-          {...register(name, validation)}
-          value={value}
-          onChange={handleChange}
-          // disabled={disabled}
-        />
-      )}
+      ) : selection
+            ? (
+            <div style={{position: "relative"}}>
+             <BiDownArrow style={{position: "absolute", right: "25px", top: "25px"}}/>
+             <select name={name} id={id} className={cn(input_tailwind)} onChange={handleChange}>
+              {
+                selection.map((option, idx) =>
+                  <option value={option} key={`${name}_${idx}`}>{option}</option>
+                )
+              }
+            </select>
+            </div>
+           )
+          :(
+          <input
+            id={id}
+            name={name}
+            type={type}
+            className={cn(input_tailwind)}
+            placeholder={placeholder}
+            {...register(name, validation)}
+            value={value}
+            onChange={handleChange}
+            // disabled={disabled}
+          />
+        )
+      }
     </div>
   )
 }

@@ -80,7 +80,7 @@ export const organization_validation = {
 
 export const project_validation = {
   name: 'project',
-  label: 'Project',
+  label: 'Project Name',
   type: 'text',
   id: 'project',
   placeholder: 'write your project ...',
@@ -115,6 +115,58 @@ export const desc_validation = {
   },
 }
 
+export const treatment_validation = {
+  name: 'treatment',
+  label: 'Animal treatment',
+  id: 'treatment',
+  placeholder: 'write Animal treatment ...',
+  validation: {
+    maxLength: {
+      value: 30,
+      message: '30 characters max',
+    },
+  },
+}
+
+export const strain_validation = {
+  name: 'strain',
+  label: 'Strain',
+  id: 'strain',
+  placeholder: 'write Strain ...',
+  validation: {
+    maxLength: {
+      value: 30,
+      message: '30 characters max',
+    },
+  },
+}
+
+export const structure_validation = {
+  name: 'structure',
+  label: 'Detail structure',
+  id: 'structure',
+  placeholder: 'write Detail structure ...',
+  validation: {
+    maxLength: {
+      value: 30,
+      message: '30 characters max',
+    },
+  },
+}
+
+export const organ_other_validation = {
+  name: 'other',
+  label: '',
+  id: 'other',
+  placeholder: 'write Organ other ...',
+  validation: {
+    maxLength: {
+      value: 30,
+      message: '30 characters max',
+    },
+  },
+}
+
 export const password_validation = {
   name: 'password',
   label: 'password',
@@ -143,10 +195,10 @@ export const comfirmpassword_validation = {
 }
 
 export const slide_validation = {
-  name: 'thickness',
-  label: 'Slide thickness',
+  name: 'slide',
+  label: '*Slide thickness',
   type: 'number',
-  id: 'thickness',
+  id: 'slide',
   placeholder: 'write slide thickness',
   validation: {
     required: {
@@ -156,12 +208,88 @@ export const slide_validation = {
   },
 }
 
+export const species_validation ={
+  name: 'species',
+  label: '*Species',
+  type: '',
+  id: 'species',
+  placeholder: '',
+  validation: {
+    required: {
+      value: true,
+      message: 'required',
+    },
+  },
+  selection: [
+    `rat`,
+    `mouse`,
+    `primate`,
+    `bovine`,
+    `pig`,
+    `other`
+  ]
+}
+
+export const organ_validation ={
+  name: 'organ',
+  label: '*Organ',
+  type: '',
+  id: 'organ',
+  placeholder: '',
+  validation: {
+    required: {
+      value: true,
+      message: 'required',
+    },
+  },
+  selection: [
+    `brain`,
+    `spinal cord`,
+    `retina`,
+    `other`
+  ]
+}
+
+
+export const anatomical_validation ={
+  name: 'anatomical',
+  label: '*Anatomical region ',
+  type: '',
+  id: 'anatomical',
+  placeholder: '',
+  validation: {
+    required: {
+      value: true,
+      message: 'required',
+    },
+  },
+  selection: [
+    `Cerebral Cortex`,
+    `Hippocampus`,
+    `Striatum`,
+    `Amygdala`,
+    `Thalamus`,
+    `Hypothalamus`,
+    `Midbrain`,
+    `Cerebellum`,
+    `Medulla Oblongata`,
+    `Pons`,
+    `Olfactory Bulb`,
+    `Nucleus Accumbens`,
+    `Periaqueductal Gray`,
+    `Superior Colliculus`,
+    `Inferior Colliculus`
+  ]
+}
+
+
+
 export const pixel_validation = {
   name: 'pixel',
-  label: 'Pixel resolution of the slides',
+  label: '*Pixel size',
   type: 'number',
   id: 'pixel',
-  placeholder: 'write pixel resolution of the slides',
+  placeholder: 'write Pixel size',
   validation: {
     required: {
       value: true,
