@@ -87,7 +87,7 @@ export const UploadForm = () => {
 
     const images = toUpload.images.map(image => `${STORAGE_URL}/${toUpload.username}/${toUpload.project}/${image}`).join(', ')
 
-    // console.log(images)
+    console.log(toUpload)
 
     axios
       .post(`${morstainURL}/uploadInfo/create`, {
@@ -104,7 +104,7 @@ export const UploadForm = () => {
         images: images,
         status: toUpload.status,
         userid: userid,
-        email: user.info.email
+        email: toUpload.email
       })
       .then((res) => {
         // console.log(res.data.insertId);
