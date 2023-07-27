@@ -81,6 +81,14 @@ export const UploadForm = () => {
     const userid = user.info.userid;
     // console.log(data)
 
+    const STORAGE_URL = "https://pathoradi.blob.core.windows.net/uploaded"
+
+    // console.log(toUpload.images);
+
+    const images = toUpload.images.map(image => `${STORAGE_URL}/${toUpload.project}/${toUpload.username}/${image}`).join(', ')
+
+    // console.log(images)
+
     axios
       .post(`${morstainURL}/uploadInfo/create`, {
         username: toUpload.username,
@@ -93,7 +101,7 @@ export const UploadForm = () => {
         anatomical: toUpload.anatomical,
         structure: toUpload.structure,
         treatment: toUpload.treatment,
-        images: toUpload.images,
+        images: images,
         status: toUpload.status,
         userid: userid,
         email: user.info.email
@@ -112,7 +120,7 @@ export const UploadForm = () => {
       toUpload.project,
       toUpload.rawImages
     );
-    // console.log("url string:", fileString);
+    console.log("url string:", fileString);
   });
 
   const buttonStyling = agree
@@ -123,7 +131,7 @@ export const UploadForm = () => {
     // console.log(files);
     setToUpload({
       ...toUpload,
-      images: files.map((file) => file.name).join(","),
+      images: files.map((file) => file.name),
       rawImages: files,
     });
   };
