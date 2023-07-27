@@ -69,7 +69,7 @@ export const UploadForm = () => {
     status: "",
   });
 
-  console.log(toUpload)
+  // console.log(toUpload)
 
   const onSubmit = methods.handleSubmit(async (data) => {
     // const localURL = "http://localhost:3000/uploadInfo/create";
@@ -79,7 +79,7 @@ export const UploadForm = () => {
     // const morstainURL = "http://localhost:3000";
 
     const userid = user.info.userid;
-    console.log(data)
+    // console.log(data)
 
     axios
       .post(`${morstainURL}/uploadInfo/create`, {
@@ -99,7 +99,7 @@ export const UploadForm = () => {
         email: user.info.email
       })
       .then((res) => {
-        console.log(res.data.insertId);
+        // console.log(res.data.insertId);
         
         methods.reset();
         setSuccess(true);
@@ -112,7 +112,7 @@ export const UploadForm = () => {
       toUpload.project,
       toUpload.rawImages
     );
-    console.log("url string:", fileString);
+    // console.log("url string:", fileString);
   });
 
   const buttonStyling = agree
@@ -120,7 +120,7 @@ export const UploadForm = () => {
     : "p-5 rounded-md bg-gray-600 font-semibold text-white flex items-center gap-1";
 
   const updateUploadedFiles = (files) => {
-    console.log(files);
+    // console.log(files);
     setToUpload({
       ...toUpload,
       images: files.map((file) => file.name).join(","),
