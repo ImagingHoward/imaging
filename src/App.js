@@ -49,16 +49,16 @@ import Support from "./components/page-components/morstainai/support/support.com
 import ContactUs from "./components/page-components/morstainai/contact-us/contact-us.component";
 import FeatureWork from "./components/page-components/morstainai/feature-work/feature-work.component";
 
-// export const UserContext = React.createContext(null);
+export const UserContext = React.createContext(null);
 
 function App() {
-  // const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
   return (
     <>
       {/* <NavBar /> */}
       <Router>
-        {/* <UserContext.Provider value={{ user: user, setUser: setUser }}> */}
+        <UserContext.Provider value={{ user: user, setUser: setUser }}>
           <Routes>
             <Route exact path="/" element={<Home />} />
 
@@ -162,7 +162,7 @@ function App() {
               element={<DashBoardUsers />}
             />
           </Routes>
-        {/* </UserContext.Provider> */}
+        </UserContext.Provider>
       </Router>
       {/* <Footer /> */}
     </>
