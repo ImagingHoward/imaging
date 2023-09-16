@@ -42,6 +42,12 @@ import Reset from "./components/page-components/morstainai/user/reset/reset.comp
 import ForgetPassword from "./components/page-components/morstainai/user/forget-password/forget-password.component";
 import DashBoard from "./components/page-components/morstainai/user/dashboard/dashboard.component";
 import DashBoardUsers from "./components/page-components/morstainai/user/dashboard/users.component";
+import LearnMore from "./components/page-components/morstainai/learn-more/learn-more.component";
+import About from "./components/page-components/morstainai/about/about.component";
+import Services from "./components/page-components/morstainai/services/services.component";
+import Support from "./components/page-components/morstainai/support/support.component";
+import ContactUs from "./components/page-components/morstainai/contact-us/contact-us.component";
+import FeatureWork from "./components/page-components/morstainai/feature-work/feature-work.component";
 
 // export const UserContext = React.createContext(null);
 
@@ -123,6 +129,13 @@ function App() {
           <Route exact path="/pathoradi/form" element={<UploadForm />} /> */}
 
             <Route exact path="/morstainai" element={<MorStainAI />} />
+            <Route exact path="/morstainai/learn-more" element={<LearnMore />} />
+            <Route exact path="/morstainai/about" element={<About />} />
+            <Route exact path="/morstainai/services" element={<Services />} />
+            <Route exact path="/morstainai/support" element={<Support />} />
+            <Route exact path="/morstainai/contact-us" element={<ContactUs />} />
+            <Route exact path="/morstainai/feature-work" element={<FeatureWork />} />
+
             <Route exact path="/morstainai/upload" element={<ImageUpload />} />
 
             <Route exact path="/morstainai/user" element={<SignIn />} />

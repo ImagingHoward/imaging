@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./morstainai.module.sass";
 import NavBar from "../base/navbar/nav-bar.component";
-import Hero from "./hero/hero.component";
+import Hero from "../base/hero/hero.component";
 
 import background from "../assets/home_hero.png";
 import contentbg1 from "../assets/1_section.png";
@@ -22,6 +22,7 @@ const MorStainAI = () => {
         title="AI Stain of Cell Morphology on Whole Brain"
         blur=" MorStainAI is a website-as-a-service software package that can count & quantify morphological phenotypes of cells, even on low magnification immunohistochemistry images."
         button="Learn more"
+        url="morstainai/learn-more"
       />
       <div className={classes.wrapper}>
         <Content
@@ -45,6 +46,7 @@ const MorStainAI = () => {
           heading="Future Work"
           blur="AI-assisted radiologic-pathologic correlation analysis"
           button="COMING SOON"
+          url="morstainai/feature-work"
         />
       </div>
     </>

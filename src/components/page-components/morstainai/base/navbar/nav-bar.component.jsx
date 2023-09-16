@@ -62,16 +62,16 @@ const NavBar = () => {
         <nav className={classes.nav} id="myLinks">
           <ul>
             <li>
-              <a href="/morstainai">ABOUT</a>
+              <a href="/morstainai/about">ABOUT</a>
             </li>
             <li>
-              <a href="/morstainai">SERVICES</a>
+              <a href="/morstainai/services">SERVICES</a>
             </li>
             <li>
-              <a href="/morstainai">SUPPORT</a>
+              <a href="/morstainai/support">SUPPORT</a>
             </li>
             <li>
-              <a href="/morstainai">CONTACT US</a>
+              <a href="/morstainai/contact-us">CONTACT US</a>
             </li>
             <li className={classes.login}>
               <BsFillPersonFill size={25} />
