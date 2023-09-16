@@ -13,7 +13,7 @@ import axios from "axios";
 
 const SignIn = () => {
   const [allow, SetAllow] = useState(null);
-  // const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const {
     register,
