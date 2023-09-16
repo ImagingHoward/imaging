@@ -20,19 +20,19 @@ const NavBar = () => {
 
   const ref = useRef();
 
-  useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      // If the menu is open and the clicked target is not within the menu,
-      // then close the menu
-      if (ref.current &&!ref.current.contains(e.target) ) {
-        let x = document.getElementById("myLinks");
-        x.style.display = "none";
-      }
-    };
+  // useEffect(() => {
+  //   const checkIfClickedOutside = (e) => {
+  //     // If the menu is open and the clicked target is not within the menu,
+  //     // then close the menu
+  //     if (ref.current &&!ref.current.contains(e.target) ) {
+  //       let x = document.getElementById("myLinks");
+  //       x.style.display = "none";
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", checkIfClickedOutside);
-    return () => window.removeEventListener("mousedown", checkIfClickedOutside);
-  }, []);
+  //   document.addEventListener("mousedown", checkIfClickedOutside);
+  //   return () => window.removeEventListener("mousedown", checkIfClickedOutside);
+  // }, []);
 
   const menuExpand = () => {
     let x = document.getElementById("myLinks");
