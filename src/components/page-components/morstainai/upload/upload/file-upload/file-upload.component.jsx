@@ -60,11 +60,12 @@ const FileUpload = ({
     <>
       <label>{label}</label>
       <div className={classes.wrapper}>
+        <button type="button" onClick={handleUploadBtnClick}>
+          <span> Upload {otherProps.multiple ? "files" : "a file"}</span>
+        </button>
         <section>
-          <p>Drag and drop your files anywhere or</p>
-          <button type="button" onClick={handleUploadBtnClick}>
-            <span> Upload {otherProps.multiple ? "files" : "a file"}</span>
-          </button>
+          <p>Drag and drop your files anywhere</p>
+
           <input
             type="file"
             ref={fileInputField}

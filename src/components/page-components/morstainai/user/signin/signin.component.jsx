@@ -37,16 +37,17 @@ const SignIn = () => {
         password: data.password,
       })
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         localStorage.setItem("MORSTAIN_USER_PROFILE", JSON.stringify(res.data));
         if(res.data.allow){
-          // setUser(res.data);
-          // console.log(user);
+          setUser(res.data);
+          console.log(user);
           return (window.location = "/morstainai");
         }
         else
           SetAllow(false);
-      });
+      })
+      .catch(error =>console.log(error));
   };
 
   return (
