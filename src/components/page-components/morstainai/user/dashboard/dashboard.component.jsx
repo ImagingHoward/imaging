@@ -24,6 +24,12 @@ const DashBoard = () => {
   const [projects, setProjects] = useState([]);
   const [filterprojects, setFilterprojects] = useState([]);
 
+  const STORAGE_URL = "https://pathoradi.blob.core.windows.net/uploaded/"
+  const ssaToken = "sp=r&st=2023-09-24T14:48:18Z&se=2024-09-24T14:48:18Z&sv=2022-11-02&sr=c&sig=xyyA6BN7xmPh8ILC7aclmIK%2BjjWNUJylUeuWpyHMVo8%3D"
+
+
+
+
   useEffect(() => {
     const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
 
@@ -123,7 +129,9 @@ const DashBoard = () => {
                   <td>{project.images}</td> */}
                   <td>{project.status}</td>
                   <td>
-                    <a href="/morstainai/user/dashboard">View</a>
+                    <a href={`${STORAGE_URL}/${user.info.firstname} ${user.info.lastname}/${project.project}/result/result.zip?${ssaToken}`}>
+                      Download
+                    </a>
                   </td>
                 </tr>
               ))}
