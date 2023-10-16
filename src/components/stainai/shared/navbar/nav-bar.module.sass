@@ -1,0 +1,83 @@
+
+@mixin wrapper()
+    top: 0
+    padding: 20px 5%
+    display: flex
+    align-items: center
+
+@mixin logo()
+    width: 200px
+
+@mixin nav()
+    display: flex
+    width: 100%
+    justify-content: flex-end
+    align-items: center
+    font-size: 0.9rem
+    & > ul
+        display: flex
+        & > .login
+            display: flex
+            align-items: center
+            // border: 1px solid #ccc
+            border-radius: 30px
+            padding: 0 5px
+        & > li
+            position: relative
+            margin-right: 20px
+            & > a
+                color: #fff
+                font-weight: bold
+                padding: 15px 0px
+                text-transform: uppercase
+                display: inline-block
+                position: relative
+            &:after
+                background: none repeat scroll 0 0 transparent
+                bottom: 0
+                content: ""
+                display: block
+                height: 3px
+                left: 50%
+                position: absolute
+                background: #9de4fc
+                transition: width 0.3s ease 0s, left 0.3s ease 0s
+                width: 0
+            &:hover
+                &:after
+                    width: 100%
+                    left: 0
+    @media screen and (max-width: 890px)
+        display: none
+        flex-direction: column
+        position: absolute
+        border: 1px solid gray
+        width: 200px
+        right: 20px
+        top: 85px
+        z-index: 999
+        padding: 20px 10px
+        background-color: #ffff
+        border: 0
+        border-radius: 5px
+        box-shadow: 0 0 1px 2px #f3f3f3
+        & > ul
+            flex-direction: column
+            & > .login
+                display: block
+                border: 0
+                padding: 0
+                & > svg
+                    display: none
+            & > li
+                position: relative
+                margin-right: 30px
+                & > a
+                    color: #003a63
+
+.wrapper
+    @include wrapper()
+    & > .logo
+        @include logo()
+    & > .nav
+        @include nav()

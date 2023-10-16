@@ -48,6 +48,7 @@ import Services from "./components/page-components/morstainai/services/services.
 import Support from "./components/page-components/morstainai/support/support.component";
 import ContactUs from "./components/page-components/morstainai/contact-us/contact-us.component";
 import FeatureWork from "./components/page-components/morstainai/feature-work/feature-work.component";
+import StainAI from "./components/stainai/home/home.component";
 
 export const UserContext = React.createContext(null);
 
@@ -123,18 +124,25 @@ function App() {
             <Route exact path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
 
-            {/* <Route exact path="/pathoradi" element={<PathoRadi />} />
-          <Route exact path="/pathoradi/ihc" element={<Ihc />} />
-          <Route exact path="/pathoradi/upload" element={<Upload />} />
-          <Route exact path="/pathoradi/form" element={<UploadForm />} /> */}
-
             <Route exact path="/morstainai" element={<MorStainAI />} />
-            <Route exact path="/morstainai/learn-more" element={<LearnMore />} />
+            <Route
+              exact
+              path="/morstainai/learn-more"
+              element={<LearnMore />}
+            />
             <Route exact path="/morstainai/about" element={<About />} />
             <Route exact path="/morstainai/services" element={<Services />} />
             <Route exact path="/morstainai/support" element={<Support />} />
-            <Route exact path="/morstainai/contact-us" element={<ContactUs />} />
-            <Route exact path="/morstainai/feature-work" element={<FeatureWork />} />
+            <Route
+              exact
+              path="/morstainai/contact-us"
+              element={<ContactUs />}
+            />
+            <Route
+              exact
+              path="/morstainai/feature-work"
+              element={<FeatureWork />}
+            />
 
             <Route exact path="/morstainai/upload" element={<ImageUpload />} />
 
@@ -161,6 +169,9 @@ function App() {
               path="/morstainai/user/dashboard/users"
               element={<DashBoardUsers />}
             />
+
+            <Route exact path="/stainai" element={<StainAI />} />
+            
           </Routes>
         </UserContext.Provider>
       </Router>
