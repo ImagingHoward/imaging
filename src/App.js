@@ -1,55 +1,50 @@
 import "./App.css";
 import React, { useEffect, useState, useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./mil/page-components/home/home.component";
-import Research from "./mil/page-components/research/research.component";
-import FullPublications from "./mil/page-components/research/full-publications/full-publications.component";
-import People from "./mil/page-components/people/people.component";
-import Pwang from "./mil/page-components/people/person/pwang.component";
-import Wtu from "./mil/page-components/people/person/wtu.component";
-import NotFound from "./mil/page-components/not-found/not-found.component";
+import Home from "./mil/componets/page-components/home/home.component";
+import Research from "./mil/componets/page-components/research/research.component";
+import FullPublications from "./mil/componets/page-components/research/full-publications/full-publications.component";
+import People from "./mil/componets/page-components/people/people.component";
+import Pwang from "./mil/componets/page-components/people/person/pwang.component";
+import Wtu from "./mil/componets/page-components/people/person/wtu.component";
+import NotFound from "./mil/componets/page-components/not-found/not-found.component";
 
-import NavBar from "./mil/base-components/navbar/nav-bar.component";
-import Footer from "./mil/base-components/footer/footer.component";
-import Slin from "./mil/page-components/people/person/slin.component";
-import Hhsu from "./mil/page-components/people/person/hhsu.component";
-import Swashington from "./mil/page-components/people/person/swashington.component";
-import Aagaronyan from "./mil/page-components/people/person/aagaronyan.component";
-import Facilities from "./mil/page-components/facilities/facilities.component";
-import Events from "./mil/page-components/events/events.component";
-import Contact from "./mil/page-components/contact/contact.component";
-import Positions from "./mil/page-components/positions/positions.component";
+import NavBar from "./mil/componets/base-components/navbar/nav-bar.component";
+import Footer from "./mil/componets/base-components/footer/footer.component";
+import Slin from "./mil/componets/page-components/people/person/slin.component";
+import Hhsu from "./mil/componets/page-components/people/person/hhsu.component";
+import Swashington from "./mil/componets/page-components/people/person/swashington.component";
+import Aagaronyan from "./mil/componets/page-components/people/person/aagaronyan.component";
+import Facilities from "./mil/componets/page-components/facilities/facilities.component";
+import Events from "./mil/componets/page-components/events/events.component";
+import Contact from "./mil/componets/page-components/contact/contact.component";
+import Positions from "./mil/componets/page-components/positions/positions.component";
 
-import ReaserchHighlightsList from "./mil/data/reaserch-highlights-list";
-import FacilitiesList from "./mil/data/facilities-list";
+import ReaserchHighlightsList from "./mil/componets/data/reaserch-highlights-list";
+import FacilitiesList from "./mil/componets/data/facilities-list";
 
-import HighLight from "./mil/page-components/research/research-highlights/highlight/highlight.component";
-import Facility from "./mil/page-components/facilities/facility/facility.component";
-import PathoRadi from "./mil/page-components/pathoradi/pathoradi";
-import Ihc from "./mil/page-components/pathoradi/ihc/ihc.component";
-import Upload from "./mil/page-components/pathoradi/upload/upload.component";
-import Mandy from "./mil/page-components/people/person/mandy.component";
-import Sunny from "./mil/page-components/people/person/sunny.component";
+import HighLight from "./mil/componets/page-components/research/research-highlights/highlight/highlight.component";
+import Facility from "./mil/componets/page-components/facilities/facility/facility.component";
+import Mandy from "./mil/componets/page-components/people/person/mandy.component";
+import Sunny from "./mil/componets/page-components/people/person/sunny.component";
 
-import { UploadForm } from "./mil/page-components/pathoradi/form/form.component";
+import MorStainAI from "./mil/componets/page-components/morstainai/home/morstainai.component";
+import ImageUpload from "./mil/componets/page-components/morstainai/upload/upload.component";
+import SignUp from "./mil/componets/page-components/morstainai/user/signup/signup.component";
+import SignIn from "./mil/componets/page-components/morstainai/user/signin/signin.component";
+import SignUpForm from "./mil/componets/page-components/morstainai/user/sign-form/signup-form.component";
+import Reset from "./mil/componets/page-components/morstainai/user/reset/reset.component";
+import ForgetPassword from "./mil/componets/page-components/morstainai/user/forget-password/forget-password.component";
+import DashBoard from "./mil/componets/page-components/morstainai/user/dashboard/dashboard.component";
+import DashBoardUsers from "./mil/componets/page-components/morstainai/user/dashboard/users.component";
+import LearnMore from "./mil/componets/page-components/morstainai/learn-more/learn-more.component";
+import About from "./mil/componets/page-components/morstainai/about/about.component";
+import Services from "./mil/componets/page-components/morstainai/services/services.component";
+import Support from "./mil/componets/page-components/morstainai/support/support.component";
+import ContactUs from "./mil/componets/page-components/morstainai/contact-us/contact-us.component";
+import FeatureWork from "./mil/componets/page-components/morstainai/feature-work/feature-work.component";
 
-import MorStainAI from "./mil/page-components/morstainai/home/morstainai.component";
-import ImageUpload from "./mil/page-components/morstainai/upload/upload.component";
-import SignUp from "./mil/page-components/morstainai/user/signup/signup.component";
-import SignIn from "./mil/page-components/morstainai/user/signin/signin.component";
-import SignUpForm from "./mil/page-components/morstainai/user/sign-form/signup-form.component";
-import Reset from "./mil/page-components/morstainai/user/reset/reset.component";
-import ForgetPassword from "./mil/page-components/morstainai/user/forget-password/forget-password.component";
-import DashBoard from "./mil/page-components/morstainai/user/dashboard/dashboard.component";
-import DashBoardUsers from "./mil/page-components/morstainai/user/dashboard/users.component";
-import LearnMore from "./mil/page-components/morstainai/learn-more/learn-more.component";
-import About from "./mil/page-components/morstainai/about/about.component";
-import Services from "./mil/page-components/morstainai/services/services.component";
-import Support from "./mil/page-components/morstainai/support/support.component";
-import ContactUs from "./mil/page-components/morstainai/contact-us/contact-us.component";
-import FeatureWork from "./mil/page-components/morstainai/feature-work/feature-work.component";
-
-import StainAI from "./stainai/home/home.component";
+import StainAI from "./stainai/components/home/home.component";
 
 export const UserContext = React.createContext(null);
 
