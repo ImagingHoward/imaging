@@ -1,14 +1,14 @@
 import React from "react";
 import classes from "./home.module.sass";
-import NavBar from "../shared/navbar/nav-bar.component";
+import NavBar from "../../shared-components/navbar/nav-bar.component";
 import Hero from "./hero/hero.component";
 
-import contentbg1 from "../../assets/1_section.png";
-import contentbg2 from "../../assets/2_section.png";
-import contentbg3 from "../../assets/3_section.png";
-import icon1 from "../../assets/1_icon_50x50.png";
-import icon2 from "../../assets/2_icon_50x50.png";
-import icon3 from "../../assets/3_icon_50x50.png";
+import contentbg1 from "../../../assets/1_section.png";
+import contentbg2 from "../../../assets/2_section.png";
+import contentbg3 from "../../../assets/3_section.png";
+import icon1 from "../../../assets/1_icon_50x50.png";
+import icon2 from "../../../assets/2_icon_50x50.png";
+import icon3 from "../../../assets/3_icon_50x50.png";
 import Content from "./content/content.component";
 
 const StainAI = () => {
