@@ -109,7 +109,7 @@ const SignIn = () => {
             Remember me
           </div>
           <div className={classes.forget}>
-            <a href="/morstainai/user/forget-password">
+            <a href="/stainai/user/forget-password">
               Forget Stain.AI ID Password?
             </a>
           </div>
