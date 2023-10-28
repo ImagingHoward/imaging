@@ -48,7 +48,8 @@ import Services from "./components/page-components/morstainai/services/services.
 import Support from "./components/page-components/morstainai/support/support.component";
 import ContactUs from "./components/page-components/morstainai/contact-us/contact-us.component";
 import FeatureWork from "./components/page-components/morstainai/feature-work/feature-work.component";
-import StainAI from "./components/stainai/home/home.component";
+
+import StainAI from "./stainai/home/home.component";
 
 export const UserContext = React.createContext(null);
 

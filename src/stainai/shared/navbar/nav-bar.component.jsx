@@ -3,7 +3,7 @@ import classes from "./nav-bar.module.sass";
 
 import { FaBars } from "react-icons/fa";
 
-import UseUserContext from "../../../../hook/auth/user.hook";
+import UseUserContext from "../../../hook/auth/user.hook";
 import logo from "../../assets/logo.png";
 
 const NavBar = () => {
@@ -48,7 +48,7 @@ const NavBar = () => {
             <a href="#">ABOUT</a>
             {isDropdownVisible.about && (
               <div className={classes.dropContent}>
-                <a href="https://imaging.howard.edu/">Our Lab Team</a>
+                <a href="https://imaging.howard.edu/">Molecular Imaging Laboratory</a>
                 <a href="#">About StainAI</a>
               </div>
             )}

@@ -17,7 +17,7 @@ const StainAI = () => {
       <div className={classes.header}>
         <NavBar />
         <Hero
-          logo="MorStainAI"
+          logo="Stain.AI"
           title="AI Stain of Cell Morphology on Whole Brain"
           blur=" MorStainAI is a website-as-a-service software package that can count & quantify morphological phenotypes of cells, even on low magnification immunohistochemistry images."
           button="Learn more"
