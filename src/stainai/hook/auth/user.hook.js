@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 
 const UseUserContext = () => {
   return {
-    info: localStorage.getItem("MORSTAIN_USER_PROFILE")
-      ? JSON.parse(localStorage.getItem("MORSTAIN_USER_PROFILE"))
+    info: localStorage.getItem("STAINAI_USER_PROFILE")
+      ? JSON.parse(localStorage.getItem("STAINAI_USER_PROFILE"))
       : "",
   };
 };

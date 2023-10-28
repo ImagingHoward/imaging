@@ -1,20 +1,20 @@
 import React from "react";
 import classes from "./signup.module.sass";
 
-import NavBar from "../../base/navbar/nav-bar.component";
-import background from "../../assets/signin.png";
-import { BsFillPersonFill } from "react-icons/bs";
-import { HiArrowRight } from "react-icons/hi";
-import SingUpContent from "../content/content.component";
+import NavBar from "../../../shared-components/navbar/nav-bar.component";
+import background from "../../../../assets/signin.png";
+import SingUpContent from "../signup-content/signup-content.component";
 
-import icon1 from "../../assets/Icon_in control.png";
-import icon2 from "../../assets/Icon_secure.png";
-import icon3 from "../../assets/Icon_why ID.png";
+import icon1 from "../../../../assets/Icon_in control.png";
+import icon2 from "../../../../assets/Icon_secure.png";
+import icon3 from "../../../../assets/Icon_why ID.png";
 
 const SignUp = () => {
   return (
     <>
-      <NavBar />
+      <div className={classes.header}>
+        <NavBar />
+      </div>
       <div className={classes.wrapper}>
         <div className={classes.signup}>
           <div
@@ -23,7 +23,7 @@ const SignUp = () => {
               background: `url(${background}) center center / cover no-repeat`,
             }}
           >
-            MorStainAI
+            Stain.AI
           </div>
           <div className={classes.title}>
             A MorStainAI account grants you access to all AI-Stain services.
@@ -59,7 +59,6 @@ const SignUp = () => {
           heading="When do I use my MorStainAI ID?"
           blur="For any new contact email, purchase, or use of AI-Stain services, simply sign in with your MorStainAI ID and password. This grants access to the service and your personal information. Use the same MorStainAI ID across all sign-ins for seamless integration of all services, allowing access to your personal content from anywhere."
         />
-        {/* <div> @CopyRight 2023</div> */}
       </div>
     </>
   );

@@ -28,23 +28,26 @@ import Facility from "./mil/componets/page-components/facilities/facility/facili
 import Mandy from "./mil/componets/page-components/people/person/mandy.component";
 import Sunny from "./mil/componets/page-components/people/person/sunny.component";
 
-import MorStainAI from "./mil/componets/page-components/morstainai/home/morstainai.component";
-import ImageUpload from "./mil/componets/page-components/morstainai/upload/upload.component";
-import SignUp from "./mil/componets/page-components/morstainai/user/signup/signup.component";
-import SignIn from "./mil/componets/page-components/morstainai/user/signin/signin.component";
-import SignUpForm from "./mil/componets/page-components/morstainai/user/sign-form/signup-form.component";
-import Reset from "./mil/componets/page-components/morstainai/user/reset/reset.component";
-import ForgetPassword from "./mil/componets/page-components/morstainai/user/forget-password/forget-password.component";
-import DashBoard from "./mil/componets/page-components/morstainai/user/dashboard/dashboard.component";
-import DashBoardUsers from "./mil/componets/page-components/morstainai/user/dashboard/users.component";
-import LearnMore from "./mil/componets/page-components/morstainai/learn-more/learn-more.component";
-import About from "./mil/componets/page-components/morstainai/about/about.component";
-import Services from "./mil/componets/page-components/morstainai/services/services.component";
-import Support from "./mil/componets/page-components/morstainai/support/support.component";
-import ContactUs from "./mil/componets/page-components/morstainai/contact-us/contact-us.component";
-import FeatureWork from "./mil/componets/page-components/morstainai/feature-work/feature-work.component";
+// import MorStainAI from "./mil/componets/page-components/morstainai/home/morstainai.component";
+// import ImageUpload from "./mil/componets/page-components/morstainai/upload/upload.component";
+// import SignUp from "./mil/componets/page-components/morstainai/user/signup/signup.component";
+// import SignIn from "./mil/componets/page-components/morstainai/user/signin/signin.component";
+// import SignUpForm from "./mil/componets/page-components/morstainai/user/sign-form/signup-form.component";
+// import Reset from "./mil/componets/page-components/morstainai/user/reset/reset.component";
+// import ForgetPassword from "./mil/componets/page-components/morstainai/user/forget-password/forget-password.component";
+// import DashBoard from "./mil/componets/page-components/morstainai/user/dashboard/dashboard.component";
+// import DashBoardUsers from "./mil/componets/page-components/morstainai/user/dashboard/users.component";
+// import LearnMore from "./mil/componets/page-components/morstainai/learn-more/learn-more.component";
+// import About from "./mil/componets/page-components/morstainai/about/about.component";
+// import Services from "./mil/componets/page-components/morstainai/services/services.component";
+// import Support from "./mil/componets/page-components/morstainai/support/support.component";
+// import ContactUs from "./mil/componets/page-components/morstainai/contact-us/contact-us.component";
+// import FeatureWork from "./mil/componets/page-components/morstainai/feature-work/feature-work.component";
 
 import StainAI from "./stainai/components/page-components/home/home.component";
+import SignIn from "./stainai/components/page-components/user/signin/singin.component";
+import SignUp from "./stainai/components/page-components/user/signup/signup.component";
+import Register from "./stainai/components/page-components/user/register/register.component";
 
 export const UserContext = React.createContext(null);
 
@@ -120,7 +123,7 @@ function App() {
             <Route exact path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
 
-            <Route exact path="/morstainai" element={<MorStainAI />} />
+            {/* <Route exact path="/morstainai" element={<MorStainAI />} />
             <Route
               exact
               path="/morstainai/learn-more"
@@ -164,10 +167,13 @@ function App() {
               exact
               path="/morstainai/user/dashboard/users"
               element={<DashBoardUsers />}
-            />
+            /> */}
 
             <Route exact path="/stainai" element={<StainAI />} />
-            
+            <Route exact path="/stainai/signin" element={<SignIn />} />
+            <Route exact path="/stainai/user/singup" element={<SignUp />} />
+            <Route exact path="/morstainai/user/register" element={<Register />} />
+
           </Routes>
         </UserContext.Provider>
       </Router>

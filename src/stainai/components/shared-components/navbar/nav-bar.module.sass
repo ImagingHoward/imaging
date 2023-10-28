@@ -93,6 +93,12 @@
             background-color: #ddd
             color: black
 
+@mixin login()
+    display: flex
+    align-items: center
+    & > svg
+        margin-right: 5px
+
 .wrapper
     @include wrapper()
     & > .logo
@@ -103,3 +109,5 @@
             @include dropItem()
             & > .dropContent
                 @include dropContent()
+        .login
+            @include login()

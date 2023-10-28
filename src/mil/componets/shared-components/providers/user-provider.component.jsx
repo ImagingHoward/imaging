@@ -5,8 +5,8 @@ const UserProvider = (props) => {
   const [state, setState] = useState();
 
 
-  localStorage.getItem("MORSTAIN_USER_PROFILE") &&setState(() => ({
-    info: JSON.parse(localStorage.getItem("MORSTAIN_USER_PROFILE"))
+  localStorage.getItem("STAINAI_USER_PROFILE") &&setState(() => ({
+    info: JSON.parse(localStorage.getItem("STAINAI_USER_PROFILE"))
   }));
 
   return (

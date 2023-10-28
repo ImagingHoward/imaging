@@ -1,15 +1,12 @@
 import React, { useRef, useState, useContext } from "react";
 import classes from "./signin.module.sass";
 
-import NavBar from "../../base/navbar/nav-bar.component";
-import background from "../../assets/signin.png";
-import { BsFillPersonFill } from "react-icons/bs";
-import { HiArrowRight } from "react-icons/hi";
 
+import background from "../../../../assets/signin.png";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
-import { UserContext } from '../../../../../../App';
+import { UserContext } from "../../../../../App";
+import NavBar from "../../../shared-components/navbar/nav-bar.component";
 
 const SignIn = () => {
   const [allow, SetAllow] = useState(null);
@@ -27,35 +24,31 @@ const SignIn = () => {
   password.current = watch("password", "");
 
   const onSubmit = async (data) => {
-    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
-    // const morstainURL = "http://localhost:3000";
-    // console.log(data)
+    const stainaiURL = process.env.REACT_APP_STAINAI_URL;
 
     axios
-      .post(`${morstainURL}/singin`, {
+      .post(`${stainaiURL}/singin`, {
         email: data.email,
         password: data.password,
       })
       .then((res) => {
-        console.log(res.data);
         localStorage.setItem("STAINAI_USER_PROFILE", JSON.stringify(res.data));
-        if(res.data.allow){
+        if (res.data.allow) {
           setUser(res.data);
-          console.log(user);
-          return (window.location = "/morstainai");
-        }
-        else
-          SetAllow(false);
+          return (window.location = "/stainai");
+        } else SetAllow(false);
       })
-      .catch(error =>console.log(error));
+      .catch((error) => console.log(error));
   };
 
   return (
     <>
-      <NavBar />
+      <div className={classes.header}>
+        <NavBar />
+      </div>
       <div className={classes.wrapper}>
         <div className={classes.usernav}>
-          <a href="/morstainai/user/singup"> Create your Mostain ID</a>
+          <a href="/stainai/user/singup"> Create your Stain.AI ID</a>
         </div>
         <div className={classes.signin}>
           <div
@@ -64,21 +57,15 @@ const SignIn = () => {
               background: `url(${background}) center center / cover no-repeat`,
             }}
           >
-            MorStainAI
+            Stain.AI
           </div>
-          <div className={classes.title}>MorStain ID</div>
-          <div className={classes.subtitle}>Manage Your MorStain ID</div>
 
-          {allow === false && 
-          <div className={classes.error}>Email or Password is Invalid!</div>}
+          {allow === false && (
+            <div className={classes.error}>Email or Password is Invalid!</div>
+          )}
 
           <form onSubmit={(e) => e.preventDefault()}>
             <div className={classes.morstainid}>
-              {/* <input placeholder="Password" className={classes.input} />
-                <input
-                  placeholder="Comfirm Password"
-                  className={classes.input}
-                /> */}
               <label>Email</label>
               <input
                 name="email"
@@ -108,20 +95,13 @@ const SignIn = () => {
                 })}
               />
               {errors.password && <p>{errors.password.message}</p>}
-              <label>Comfirm password</label>
-              <input
-                name="cpassword"
-                type="password"
-                id="cpassword"
-                {...register("cpassword", {
-                  validate: (value) =>
-                    value === password.current || "The passwords do not match",
-                })}
-              />
-              {errors.cpassword && <p>{errors.cpassword.message}</p>}
             </div>
 
-            <input type="submit" onClick={handleSubmit(onSubmit)} value="Sing In" />
+            <input
+              type="submit"
+              onClick={handleSubmit(onSubmit)}
+              value="Sing In"
+            />
           </form>
 
           <div className={classes.rememberme}>
@@ -129,8 +109,10 @@ const SignIn = () => {
             Remember me
           </div>
           <div className={classes.forget}>
-            <a href="/morstainai/user/forget-password"> Forget Morstain ID or Password?</a>
-           </div>
+            <a href="/morstainai/user/forget-password">
+              Forget Stain.AI ID Password?
+            </a>
+          </div>
         </div>
       </div>
     </>

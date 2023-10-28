@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./nav-bar.module.sass";
 
 import { FaBars } from "react-icons/fa";
+import { BsFillPersonFill } from "react-icons/bs";
 
 import UseUserContext from "../../../hook/auth/user.hook";
 import logo from "../../../assets/logo.png";
@@ -72,6 +73,25 @@ const NavBar = () => {
           <li>
             <a href="#">CONTACT US</a>
           </li>
+          <li className={classes.login}>
+            <BsFillPersonFill size={25} />
+              {user.info.firstname || user.info.lastname ? (
+                <a href="/morstainai/user/dashboard">
+                  {" "}
+                  {user.info.firstname} {user.info.lastname}{" "}
+                </a>
+              ) : (
+                <a href="/stainai/signin">SIGNIN</a>
+              )}
+          </li>
+          {(user.info.firstname || user.info.lastname) && (
+              <li>
+                <a href="/stainai" onClick={()=>{
+                  localStorage.removeItem("STAINAI_USER_PROFILE");
+                  setAuthTokens("");
+                }}>Log Out</a>
+              </li>
+            )}
         </ul>
       </nav>
     </div>
