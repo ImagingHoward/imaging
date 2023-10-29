@@ -21,10 +21,11 @@ const Register = () => {
   password.current = watch("password", "");
 
   const onSubmit = async (data) => {
-    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
+    const stainURL = process.env.REACT_APP_MORSTAIN_URL;
+    // const stainURL = "http://localhost:3000";
 
     axios
-      .post(`${morstainURL}/userInfo/create`, {
+      .post(`${stainURL}/userInfo/create`, {
         firstname: data.firstname,
         lastname: data.lastname,
         organization: data.organization,
@@ -32,7 +33,8 @@ const Register = () => {
       })
       .then((res) => {
         setSuccess(true);
-      });
+      })
+      .catch(error => console.log(error));
   };
 
   return (

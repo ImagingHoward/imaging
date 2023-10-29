@@ -49,6 +49,7 @@ import SignIn from "./stainai/components/page-components/user/signin/singin.comp
 import SignUp from "./stainai/components/page-components/user/signup/signup.component";
 import Register from "./stainai/components/page-components/user/register/register.component";
 import ForgetPassword from "./stainai/components/page-components/user/forget-password/forget-password.component";
+import ResetPasword from "./stainai/components/page-components/user/reset-password/reset-password.component";
 
 export const UserContext = React.createContext(null);
 
@@ -171,10 +172,11 @@ function App() {
             /> */}
 
             <Route exact path="/stainai" element={<StainAI />} />
-            <Route exact path="/stainai/signin" element={<SignIn />} />
+            <Route exact path="/stainai/user/signin" element={<SignIn />} />
             <Route exact path="/stainai/user/singup" element={<SignUp />} />
             <Route exact path="/stainai/user/register" element={<Register />} />
             <Route exact path="/stainai/user/forget-password" element={<ForgetPassword />} />
+            <Route exact path="/stainai/user/reset-password" element={<ResetPasword />} />
 
           </Routes>
         </UserContext.Provider>

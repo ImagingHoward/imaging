@@ -81,7 +81,7 @@ const NavBar = () => {
                   {user.info.firstname} {user.info.lastname}{" "}
                 </a>
               ) : (
-                <a href="/stainai/signin">SIGNIN</a>
+                <a href="/stainai/user/signin">SIGNIN</a>
               )}
           </li>
           {(user.info.firstname || user.info.lastname) && (
