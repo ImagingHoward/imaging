@@ -3,7 +3,8 @@ import classes from "./nav-bar.module.sass";
 import { FaBars } from "react-icons/fa";
 
 import { BsFillPersonFill } from "react-icons/bs";
-import UseUserContext from "../../../../../../hook/auth/user.hook";
+import UseUserContext from "../../../../../hook/auth/user.hook";
+import logo from "../../../../../assets/logo.png";
 
 const NavBar = () => {
   const user = UseUserContext();
@@ -52,9 +53,7 @@ const NavBar = () => {
     <div className={classes.wrapper} ref={ref}>
       <header className={classes.siteHeader}>
         <div className={classes.compartment}>
-          <h3>
-            <a href="/morstainai">MorStainAI</a>
-          </h3>
+          <img src={logo} className={classes.logo} onClick={() => window.location = '/stainai'} />
         </div>
         <a className={classes.faBars} onClick={menuExpand}>
           <FaBars size={32} />
@@ -71,17 +70,17 @@ const NavBar = () => {
             <li className={classes.login}>
               <BsFillPersonFill size={25} />
               {user.info.firstname || user.info.lastname ? (
-                <a href="/morstainai/user/dashboard">
+                <a href="/stainai/user/dashboard">
                   {" "}
                   {user.info.firstname} {user.info.lastname}{" "}
                 </a>
               ) : (
-                <a href="/morstainai/user">SIGNIN</a>
+                <a href="/stainai/user">SIGNIN</a>
               )}
             </li>
             {(user.info.firstname || user.info.lastname) && (
               <li>
-                <a href="/morstainai" onClick={()=>{
+               <a href="/stainai" onClick={()=>{
                   localStorage.removeItem("STAINAI_USER_PROFILE");
                   setAuthTokens("");
                 }}>Log Out</a>

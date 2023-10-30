@@ -35,7 +35,7 @@ const NavBar = () => {
 
   return (
     <div className={classes.wrapper}>
-      <img src={logo} className={classes.logo} />
+      <img src={logo} className={classes.logo} onClick={() => window.location = '/stainai'}/>
       <a className={classes.faBars} onClick={menuExpand}>
           <FaBars size={32} />
       </a>
@@ -76,7 +76,7 @@ const NavBar = () => {
           <li className={classes.login}>
             <BsFillPersonFill size={25} />
               {user.info.firstname || user.info.lastname ? (
-                <a href="/morstainai/user/dashboard">
+                <a href="/stainai/user/dashboard">
                   {" "}
                   {user.info.firstname} {user.info.lastname}{" "}
                 </a>

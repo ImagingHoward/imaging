@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import classes from "./dashboard.module.sass";
 
-import UseUserContext from "../../../../../hook/auth/user.hook";
+import UseUserContext from "../../../../hook/auth/user.hook";
 import NavBar from "./navbar/nav-bar.component";
 import NoAccess from "../no-access/no-access.component";
 
