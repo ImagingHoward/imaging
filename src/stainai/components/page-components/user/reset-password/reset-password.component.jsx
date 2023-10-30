@@ -19,13 +19,13 @@ const ResetPasword = () => {
   // if (!email && !token) return (window.location = "/stainai/user/signin");
 
   useEffect(() => {
-    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
-    //const morstainURL = "http://localhost:3000";
+    // const stainURL = process.env.REACT_APP_STAINAI_URL;
+    const stainURL = "http://localhost:3000";
 
     axios
-      .get(`${morstainURL}/resetPassword?email=${email}&token=${token}`)
+      .get(`${stainURL}/resetPassword?email=${email}&token=${token}`)
       .then((res) => {
-        console.log(res.data.allow);
+        // console.log(res.data.allow);
         Setallow(res.data.allow);
       });
   }, [params]);
@@ -44,11 +44,11 @@ const ResetPasword = () => {
   password.current = watch("password", "");
 
   const onSubmit = async (data) => {
-    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
-    // const morstainURL = "http://localhost:3000";
+    const stainURL = process.env.REACT_APP_STAINAI_URL;
+    // const stainURL = "http://localhost:3000";
 
     axios
-      .post(`${morstainURL}/resetPassword/update`, {
+      .post(`${stainURL}/resetPassword/update`, {
         email: email,
         token: token,
         password: data.password,

@@ -9,6 +9,7 @@ import axios from "axios";
 
 const Register = () => {
   const [success, setSuccess] = useState(false);
+  const [isExist, setIsExist] = useState(false);
   const {
     register,
     formState: { errors },
@@ -21,20 +22,29 @@ const Register = () => {
   password.current = watch("password", "");
 
   const onSubmit = async (data) => {
-    const stainURL = process.env.REACT_APP_MORSTAIN_URL;
+    const stainURL = process.env.REACT_APP_STAINAI_URL;
     // const stainURL = "http://localhost:3000";
 
-    axios
-      .post(`${stainURL}/userInfo/create`, {
-        firstname: data.firstname,
-        lastname: data.lastname,
-        organization: data.organization,
-        email: data.email
-      })
-      .then((res) => {
-        setSuccess(true);
-      })
-      .catch(error => console.log(error));
+    
+    axios;
+    axios.get(`${stainURL}/userInfo/${data.email}`).then((res) => {
+      // checkt if email exists
+      if (res.data.length > 0) {
+        setIsExist(true);
+      } else {
+        axios
+          .post(`${stainURL}/userInfo/create`, {
+            firstname: data.firstname,
+            lastname: data.lastname,
+            organization: data.organization,
+            email: data.email,
+          })
+          .then((res) => {
+            setSuccess(true);
+          })
+          .catch((error) => console.log(error));
+      }
+    });
   };
 
   return (
@@ -53,9 +63,16 @@ const Register = () => {
             Stain.AI
           </div>
           <div className={classes.title}>
-            A MorStainAI account grants you access to all AI-Stain services.
+            A Stain.AI account grants you access to all AI-Stain services.
           </div>
         </div>
+        {
+          !success && isExist && 
+          <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
+           Email exists. Please create another Stain.AI account.
+        </p>
+        }
+
         {success ? (
           <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
             Thank you for register. Please check your Email.
@@ -123,8 +140,12 @@ const Register = () => {
                 },
               })}
             />
-            {errors.email && <p>{errors.email.message}</p>}          
-            <input type="submit" onClick={handleSubmit(onSubmit)} value="Register" />
+            {errors.email && <p>{errors.email.message}</p>}
+            <input
+              type="submit"
+              onClick={handleSubmit(onSubmit)}
+              value="Register"
+            />
           </form>
         )}
       </div>

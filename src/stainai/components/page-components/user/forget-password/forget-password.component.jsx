@@ -17,12 +17,11 @@ const ForgetPassword = () => {
   } = useForm({});
 
   const onSubmit = async (data) => {
-    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
-
-    console.log(data.email);
+    const stainURL = process.env.REACT_APP_STAINAI_URL;
+    // const stainURL = "http://localhost:3000";
 
     axios
-      .post(`${morstainURL}/forgetPassword`, {
+      .post(`${stainURL}/forgetPassword`, {
         email: data.email,
       })
       .then((res) => {
