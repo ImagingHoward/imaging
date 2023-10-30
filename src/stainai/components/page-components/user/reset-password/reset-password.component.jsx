@@ -19,8 +19,8 @@ const ResetPasword = () => {
   // if (!email && !token) return (window.location = "/stainai/user/signin");
 
   useEffect(() => {
-    // const stainURL = process.env.REACT_APP_STAINAI_URL;
-    const stainURL = "http://localhost:3000";
+    const stainURL = process.env.REACT_APP_STAINAI_URL;
+    // const stainURL = "http://localhost:3000";
 
     axios
       .get(`${stainURL}/resetPassword?email=${email}&token=${token}`)
