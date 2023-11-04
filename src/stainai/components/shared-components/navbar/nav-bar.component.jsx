@@ -71,7 +71,7 @@ const NavBar = () => {
             <a href="#">Q&A</a>
           </li>
           <li>
-            <a href="#">CONTACT US</a>
+            <a href="/stainai/contact-us">CONTACT US</a>
           </li>
           <li className={classes.login}>
             <BsFillPersonFill size={25} />

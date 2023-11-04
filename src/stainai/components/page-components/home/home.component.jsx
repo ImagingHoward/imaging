@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./home.module.sass";
 import NavBar from "../../shared-components/navbar/nav-bar.component";
-import Hero from "./hero/hero.component";
+import Hero from "../../shared-components/hero/hero.component";
 
 import contentbg1 from "../../../assets/1_section.png";
 import contentbg2 from "../../../assets/2_section.png";
@@ -9,6 +9,7 @@ import contentbg3 from "../../../assets/3_section.png";
 import icon1 from "../../../assets/1_icon_50x50.png";
 import icon2 from "../../../assets/2_icon_50x50.png";
 import icon3 from "../../../assets/3_icon_50x50.png";
+import background from "../../../assets/home_hero.png";
 import Content from "./content/content.component";
 
 const StainAI = () => {
@@ -19,9 +20,9 @@ const StainAI = () => {
         <Hero
           logo="Stain.AI"
           title="AI Stain of Cell Morphology on Whole Brain"
-          blur=" MorStainAI is a website-as-a-service software package that can count & quantify morphological phenotypes of cells, even on low magnification immunohistochemistry images."
+          blur=" Stain.AI is a website-as-a-service software package that can count & quantify morphological phenotypes of cells, even on low magnification immunohistochemistry images."
           button="Learn more"
-          url="morstainai/learn-more"
+          url="#"
         />
       </div>
       <div className={classes.section}>
@@ -31,7 +32,7 @@ const StainAI = () => {
           heading="Automated Quantification"
           blur="Give it a try on your microglial image!"
           button="UPLOAD YOUR DATA"
-          url="morstainai/upload"
+          url="#"
         />
         <Content
           contentbg={contentbg2}
@@ -39,6 +40,7 @@ const StainAI = () => {
           heading="Visualization & Analysis"
           blur="Interactive data quantification and statistical analysis."
           button="SEE YOUR RESULT"
+          rl="#"
         />
         <Content
           contentbg={contentbg3}
@@ -46,7 +48,7 @@ const StainAI = () => {
           heading="Future Work"
           blur="AI-assisted radiologic-pathologic correlation analysis"
           button="COMING SOON"
-          url="morstainai/feature-work"
+          url="#"
         />
       </div>
     </>
