@@ -65,6 +65,39 @@ const FileUpload = ({
         </button>
     
       </div>
+          {/*second part starts here*/}
+          <span>Uploaded: </span>
+        <article>
+          <section className={classes.toUploadSection}>
+            {Object.keys(files).map((fileName, index) => {
+              let file = files[fileName];
+              let isImageFile = file.type.split("/")[0] === "image";
+              return (
+                <section key={fileName}>
+                  <div>
+                    {isImageFile && (
+                      <img
+                        src={URL.createObjectURL(file)}
+                        alt={`file preview ${index}`}
+                      />
+                    )}
+                    <div>
+                      <span>{file.name}</span>
+                      <aside>
+                        <span>{convertBytesToKB(file.size)} kb</span>
+                        {/* <i className="fas fa-trash-alt" /> */}
+                        <RiDeleteBin5Line
+                          size={25}
+                          onClick={() => removeFile(fileName)}
+                        />
+                      </aside>
+                    </div>
+                  </div>
+                </section>
+              );
+            })}
+          </section>
+        </article>
     </>
   );
 };

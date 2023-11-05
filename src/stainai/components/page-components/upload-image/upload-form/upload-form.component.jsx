@@ -5,7 +5,81 @@ import classnames from "classnames";
 import { FaUserCog, FaProjectDiagram } from "react-icons/fa";
 import FileUpload from "../file-upload/file-upload.component";
 
+const newLine =  (idx) => <div className={classnames(classes.row)}>
+<div className={classes.imageBatchNum}>
+  <div className={classes.lightgrey}>Image Batch</div>
+  <div>{idx + 1}</div>
+</div>
+<div className={classes.imageBatchInfo}>
+  <div className={classnames(classes.col, classes.lightpurple)}>
+    <div>TISSUE</div>
+    <div className={classes.row}>
+      <div className={classes.col}>
+        <label>*Species</label>
+        <input name="species" type="text" id="species" />
+      </div>
+      <div className={classes.col}>
+        <label>*Species</label>
+        <input name="species" type="text" id="species" />
+      </div>
+      <div className={classes.col}>
+        <label>Strain</label>
+        <input name="species" type="text" id="species" />
+      </div>
+      <div className={classes.col}>
+        <label>Animal Treatment</label>
+        <input name="species" type="text" id="species" />
+      </div>
+      <div className={classes.col}>
+        <label>*Organ</label>
+        <input name="species" type="text" id="species" />
+      </div>
+    </div>
+  </div>
+  <div className={classnames(classes.col, classes.lightyellow)}>
+    <div>IMAGE METADATA</div>
+    <div className={classes.row}>
+      <div className={classes.col}>
+        <label>*Slice Thickness(um)</label>
+        <input name="species" type="text" id="species" />
+      </div>
+      <div className={classes.col}>
+        <label>*Pixel Size(um)</label>
+        <input name="species" type="text" id="species" />
+      </div>
+      <div className={classes.col}>
+        <label>*Anatomical Region</label>
+        <input name="species" type="text" id="species" />
+      </div>
+      <div className={classes.col}>
+        <label>Struceture Detail</label>
+        <input name="species" type="text" id="species" />
+      </div>
+      <div className={classes.col}>
+        <label>*Organ</label>
+        <input name="species" type="text" id="species" />
+      </div>
+    </div>
+  </div>
+  <div className={classnames(classes.col, classes.lightblue)}>
+    <div>UPLOAD FILES</div>
+    <div style={{ width: "100%" }}>
+      <FileUpload />
+    </div>
+  </div>
+</div>
+</div>
+
 const UploadForm = () => {
+  const buttonStyling =
+    "p-5 rounded-md bg-blue-600 font-semibold text-white flex items-center gap-1 hover:bg-blue-800";
+
+  const [divs, setDivs] = useState([<div key="0" >{newLine(0)}</div>]);
+
+  const addNewDiv = () => {
+    setDivs([...divs, <div key={divs.length} >{newLine(divs.length)}</div>]);
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classnames(classes.row, classes.lightgrey)}>
@@ -24,73 +98,18 @@ const UploadForm = () => {
         </div>
       </div>
       <div className={classes.uploadForm}>
-        <div className={classnames(classes.row)}>
-          <div className={classes.imageBatchNum}>
-            <div className={classes.lightgrey}>Image Batch</div>
-            <div>1</div>
-          </div>
-          <div className={classes.imageBatchInfo}>
-            <div className={classnames(classes.col, classes.lightpurple)}>
-              <div>TISSUE</div>
-              <div className={classes.row}>
-                <div className={classes.col}>
-                  <label>*Species</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-                <div className={classes.col}>
-                  <label>*Species</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-                <div className={classes.col}>
-                  <label>Strain</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-                <div className={classes.col}>
-                  <label>Animal Treatment</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-                <div className={classes.col}>
-                  <label>*Organ</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-              </div>
-            </div>
-            <div className={classnames(classes.col, classes.lightyellow)}>
-              <div>IMAGE METADATA</div>
-              <div className={classes.row}>
-                <div className={classes.col}>
-                  <label>*Slice Thickness(um)</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-                <div className={classes.col}>
-                  <label>*Pixel Size(um)</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-                <div className={classes.col}>
-                  <label>*Anatomical Region</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-                <div className={classes.col}>
-                  <label>Struceture Detail</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-                <div className={classes.col}>
-                  <label>*Organ</label>
-                  <input name="species" type="text" id="species" />
-                </div>
-              </div>
-            </div>
-            <div className={classnames(classes.col, classes.lightblue)}>
-              <div>UPLOAD FILES</div>
-              <div style={{ width: "100%" }}>
-                <FileUpload />
-              </div>
-            </div>
-          </div>
-        </div>
+       
+        {divs.map((div, index) => (
+          <div key={index}>{div}</div>
+        ))}
         <div
-          className={classnames(classes.col, classes.lightgrey)}
+          className={classnames(
+            classes.col,
+            classes.lightgrey,
+            classes.newbatch
+          )}
           style={{ padding: "20px 0" }}
+          onClick={addNewDiv}
         >
           + Add new batch
         </div>
@@ -111,10 +130,7 @@ const UploadForm = () => {
         acknowledge the limitations of the tool.
       </div>
       <div className="flex justify-end">
-        <button
-        >
-          Submit
-        </button>
+        <button className={buttonStyling}>Submit</button>
       </div>
     </div>
   );
