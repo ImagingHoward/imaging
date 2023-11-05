@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import classes from "./upload-form.module.sass";
 import classnames from "classnames";
+import axios from "axios";
 
 import { FaUserCog, FaProjectDiagram } from "react-icons/fa";
 import FileUpload from "../file-upload/file-upload.component";
 import UseUserContext from "../../../../hook/auth/user.hook";
+import uploadFileToBlob from "../../../../utils/fileUpload";
 
 const UploadForm = () => {
   const user = UseUserContext();
   const [agree, setAgree] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const [currentBatch, setCurrentBatch] = useState(1);
   const [toUpload, setToUpload] = useState({
@@ -17,17 +20,19 @@ const UploadForm = () => {
     project: `Stain.AI-${
       new Date().getMonth() + 1
     }${new Date().getDate()}${new Date().getFullYear()}`,
-    [currentBatch]: {
-      species: "",
-      strain: "",
-      treatment: "",
-      organ: "",
-      slice: "",
-      pixel: "",
-      region: "",
-      structure: "",
-      images: [],
-      rawImages: "",
+    uploadInfo: {
+      [currentBatch]: {
+        species: "",
+        strain: "",
+        treatment: "",
+        organ: "",
+        slice: "",
+        pixel: "",
+        region: "",
+        structure: "",
+        images: [],
+        rawImages: "",
+      },
     },
   });
 
@@ -38,10 +43,13 @@ const UploadForm = () => {
   const updateUploadedFiles = (files, idx) => {
     setToUpload((oldState) => ({
       ...oldState,
-      [idx]: {
-        ...oldState[idx],
-        images: files.map((file) => file.name),
-        rawImages: files,
+      uploadInfo: {
+        ...oldState.uploadInfo,
+        [idx]: {
+          ...oldState.uploadInfo[idx],
+          images: files.map((file) => file.name),
+          rawImages: files,
+        },
       },
     }));
   };
@@ -50,9 +58,12 @@ const UploadForm = () => {
     setCurrentBatch(idx);
     setToUpload((oldState) => ({
       ...oldState,
-      [idx]: {
-        ...oldState[idx],
-        [field]: e.target.value,
+      uploadInfo: {
+        ...oldState.uploadInfo,
+        [idx]: {
+          ...oldState.uploadInfo[idx],
+          [field]: e.target.value,
+        },
       },
     }));
   };
@@ -182,107 +193,141 @@ const UploadForm = () => {
     setCurrentBatch(divs.length + 1);
     setToUpload((oldState) => ({
       ...oldState,
-      [divs.length + 1]: {
-        species: "",
-        strain: "",
-        treatment: "",
-        organ: "",
-        slice: "",
-        pixel: "",
-        region: "",
-        structure: "",
-        images: [],
-        rawImages: "",
+      uploadInfo: {
+        ...oldState.uploadInfo,
+        [divs.length + 1]: {
+          species: "",
+          strain: "",
+          treatment: "",
+          organ: "",
+          slice: "",
+          pixel: "",
+          region: "",
+          structure: "",
+          images: [],
+          rawImages: "",
+        },
       },
     }));
   };
 
   const onSubmit = async () => {
-    
-    console.log(toUpload)
+    console.log(toUpload);
+    const stainURL = process.env.REACT_APP_STAINAI_URL;
+    // const stainURL = "http://localhost:3000";
+    const userid = user.info.userid;
+
+    axios
+      .post(`${stainURL}/uploadInfo/create`, {
+        ...toUpload,
+        userid,
+      })
+      .then((res) => {
+        setSuccess(true);
+      })
+      .catch((error) => console.log(error));
+
+
+      Object.keys(toUpload.uploadInfo).map((idx) => {
+        uploadFileToBlob(
+          toUpload.username,
+          toUpload.project,
+          toUpload.uploadInfo[idx].rawImages,
+          idx
+        );
+      })
   };
 
   return (
-    <div className={classes.wrapper}>
-      {/* <FormProvider {...methods}> */}
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        noValidate
-        autoComplete="off"
-        // className="container"
-      >
-        <div className={classnames(classes.row, classes.lightgrey)}>
-          <div className={classes.row2}>
-            <div>
-              <FaUserCog />{" "}
-            </div>
-            <div>Use rName: {toUpload.username}</div>
-            <div>Email: {toUpload.email}</div>
-          </div>
-          <div className={classes.row2}>
-            <div>
-              <FaProjectDiagram />
-            </div>
-            <div>
-              <label>*Project</label>
-              <input
-                name="Project"
-                type="text"
-                id="Project"
-                defaultValue={toUpload.project}
-              />
-            </div>
-          </div>
-        </div>
-        <div className={classes.uploadForm}>
-          {divs.map((div, index) => (
-            <div key={index}>{div}</div>
-          ))}
-          <div
-            className={classnames(
-              classes.col,
-              classes.lightgrey,
-              classes.newbatch
-            )}
-            style={{ padding: "20px 0" }}
-            onClick={addNewDiv}
+    <>
+      {success ? (
+        <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
+         Form has been submitted successfully
+        </p>
+      ) : (
+        <div className={classes.wrapper}>
+          {/* <FormProvider {...methods}> */}
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            noValidate
+            autoComplete="off"
+            // className="container"
           >
-            + Add new batch
-          </div>
+            <div className={classnames(classes.row, classes.lightgrey)}>
+              <div className={classes.row2}>
+                <div>
+                  <FaUserCog />{" "}
+                </div>
+                <div>Use Name: {toUpload.username}</div>
+                <div>Email: {toUpload.email}</div>
+              </div>
+              <div className={classes.row2}>
+                <div>
+                  <FaProjectDiagram />
+                </div>
+                <div>
+                  <label>*Project</label>
+                  <input
+                    name="Project"
+                    type="text"
+                    id="Project"
+                    defaultValue={toUpload.project}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={classes.uploadForm}>
+              {divs.map((div, index) => (
+                <div key={index}>{div}</div>
+              ))}
+              <div
+                className={classnames(
+                  classes.col,
+                  classes.lightgrey,
+                  classes.newbatch
+                )}
+                style={{ padding: "20px 0" }}
+                onClick={addNewDiv}
+              >
+                + Add new batch
+              </div>
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                onChange={() => {
+                  setAgree(!agree);
+                }}
+              />{" "}
+              Agree: This web application tool is designed to assist academic
+              institutes in quantifying cells for research and educational
+              purposes. While we strive to ensure the accuracy and reliability
+              of the results, we cannot guarantee the absolute precision of the
+              calculations. The accuracy of cell counting may vary based on
+              image quality and user input. The tool is not a substitute for
+              professional medical or scientific analysis. Users are encouraged
+              to verify the results independently for critical applications. The
+              developers of this tool disclaim any responsibility for the
+              accuracy, completeness, or reliability of the results obtained.
+              Users are solely responsible for the interpretation and use of the
+              data generated by this application. By using this web application,
+              you agree to these terms and acknowledge the limitations of the
+              tool.
+            </div>
+            <div className="flex justify-end">
+              <button
+                className={buttonStyling}
+                disabled={!agree ? true : false}
+                onClick={onSubmit}
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+          {/* </FormProvider> */}
         </div>
-        <div>
-          <input
-            type="checkbox"
-            onChange={() => {
-              setAgree(!agree);
-            }}
-          />{" "}
-          Agree: This web application tool is designed to assist academic
-          institutes in quantifying cells for research and educational purposes.
-          While we strive to ensure the accuracy and reliability of the results,
-          we cannot guarantee the absolute precision of the calculations. The
-          accuracy of cell counting may vary based on image quality and user
-          input. The tool is not a substitute for professional medical or
-          scientific analysis. Users are encouraged to verify the results
-          independently for critical applications. The developers of this tool
-          disclaim any responsibility for the accuracy, completeness, or
-          reliability of the results obtained. Users are solely responsible for
-          the interpretation and use of the data generated by this application.
-          By using this web application, you agree to these terms and
-          acknowledge the limitations of the tool.
-        </div>
-        <div className="flex justify-end">
-          <button 
-          className={buttonStyling}
-          disabled={!agree ? true : false}
-          onClick={onSubmit}
-        >
-            Submit
-          </button>
-        </div>
-      </form>
-      {/* </FormProvider> */}
-    </div>
+      )}
+    </>
   );
 };
 

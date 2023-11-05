@@ -31,12 +31,13 @@ const DashBoard = () => {
 
 
   useEffect(() => {
-    const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
+    const stainURL = process.env.REACT_APP_STAINAI_URL;
+    // const stainURL = "http://localhost:3000";
 
     const qery =
       role === "admin"
-        ? `${morstainURL}/uploadInfo/`
-        : `${morstainURL}/uploadInfo/${user.info.userid}`;
+        ? `${stainURL}/uploadInfo/`
+        : `${stainURL}/uploadInfo/user/${user.info.userid}`;
         
 
     axios.get(`${qery}`).then((res) => {
@@ -69,9 +70,9 @@ const DashBoard = () => {
         <div className={classes.nav}>
           {role === "admin" && (
             <>
-              <a href="/morstainai/user/dashboard"> PRPJECT </a>
+              <a href="/stainai/user/dashboard"> PRPJECT </a>
               {` | `}
-              <a href="/morstainai/user/dashboard/users"> USER </a>
+              <a href="/stainai/user/dashboard/users"> USER </a>
             </>
           )}
         </div>
