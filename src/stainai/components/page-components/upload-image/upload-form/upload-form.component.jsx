@@ -212,7 +212,7 @@ const UploadForm = () => {
   };
 
   const onSubmit = async () => {
-    console.log(toUpload);
+    // console.log(toUpload);
     const stainURL = process.env.REACT_APP_STAINAI_URL;
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
@@ -272,6 +272,12 @@ const UploadForm = () => {
                     type="text"
                     id="Project"
                     defaultValue={toUpload.project}
+                    onChange={(e)=>{
+                      setToUpload((oldState) => ({
+                        ...oldState,
+                        project: e.target.value
+                      }));
+                    }}
                   />
                 </div>
               </div>
