@@ -28,9 +28,9 @@ const NoAccess = () => {
           {/* <div className={classes.subtitle}>Forget Your MorStain Password</div> */}
 
           <p className={classes.note}>
-            You don't access right. Please <a href="/morstainai/user">Singin</a>{" "}
+            You don't access right. Please <a href="/stainai/user/signin">Singin</a>{" "}
             or{" "}
-            <a href="/morstainai/user/singup">Create your Mostain ID</a>.
+            <a href="/stainai/user/singup">Create your Mostain ID</a>.
           </p>
         </div>
       </div>

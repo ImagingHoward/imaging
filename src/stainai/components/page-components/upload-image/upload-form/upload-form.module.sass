@@ -61,6 +61,15 @@
     &:hover
         background-color: #cfcfcf
 
+@mixin imageBatchHeader()
+    // border-bottom: 1.5px solid #666
+    width: 20%
+    display: flex
+    justify-content: center
+    // padding: 5px 0
+    margin: 5px 0
+    font-weight: bold
+
 .wrapper
     @include wrapper()
     .row
@@ -81,7 +90,9 @@
         @include lightyellow()
     .lightblue
         @include lightblue()
-    & > .uploadForm
+    .uploadForm
         @include uploadForm()
         & > .newbatch
             @include newbatch()
+    .imageBatchHeader
+        @include imageBatchHeader()

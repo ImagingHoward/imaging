@@ -4,7 +4,7 @@ import classes from "./file-upload.module.sass";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 const KILO_BYTES_PER_BYTE = 1000;
-const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 90000000;
+const DEFAULT_MAX_FILE_SIZE_IN_BYTES = 100000000;
 
 const convertNestedObjectToArray = (nestedObj) =>
   Object.keys(nestedObj).map((key) => nestedObj[key]);
@@ -15,6 +15,7 @@ const FileUpload = ({
   label,
   updateFilesCb,
   maxFileSizeInBytes = DEFAULT_MAX_FILE_SIZE_IN_BYTES,
+  idx,
   ...otherProps
 }) => {
   const fileInputField = useRef(null);
@@ -38,7 +39,7 @@ const FileUpload = ({
 
   const callUpdateFilesCb = (files) => {
     const filesAsArray = convertNestedObjectToArray(files);
-    updateFilesCb(filesAsArray);
+    updateFilesCb(filesAsArray, idx);
   };
 
   const handleNewFileUpload = (e) => {
@@ -58,47 +59,59 @@ const FileUpload = ({
 
   return (
     <>
-      <label>{label}</label>
-      <div className={classes.wrapper}>
-        <button type="button" onClick={handleUploadBtnClick}>
-          <span> Upload {otherProps.multiple ? "files" : "a file"}</span>
-        </button>
-    
-      </div>
-          {/*second part starts here*/}
-          <span>Uploaded: </span>
-        <article>
-          <section className={classes.toUploadSection}>
-            {Object.keys(files).map((fileName, index) => {
-              let file = files[fileName];
-              let isImageFile = file.type.split("/")[0] === "image";
-              return (
-                <section key={fileName}>
+    <label>{label}</label>
+    <div className={classes.wrapper}>
+      <button type="button" onClick={handleUploadBtnClick}>
+        <span> Upload {otherProps.multiple ? "files" : "a file"}</span>
+      </button>
+      <section>
+        <p>Drag and drop your files anywhere</p>
+
+        <input
+          type="file"
+          ref={fileInputField}
+          onChange={handleNewFileUpload}
+          title=""
+          value=""
+          {...otherProps}
+        />
+      </section>
+
+      {/*second part starts here*/}
+      <span>Upload Files:</span>
+      <article>
+        <section className={classes.toUploadSection}>
+          {Object.keys(files).map((fileName, index) => {
+            let file = files[fileName];
+            let isImageFile = file.type.split("/")[0] === "image";
+            return (
+              <section key={fileName}>
+                <div>
+                  {isImageFile && (
+                    <img
+                      src={URL.createObjectURL(file)}
+                      alt={`file preview ${index}`}
+                    />
+                  )}
                   <div>
-                    {isImageFile && (
-                      <img
-                        src={URL.createObjectURL(file)}
-                        alt={`file preview ${index}`}
+                    <span>{file.name}</span>
+                    <aside>
+                      <span>{convertBytesToKB(file.size)} kb</span>
+                      {/* <i className="fas fa-trash-alt" /> */}
+                      <RiDeleteBin5Line
+                        size={25}
+                        onClick={() => removeFile(fileName)}
                       />
-                    )}
-                    <div>
-                      <span>{file.name}</span>
-                      <aside>
-                        <span>{convertBytesToKB(file.size)} kb</span>
-                        {/* <i className="fas fa-trash-alt" /> */}
-                        <RiDeleteBin5Line
-                          size={25}
-                          onClick={() => removeFile(fileName)}
-                        />
-                      </aside>
-                    </div>
+                    </aside>
                   </div>
-                </section>
-              );
-            })}
-          </section>
-        </article>
-    </>
+                </div>
+              </section>
+            );
+          })}
+        </section>
+      </article>
+    </div>
+  </>
   );
 };
 
