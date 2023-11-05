@@ -10,7 +10,8 @@ const Hero = ({ background, logo, title, blur, button, url }) => {
             <div className={classes.heroContent}>
               <h1>{logo}</h1>
               <h2>{title}</h2>
-              <h3> {blur}</h3>
+              {/* <h3> {blur}</h3> */}
+              <div className ={classes.blur} dangerouslySetInnerHTML={{__html: blur}} />
             </div>
           </div>
           {button && (

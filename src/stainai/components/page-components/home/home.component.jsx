@@ -32,7 +32,7 @@ const StainAI = () => {
           heading="Automated Quantification"
           blur="Give it a try on your microglial image!"
           button="UPLOAD YOUR DATA"
-          url="#"
+          url="/stainai/upload-image"
         />
         <Content
           contentbg={contentbg2}

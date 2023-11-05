@@ -1,0 +1,79 @@
+
+@mixin wrapper()
+    margin: 30px auto
+    width: 80%
+    input[type=text]
+        cursor: pointer
+        background-color: #fff
+        width: 90%
+        margin: 10px 0
+
+@mixin row()
+    width: 100%
+    display: flex
+    justify-content: flex-start
+
+@mixin col()
+    width: 100%
+    display: flex
+    justify-content: flex-start
+    flex-direction: column
+    align-items: center
+
+@mixin imageBatchNum()
+    width: 100px
+    flex-shrink: 0
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
+
+@mixin imageBatchInfo()
+    flex: 1
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
+
+@mixin lightgrey()
+    background-color: #e2e2e2
+
+@mixin lightpurple()
+    background-color: #f4f3fa
+
+@mixin lightyellow()
+    background-color: #fbf7f1
+
+@mixin lightblue()
+    background-color: #d8eefd
+
+@mixin row2()
+    flex: 50% 1
+    padding: 20px
+
+@mixin uploadForm()
+    border: 1px solid #e2e2e2
+    margin: 20px 0
+
+.wrapper
+    @include wrapper()
+    .row
+        @include row()
+        & > .row2
+            @include row2()
+        & > .imageBatchNum
+            @include imageBatchNum()
+        & > .imageBatchInfo
+            @include imageBatchInfo()
+    .col
+        @include col
+    .lightgrey
+        @include lightgrey()
+    .lightpurple
+        @include lightpurple()
+    .lightyellow
+        @include lightyellow()
+    .lightblue
+        @include lightblue()
+    & > .uploadForm
+        @include uploadForm()

@@ -53,6 +53,7 @@ import ResetPasword from "./stainai/components/page-components/user/reset-passwo
 import DashBoard from "./stainai/components/page-components/user/dashboard/dashboard.component";
 import DashBoardUsers from "./stainai/components/page-components/user/dashboard/users.component";
 import ContactUs from "./stainai/components/page-components/contact-us/contact-us.component";
+import UploadImage from "./stainai/components/page-components/upload-image/upload-image.component";
 
 export const UserContext = React.createContext(null);
 
@@ -183,7 +184,7 @@ function App() {
             <Route exact path="/stainai/user/dashboard" element={<DashBoard />} />
             <Route exact path="/stainai/user/dashboard/users" element={<DashBoardUsers />} />
             <Route exact path="/stainai/contact-us" element={<ContactUs />} />
-            
+            <Route exact path="/stainai/upload-image" element={<UploadImage />} />
 
           </Routes>
         </UserContext.Provider>

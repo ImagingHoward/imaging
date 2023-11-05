@@ -62,7 +62,7 @@ const NavBar = () => {
             <a href="#">TRY IT</a>
             {isDropdownVisible.tryIt && (
               <div className={classes.dropContent}>
-                <a href="#">Upload Your Data</a>
+                <a href="/stainai/upload-image">Upload Your Data</a>
                 <a href="#">See Your Result</a>
               </div>
             )}
