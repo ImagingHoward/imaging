@@ -40,7 +40,7 @@ const StainAI = () => {
           heading="Visualization & Analysis"
           blur="Interactive data quantification and statistical analysis."
           button="SEE YOUR RESULT"
-          rl="#"
+          url="http://stainai.howard.edu/webapps/home/session.html?app=Microglia_MorpMap%2FMicroglia_MorpMap"
         />
         <Content
           contentbg={contentbg3}

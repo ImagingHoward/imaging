@@ -63,7 +63,7 @@ const NavBar = () => {
             {isDropdownVisible.tryIt && (
               <div className={classes.dropContent}>
                 <a href="/stainai/upload-image">Upload Your Data</a>
-                <a href="#">See Your Result</a>
+                <a href="http://stainai.howard.edu/webapps/home/session.html?app=Microglia_MorpMap%2FMicroglia_MorpMap">See Your Result</a>
               </div>
             )}
           </li>
