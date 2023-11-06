@@ -84,7 +84,7 @@ const ContactUs = () => {
                   </div>
                 </div>
                 <div className={classes.inputGroup}>
-                  Emal
+                  Email
                   <input name="email" type="text" id="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})}/>
                 </div>
               </div>
