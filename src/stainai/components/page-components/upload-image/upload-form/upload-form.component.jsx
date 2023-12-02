@@ -214,32 +214,37 @@ const UploadForm = () => {
   };
 
   const onSubmit = async () => {
-    setLoading(true);
     const stainURL = process.env.REACT_APP_STAINAI_URL;
-    // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
-    
-    const uploadPromises =  await axios
-      .post(`${stainURL}/uploadInfo/create`, {
+  
+    setLoading(true);
+
+    try {
+      await axios.post(${stainURL}/uploadInfo/create, {
         ...toUpload,
         userid,
-      })
-      .then(async (res) => {
-        Object.keys(toUpload.uploadInfo).map((idx) =>
-          uploadFileToBlob(
-            toUpload.username,
-            toUpload.project,
-            toUpload.uploadInfo[idx].rawImages,
-            idx
-          )
-        );
-      })
-      .catch((error) => console.log(error));
-
+      });
+  
+      // Create an array of promises for each uploadFileToBlob call
+      const uploadPromises = Object.keys(toUpload.uploadInfo).map((idx) =>
+        uploadFileToBlob(
+          toUpload.username,
+          toUpload.project,
+          toUpload.uploadInfo[idx].rawImages,
+          idx
+        )
+      );
+  
       // Wait for all promises to resolve
-      await Promise.all(uploadPromises)
- 
-
+      await Promise.all(uploadPromises);
+  
+      setLoading(false);
+      setSuccess(true);
+    } catch (error) {
+      console.error(error);
+      setLoading(false); // Set loading to false in case of an error
+      // Handle other error scenarios if needed
+    }
   };
 
   return (
@@ -330,11 +335,7 @@ const UploadForm = () => {
               <button
                 className={buttonStyling}
                 disabled={!agree ? true : false}
-                onClick={async ()=>{
-                  await onSubmit();
-                  setLoading(false);
-                  setSuccess(true);
-                }}
+                onClick={onSubmit}
               >
                 Submit
               </button>
