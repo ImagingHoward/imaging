@@ -219,7 +219,7 @@ const UploadForm = () => {
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
     
-
+    setLoading(true);
     await axios
       .post(`${stainURL}/uploadInfo/create`, {
         ...toUpload,
@@ -234,11 +234,14 @@ const UploadForm = () => {
             idx
           )
         );
-        setLoading(true);
+        
         // Wait for all promises to resolve
-        await Promise.all(uploadPromises);
-        setLoading(false);
-        setSuccess(true);
+        await Promise.all(uploadPromises)
+        .then(()=>{
+          setLoading(false);
+          setSuccess(true);
+        });
+
       })
       .catch((error) => console.log(error));
   };
