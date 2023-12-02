@@ -226,7 +226,7 @@ const UploadForm = () => {
         userid,
       })
       .then((res) => {
-       
+        setLoading(false);
         setSuccess(true);
       })
       .catch((error) => console.log(error));
@@ -240,8 +240,6 @@ const UploadForm = () => {
           idx
         );
       })
-
-      setLoading(false);
   };
 
   return (
