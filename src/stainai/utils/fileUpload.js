@@ -28,16 +28,17 @@ const createBlobInContainer = async (username, project, file, idx) => {
 };
 // </snippet_createBlobInContainer>
 
-// <snippet_uploadFileToBlob>
 const uploadFileToBlob = async (username, project, files, idx) => {
   if (!files) return;
 
-  files.forEach(async (file) => {
+  // Use map to create an array of promises
+  const uploadPromises = files.map(async (file) => {
     // upload file
     await createBlobInContainer(username, project, file, idx);
   });
-  
+
+  // Wait for all promises to resolve
+  await Promise.all(uploadPromises);
 };
-// </snippet_uploadFileToBlob>
 
 export default uploadFileToBlob;
