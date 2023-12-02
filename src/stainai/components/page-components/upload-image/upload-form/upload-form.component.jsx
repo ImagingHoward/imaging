@@ -228,8 +228,8 @@ const UploadForm = () => {
       })
       .then((res) => {
 
-        Object.keys(toUpload.uploadInfo).map((idx) => {
-          uploadFileToBlob(
+        Object.keys(toUpload.uploadInfo).map(async (idx) => {
+          await uploadFileToBlob(
             toUpload.username,
             toUpload.project,
             toUpload.uploadInfo[idx].rawImages,
@@ -237,23 +237,24 @@ const UploadForm = () => {
           );
         });
 
-      })
-      .catch((error) => console.log(error));
+        setLoading(false);
+        setSuccess(true);
 
-      setLoading(false);
-      setSuccess(true);
+      })
+      .catch((error) => console.log(error))
+
   };
 
   return (
-    <>
+    <div className={classes.wrapper}>
       {success ? (
         <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
           Form has been submitted successfully
         </p>
       ) : loading ? (
-        <Spinner />
+        <Spinner className={classes.spinner} />
       ) : (
-        <div className={classes.wrapper}>
+          <>
           {/* <FormProvider {...methods}> */}
           <form
             onSubmit={(e) => e.preventDefault()}
@@ -339,9 +340,9 @@ const UploadForm = () => {
             </div>
           </form>
           {/* </FormProvider> */}
-        </div>
+        </>
       )}
-    </>
+    </div>
   );
 };
 

@@ -72,12 +72,10 @@
 
 @mixin spinner()
     z-index: 2
-    position: absolute
     display: flex
     justify-content: center
     align-items: center
-    width: 100%
-    margin-top: 100px
+    margin: 100px auto
 
 .wrapper
     @include wrapper()
@@ -105,6 +103,5 @@
             @include newbatch()
     .imageBatchHeader
         @include imageBatchHeader()
-
-.spinner
-    @include spinner()
+    .spinner
+        @include spinner()
