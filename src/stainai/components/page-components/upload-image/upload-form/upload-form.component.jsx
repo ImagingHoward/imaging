@@ -219,14 +219,14 @@ const UploadForm = () => {
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
 
-    setLoading(true);
+    
     axios
       .post(`${stainURL}/uploadInfo/create`, {
         ...toUpload,
         userid,
       })
       .then((res) => {
-        setLoading(false);
+        setLoading(true);
         setSuccess(true);
       })
       .catch((error) => console.log(error));
@@ -240,6 +240,7 @@ const UploadForm = () => {
           idx
         );
       })
+      setLoading(false);
   };
 
   return (
