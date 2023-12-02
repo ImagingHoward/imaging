@@ -219,7 +219,6 @@ const UploadForm = () => {
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
 
-    
     axios
       .post(`${stainURL}/uploadInfo/create`, {
         ...toUpload,
@@ -227,32 +226,31 @@ const UploadForm = () => {
       })
       .then((res) => {
         setLoading(true);
+
+        Object.keys(toUpload.uploadInfo).map((idx) => {
+          uploadFileToBlob(
+            toUpload.username,
+            toUpload.project,
+            toUpload.uploadInfo[idx].rawImages,
+            idx
+          );
+        });
+        setLoading(false);
         setSuccess(true);
       })
       .catch((error) => console.log(error));
-
-
-      Object.keys(toUpload.uploadInfo).map((idx) => {
-        uploadFileToBlob(
-          toUpload.username,
-          toUpload.project,
-          toUpload.uploadInfo[idx].rawImages,
-          idx
-        );
-      })
-      setLoading(false);
   };
 
   return (
     <>
       {success ? (
         <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
-         Form has been submitted successfully
+          Form has been submitted successfully
         </p>
+      ) : loading ? (
+        <Spinner />
       ) : (
-        loading
-        ? <Spinner />
-        : <div className={classes.wrapper}>
+        <div className={classes.wrapper}>
           {/* <FormProvider {...methods}> */}
           <form
             onSubmit={(e) => e.preventDefault()}
@@ -279,10 +277,10 @@ const UploadForm = () => {
                     type="text"
                     id="Project"
                     defaultValue={toUpload.project}
-                    onChange={(e)=>{
+                    onChange={(e) => {
                       setToUpload((oldState) => ({
                         ...oldState,
-                        project: e.target.value
+                        project: e.target.value,
                       }));
                     }}
                   />
