@@ -169,7 +169,7 @@ const UploadForm = () => {
           {/* <div className={classes.imageBatchHeader}>UPLOAD FILES</div>  */}
           <div style={{ width: "100%" }}>
             <FileUpload
-              accept=".jpg,.png,.jpeg"
+              accept=".jpg,.png,.jpeg, .tif"
               // label="Upload raw image to get result"
               multiple
               updateFilesCb={updateUploadedFiles}
