@@ -237,13 +237,7 @@ const UploadForm = () => {
         });
 
       })
-      .then(()=>{
-        setLoading(false);
-        setSuccess(true);
-      })
       .catch((error) => console.log(error))
-    
-
   };
 
   return (
@@ -334,7 +328,11 @@ const UploadForm = () => {
               <button
                 className={buttonStyling}
                 disabled={!agree ? true : false}
-                onClick={onSubmit}
+                onClick={async ()=>{
+                  await onSubmit();
+                  setLoading(false);
+                  setSuccess(true);
+                }}
               >
                 Submit
               </button>
