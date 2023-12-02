@@ -219,25 +219,27 @@ const UploadForm = () => {
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
 
-
     await axios
       .post(`${stainURL}/uploadInfo/create`, {
         ...toUpload,
         userid,
       })
       .then(async (res) => {
-
-        await Object.keys(toUpload.uploadInfo).map(async (idx) => {
-          await uploadFileToBlob(
+        const uploadPromises = Object.keys(toUpload.uploadInfo).map((idx) =>
+          uploadFileToBlob(
             toUpload.username,
             toUpload.project,
             toUpload.uploadInfo[idx].rawImages,
             idx
-          );
-        });
+          )
+        );
 
+        // Wait for all promises to resolve
+        await Promise.all(uploadPromises);
+        setLoading(false);
+        setSuccess(true);
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -249,7 +251,7 @@ const UploadForm = () => {
       ) : loading ? (
         <Spinner className={classes.spinner} />
       ) : (
-          <>
+        <>
           {/* <FormProvider {...methods}> */}
           <form
             onSubmit={(e) => e.preventDefault()}
@@ -328,11 +330,7 @@ const UploadForm = () => {
               <button
                 className={buttonStyling}
                 disabled={!agree ? true : false}
-                onClick={async ()=>{
-                  await onSubmit();
-                  setLoading(false);
-                  setSuccess(true);
-                }}
+                onClick={onSubmit}
               >
                 Submit
               </button>
