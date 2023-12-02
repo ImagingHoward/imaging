@@ -215,7 +215,6 @@ const UploadForm = () => {
 
   const onSubmit = async () => {
     setLoading(true);
-    // console.log(toUpload);
     const stainURL = process.env.REACT_APP_STAINAI_URL;
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
@@ -239,10 +238,7 @@ const UploadForm = () => {
 
       // Wait for all promises to resolve
       await Promise.all(uploadPromises)
-      .then(()=>{
-        setLoading(false);
-        setSuccess(true);
-      })
+ 
 
   };
 
@@ -334,7 +330,11 @@ const UploadForm = () => {
               <button
                 className={buttonStyling}
                 disabled={!agree ? true : false}
-                onClick={onSubmit}
+                onClick={async ()=>{
+                  await onSubmit();
+                  setLoading(false);
+                  setSuccess(true);
+                }}
               >
                 Submit
               </button>
