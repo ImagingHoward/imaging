@@ -7,11 +7,13 @@ import { FaUserCog, FaProjectDiagram } from "react-icons/fa";
 import FileUpload from "../file-upload/file-upload.component";
 import UseUserContext from "../../../../hook/auth/user.hook";
 import uploadFileToBlob from "../../../../utils/fileUpload";
+import Spinner from "../../../shared-components/spinner/spinner.component";
 
 const UploadForm = () => {
   const user = UseUserContext();
   const [agree, setAgree] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [currentBatch, setCurrentBatch] = useState(1);
   const [toUpload, setToUpload] = useState({
@@ -217,12 +219,14 @@ const UploadForm = () => {
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
 
+    setLoading(true);
     axios
       .post(`${stainURL}/uploadInfo/create`, {
         ...toUpload,
         userid,
       })
       .then((res) => {
+        setLoading(false);
         setSuccess(true);
       })
       .catch((error) => console.log(error));
@@ -245,7 +249,9 @@ const UploadForm = () => {
          Form has been submitted successfully
         </p>
       ) : (
-        <div className={classes.wrapper}>
+        loading
+        ? <Spinner />
+        : <div className={classes.wrapper}>
           {/* <FormProvider {...methods}> */}
           <form
             onSubmit={(e) => e.preventDefault()}
