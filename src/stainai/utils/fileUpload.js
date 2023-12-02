@@ -29,23 +29,14 @@ const createBlobInContainer = async (username, project, file, idx) => {
 // </snippet_createBlobInContainer>
 
 // <snippet_uploadFileToBlob>
-const uploadFileToBlob =  (username, project, files, idx) => {
+const uploadFileToBlob = async (username, project, files, idx) => {
   if (!files) return;
 
-  return new Promise((resolve, reject) => {
-    files.forEach( async (file) => {
-      // upload file
-      await createBlobInContainer(username, project, file, idx);
-    })
-
-    if(success){
-      resolve();
-    }else{
-      reject(new Error('Upload failed'));
-    }
-
+  files.forEach(async (file) => {
+    // upload file
+    await createBlobInContainer(username, project, file, idx);
   });
-
+  
 };
 // </snippet_uploadFileToBlob>
 
