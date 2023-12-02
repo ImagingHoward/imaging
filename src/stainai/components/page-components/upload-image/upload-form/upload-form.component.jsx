@@ -214,19 +214,19 @@ const UploadForm = () => {
   };
 
   const onSubmit = async () => {
+    setLoading(true);
     // console.log(toUpload);
     const stainURL = process.env.REACT_APP_STAINAI_URL;
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
     
-    setLoading(true);
-    await axios
+    const uploadPromises =  await axios
       .post(`${stainURL}/uploadInfo/create`, {
         ...toUpload,
         userid,
       })
       .then(async (res) => {
-        const uploadPromises = Object.keys(toUpload.uploadInfo).map((idx) =>
+        Object.keys(toUpload.uploadInfo).map((idx) =>
           uploadFileToBlob(
             toUpload.username,
             toUpload.project,
@@ -234,16 +234,16 @@ const UploadForm = () => {
             idx
           )
         );
-        
-        // Wait for all promises to resolve
-        await Promise.all(uploadPromises)
-        .then(()=>{
-          setLoading(false);
-          setSuccess(true);
-        });
-
       })
       .catch((error) => console.log(error));
+
+      // Wait for all promises to resolve
+      await Promise.all(uploadPromises)
+      .then(()=>{
+        setLoading(false);
+        setSuccess(true);
+      })
+
   };
 
   return (
