@@ -227,19 +227,25 @@ const UploadForm = () => {
         userid,
       })
       .then(async (res) => {
-        Object.keys(toUpload.uploadInfo).map((idx) =>
+        Object.keys(toUpload.uploadInfo).map((idx) =>{
+          console.log('uploadFileToBlob')
           uploadFileToBlob(
             toUpload.username,
             toUpload.project,
             toUpload.uploadInfo[idx].rawImages,
             idx
           )
+
+        }
         );
       })
-      .catch((error) => console.log(error));
-      
-      setLoading(false);
-      setSuccess(true);
+      .catch((error) => console.log(error))
+      .finally(()=>{
+        setLoading(false);
+        setSuccess(true);
+      });
+
+
 
   };
 
