@@ -218,6 +218,7 @@ const UploadForm = () => {
     const stainURL = process.env.REACT_APP_STAINAI_URL;
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
+    
 
     await axios
       .post(`${stainURL}/uploadInfo/create`, {
@@ -233,7 +234,7 @@ const UploadForm = () => {
             idx
           )
         );
-
+        setLoading(true);
         // Wait for all promises to resolve
         await Promise.all(uploadPromises);
         setLoading(false);
