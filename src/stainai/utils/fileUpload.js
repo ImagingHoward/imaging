@@ -33,9 +33,9 @@ const uploadFileToBlob =  (username, project, files, idx) => {
   if (!files) return;
 
   return new Promise((resolve, reject) => {
-    files.forEach( (file) => {
+    files.forEach( async (file) => {
       // upload file
-      createBlobInContainer(username, project, file, idx);
+      await createBlobInContainer(username, project, file, idx);
     })
 
     if(success){

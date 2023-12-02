@@ -226,7 +226,7 @@ const UploadForm = () => {
       });
   
       // Create an array of promises for each uploadFileToBlob call
-      const uploadPromises = Object.keys(toUpload.uploadInfo).map((idx) =>
+      const uploadPromises = await Object.keys(toUpload.uploadInfo).map((idx) =>
         uploadFileToBlob(
           toUpload.username,
           toUpload.project,
@@ -236,15 +236,18 @@ const UploadForm = () => {
       );
   
       // Wait for all promises to resolve
-      await Promise.all(uploadPromises);
-  
-      setLoading(false);
-      setSuccess(true);
+      await Promise.all(uploadPromises).then(()=>{
+        setLoading(false);
+        setSuccess(true);
+      });
+
     } catch (error) {
       console.error(error);
       setLoading(false); // Set loading to false in case of an error
       // Handle other error scenarios if needed
     }
+
+
   };
 
   return (
