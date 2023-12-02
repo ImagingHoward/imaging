@@ -237,11 +237,12 @@ const UploadForm = () => {
           );
         });
 
-        setLoading(false);
-        setSuccess(true);
-
       })
       .catch((error) => console.log(error))
+      .finally(()=>{
+        setLoading(false);
+        setSuccess(true);
+      })
 
   };
 
