@@ -219,16 +219,15 @@ const UploadForm = () => {
     // const stainURL = "http://localhost:3000";
     const userid = user.info.userid;
 
-    setLoading(true);
 
     await axios
       .post(`${stainURL}/uploadInfo/create`, {
         ...toUpload,
         userid,
       })
-      .then((res) => {
+      .then(async (res) => {
 
-        Object.keys(toUpload.uploadInfo).map(async (idx) => {
+        await Object.keys(toUpload.uploadInfo).map(async (idx) => {
           await uploadFileToBlob(
             toUpload.username,
             toUpload.project,
@@ -238,11 +237,12 @@ const UploadForm = () => {
         });
 
       })
-      .catch((error) => console.log(error))
-      .finally(()=>{
+      .then(()=>{
         setLoading(false);
         setSuccess(true);
       })
+      .catch((error) => console.log(error))
+    
 
   };
 
