@@ -220,7 +220,7 @@ const UploadForm = () => {
     setLoading(true);
 
     try {
-      await axios.post(${stainURL}/uploadInfo/create, {
+      await axios.post(`${stainURL}/uploadInfo/create`, {
         ...toUpload,
         userid,
       });
