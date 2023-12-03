@@ -156,7 +156,7 @@ const UploadForm = () => {
                   name="otherOrgan"
                   id={`otherOrgan_${idx + 1}`}
                   placeholder=""
-                  onChange={(e) => handleField(e, idx + 1, "otherRrgan")}
+                  onChange={(e) => handleField(e, idx + 1, "otherOrgan")}
                   style={{ marginLeft: "10px", marginTop: "5px", display: "none"}}
                 />
               {/* )} */}
