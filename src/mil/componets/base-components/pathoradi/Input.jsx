@@ -37,7 +37,7 @@ export const Input = ({
   const isInvalid = isFormInvalid(inputErrors)
 
   const input_tailwind =
-    'cursor-pointer p-5 font-medium rounded-md w-full border border-slate-300 placeholder:opacity-60'
+    'cursor-pointer p-5 font-medium rounded-md w-full border border-slate-300 placeholder:opacit       y-60'
 
   const select_tailwind="cursor-pointer font-medium rounded border-2 text-gray-600 h-14 w-full pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
 

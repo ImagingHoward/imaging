@@ -226,7 +226,7 @@ iframe {
 button,
 input,
 optgroup,
-select,
+/* select, */
 textarea {
   -webkit-appearance: none; /* 1 */
   appearance: none;

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import classes from "./upload-form.module.sass";
 import classnames from "classnames";
+import cn from "classnames";
 import axios from "axios";
 
 import { FaUserCog, FaProjectDiagram } from "react-icons/fa";
+import { BiDownArrow } from "react-icons/bi";
 import FileUpload from "../file-upload/file-upload.component";
 import UseUserContext from "../../../../hook/auth/user.hook";
 import uploadFileToBlob from "../../../../utils/fileUpload";
@@ -24,19 +26,20 @@ const UploadForm = () => {
     }${new Date().getDate()}${new Date().getFullYear()}`,
     uploadInfo: {
       [currentBatch]: {
-        species: "",
+        species: "rat",
         strain: "",
         treatment: "",
-        organ: "",
+        organ: "brain",
         slice: "",
         pixel: "",
-        region: "",
+        region: "Cerebral Cortex",
         structure: "",
         images: [],
         rawImages: "",
       },
     },
   });
+
 
   const buttonStyling = agree
     ? "p-5 rounded-md bg-blue-600 font-semibold text-white flex items-center gap-1 hover:bg-blue-800"
@@ -68,6 +71,12 @@ const UploadForm = () => {
         },
       },
     }));
+
+    if(document.getElementById(`organ_${idx}`).value === 'other'){
+      document.getElementById(`otherOrgan_${idx}`).style.display = 'block'
+    }
+    else
+      document.getElementById(`otherOrgan_${idx}`).style.display = 'none'
   };
 
   const newLine = (idx, updateUploadedFiles) => (
@@ -82,13 +91,26 @@ const UploadForm = () => {
           <div className={classes.row}>
             <div className={classes.col}>
               <label>*Species</label>
-              <input
+              {/* <input
                 name="species"
                 type="text"
                 id="species"
                 defaultValue={currentBatch[idx + 1]?.species}
                 onChange={(e) => handleField(e, idx + 1, "species")}
-              />
+              /> */}
+
+              <select
+                name="species"
+                id="species"
+                onChange={(e) => handleField(e, idx + 1, "species")}
+              >
+                <option value="rat">rat</option>
+                <option value="mouse">mouse</option>
+                <option value="primate">primate</option>
+                <option value="bovine">bovine</option>
+                <option value="pig">pig</option>
+                <option value="other">other</option>
+              </select>
             </div>
             <div className={classes.col}>
               <label>Strain</label>
@@ -96,7 +118,6 @@ const UploadForm = () => {
                 name="strain"
                 type="text"
                 id="strain"
-                defaultValue={currentBatch[idx + 1]?.strain}
                 onChange={(e) => handleField(e, idx + 1, "strain")}
               />
             </div>
@@ -106,19 +127,39 @@ const UploadForm = () => {
                 name="treatment"
                 type="text"
                 id="treatment"
-                defaultValue={currentBatch[idx + 1]?.treatment}
                 onChange={(e) => handleField(e, idx + 1, "treatment")}
               />
             </div>
             <div className={classes.col}>
               <label>*Organ</label>
-              <input
+              {/* <input
                 name="organ"
                 type="text"
                 id="organ"
                 defaultValue={currentBatch[idx + 1]?.organ}
                 onChange={(e) => handleField(e, idx + 1, "organ")}
-              />
+              /> */}
+
+              <select
+                name="organ"
+                id={`organ_${idx + 1}`}
+                onChange={(e) => handleField(e, idx + 1, "organ")}
+              >
+                <option value="brain">brain</option>
+                <option value="spinal cord">spinal cord</option>
+                <option value="retina">retina</option>
+                <option value="other">other</option>
+              </select>
+              {/* {toUpload.uploadInfo[idx + 1]?.organ === "other" && ( */}
+                <input
+                  type="text"
+                  name="otherOrgan"
+                  id={`otherOrgan_${idx + 1}`}
+                  placeholder=""
+                  onChange={(e) => handleField(e, idx + 1, "otherRrgan")}
+                  style={{ marginLeft: "10px", marginTop: "5px", display: "none"}}
+                />
+              {/* )} */}
             </div>
           </div>
         </div>
@@ -131,7 +172,6 @@ const UploadForm = () => {
                 name="slice"
                 type="text"
                 id="slice"
-                defaultValue={currentBatch[idx + 1]?.slice}
                 onChange={(e) => handleField(e, idx + 1, "slice")}
               />
             </div>
@@ -141,19 +181,39 @@ const UploadForm = () => {
                 name="pixel"
                 type="text"
                 id="pixel"
-                defaultValue={currentBatch[idx + 1]?.pixel}
                 onChange={(e) => handleField(e, idx + 1, "pixel")}
               />
             </div>
             <div className={classes.col}>
               <label>*Anatomical Region</label>
-              <input
+              {/* <input
                 name="region"
                 type="text"
                 id="region"
                 defaultValue={currentBatch[idx + 1]?.region}
                 onChange={(e) => handleField(e, idx + 1, "region")}
-              />
+              /> */}
+              <select
+                name="region"
+                id="region"
+                onChange={(e) => handleField(e, idx + 1, "region")}
+              >
+                <option value="Cerebral Cortex">Cerebral Cortex</option>
+                <option value="Hippocampus">Hippocampus</option>
+                <option value="Striatum">Striatum</option>
+                <option value="Amygdala">Amygdala</option>
+                <option value="Thalamus">Thalamus</option>
+                <option value="Hypothalamus">Hypothalamus</option>
+                <option value="Midbrain">Midbrain</option>
+                <option value="Cerebellum">Cerebellum</option>
+                <option value="Medulla Oblongata">Medulla Oblongata</option>
+                <option value="Pons">Pons</option>
+                <option value="Olfactory Bulb">Olfactory Bulb</option>
+                <option value="Nucleus Accumben">Nucleus Accumben</option>
+                <option value="Periaqueductal Gray">Periaqueductal Gray</option>
+                <option value="Superior Colliculus">Superior Colliculus</option>
+                <option value="Inferior Colliculus">Inferior Colliculus</option>
+              </select>
             </div>
             <div className={classes.col}>
               <label>Structure Detail</label>
@@ -161,7 +221,6 @@ const UploadForm = () => {
                 name="structure"
                 type="text"
                 id="structure"
-                defaultValue={currentBatch[idx + 1]?.structure}
                 onChange={(e) => handleField(e, idx + 1, "structure")}
               />
             </div>
@@ -198,13 +257,13 @@ const UploadForm = () => {
       uploadInfo: {
         ...oldState.uploadInfo,
         [divs.length + 1]: {
-          species: "",
+          species: "rat",
           strain: "",
           treatment: "",
-          organ: "",
+          organ: "brain",
           slice: "",
           pixel: "",
-          region: "",
+          region: "Cerebral Cortex",
           structure: "",
           images: [],
           rawImages: "",
@@ -214,31 +273,34 @@ const UploadForm = () => {
   };
 
   const onSubmit = async () => {
+
     const stainURL = process.env.REACT_APP_STAINAI_URL;
     const userid = user.info.userid;
-  
+
     setLoading(true);
-  
+
     try {
       // Make the POST request and wait for it to complete
       await axios.post(`${stainURL}/uploadInfo/create`, {
         ...toUpload,
         userid,
       });
-  
+
       // Use map to create an array of promises for uploadFileToBlob
-      const uploadPromises = Object.keys(toUpload.uploadInfo).map(async (idx) => {
-        await uploadFileToBlob(
-          toUpload.username,
-          toUpload.project,
-          toUpload.uploadInfo[idx].rawImages,
-          idx
-        );
-      });
-  
+      const uploadPromises = Object.keys(toUpload.uploadInfo).map(
+        async (idx) => {
+          await uploadFileToBlob(
+            toUpload.username,
+            toUpload.project,
+            toUpload.uploadInfo[idx].rawImages,
+            idx
+          );
+        }
+      );
+
       // Wait for all uploadFileToBlob promises to resolve
       await Promise.all(uploadPromises);
-  
+
       // Set loading to false and success to true after all operations are complete
       setLoading(false);
       setSuccess(true);
