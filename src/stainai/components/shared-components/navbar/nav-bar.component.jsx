@@ -6,6 +6,8 @@ import { BsFillPersonFill } from "react-icons/bs";
 
 import UseUserContext from "../../../hook/auth/user.hook";
 import logo from "../../../assets/logo.png";
+import hulogo from "../../../assets/hu_log.svg";
+
 
 const NavBar = () => {
   const user = UseUserContext();
@@ -35,6 +37,7 @@ const NavBar = () => {
 
   return (
     <div className={classes.wrapper}>
+      <img src={hulogo} className={classes.hulogo} onClick={() => window.location = 'https://howard.edu/'}/>
       <img src={logo} className={classes.logo} onClick={() => window.location = '/stainai'}/>
       <a className={classes.faBars} onClick={menuExpand}>
           <FaBars size={32} />

@@ -21,6 +21,10 @@
     width: 200px
     cursor: pointer
 
+@mixin hulogo()
+    width: 45px
+    cursor: pointer
+
 @mixin nav()
     display: flex
     width: 100%
@@ -102,6 +106,8 @@
 
 .wrapper
     @include wrapper()
+    & > .hulogo
+        @include hulogo()
     & > .logo
         @include logo()
     & > .nav
