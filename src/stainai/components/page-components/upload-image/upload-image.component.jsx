@@ -17,11 +17,11 @@ const UploadImage = () => {
       <div className={classes.header}>
         <NavBar />
         <Hero
-          logo="Artificial Interlligence-aided"
-          title="automated quantification"
-          blur="Computor-aid automation to quantiy your neuron cell. <br/> We empower the neuron research."
+          logo=""
+          title=""
+          blur=""
           button=""
-          url="#"
+          url=""
         />
       </div>
       <div className={classes.section}>
