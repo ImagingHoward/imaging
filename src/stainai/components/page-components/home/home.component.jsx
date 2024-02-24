@@ -49,7 +49,7 @@ const StainAI = () => {
       <div className={classes.section}>
         
         <Content
-          key={isSmallScreen ? "smallScreen" : "largeScreen"}
+          // key={isSmallScreen ? "smallScreen" : "largeScreen"}
           contentbg={isSmallScreen ? contentbg1_small : contentbg1}
           isSmallScreen={isSmallScreen}
           icon={icon1}
@@ -59,7 +59,7 @@ const StainAI = () => {
           url="/stainai/upload-image"
         />
         <Content
-          key={isSmallScreen ? "smallScreen" : "largeScreen"}
+          // key={isSmallScreen ? "smallScreen" : "largeScreen"}
           contentbg={isSmallScreen ? contentbg2_small : contentbg2}
           isSmallScreen={isSmallScreen}
           icon={icon2}
@@ -69,7 +69,7 @@ const StainAI = () => {
           url="http://stainai.howard.edu/webapps/home/session.html?app=Microglia_MorpMap%2FMicroglia_MorpMap"
         />
         <Content
-          key={isSmallScreen ? "smallScreen" : "largeScreen"}
+          // key={isSmallScreen ? "smallScreen" : "largeScreen"}
           contentbg={isSmallScreen ? contentbg3_small : contentbg3}
           isSmallScreen={isSmallScreen}
           icon={icon3}

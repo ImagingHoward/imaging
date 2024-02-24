@@ -1,14 +1,14 @@
 import React from "react";
 import classes from "./content.module.sass";
 
-const Content = ({ contentbg, icon, heading, blur, button, url, isSmallScreen }) => {
+const Content = ({ key, contentbg, icon, heading, blur, button, url, isSmallScreen }) => {
   // console.log(contentbg)
   return (
     <div className={classes.wrapper}>
       <div
         className={classes.content}
         style={{
-          background: `url(${!isSmallScreen ? contentbg : ''}) center center / cover no-repeat`,
+          background: `url(${!isSmallScreen && contentbg}) center center / cover no-repeat`,
         }}
       >
         <div className={classes.section}>
