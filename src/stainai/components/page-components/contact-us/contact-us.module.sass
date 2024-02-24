@@ -1,13 +1,15 @@
 @mixin header()
     position: relative
     background: url("../../../assets/contact_hero.png") center center / cover no-repeat
-    background-size:100% 100%
+    background-size: 100% 100%
     width: 100%
     height: 550px
     @media screen and (max-width: 1024px)
         min-height: 450px
-    @media screen and (max-width: 890px)
-        min-height: 350px
+    @media screen and (max-width: 690px)
+        background: url("../../../assets/APP files/Contact us page/Contact_Top.svg") center center / cover no-repeat
+        width: auto
+        height: 100%
 
 @mixin section()
     background: url("../../../assets/contact_section.svg") center center / cover no-repeat
