@@ -8,7 +8,7 @@ const Content = ({ contentbg, icon, heading, blur, button, url, isSmallScreen })
       <div
         className={classes.content}
         style={{
-          background: `url(${!isSmallScreen && contentbg}) center center / cover no-repeat`,
+          background: `url(${!isSmallScreen ? contentbg : ''}) center center / cover no-repeat`,
         }}
       >
         <div className={classes.section}>
@@ -18,7 +18,7 @@ const Content = ({ contentbg, icon, heading, blur, button, url, isSmallScreen })
             </div>
             <div className={classes.blur}>
               {blur}
-              {isSmallScreen && <img src={contentbg} />}
+              {isSmallScreen ? <img src={contentbg} /> : ''}
             </div>
             
             <div className={classes.button}>
