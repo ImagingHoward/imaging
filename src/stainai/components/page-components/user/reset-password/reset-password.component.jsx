@@ -72,9 +72,9 @@ const ResetPasword = () => {
               background: `url(${background}) center center / cover no-repeat`,
             }}
           >
-            Stain.AI
+            STAIN.AI
           </div>
-          <div className={classes.subtitle}>Reset Your Stain.AI Password</div>
+          <div className={classes.subtitle}>Reset Your STAIN.AI Password</div>
 
           {allow ? (
             <form onSubmit={(e) => e.preventDefault()}>

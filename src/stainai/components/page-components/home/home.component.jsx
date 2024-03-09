@@ -39,9 +39,9 @@ const StainAI = () => {
       <div className={classes.header}>
         <NavBar />
         <Hero
-          logo="Stain.AI"
+          logo="STAIN.AI"
           title="AI Stain of Cell Morphology on Whole Brain"
-          blur=" Stain.AI is a website-as-a-service software package that can count & quantify morphological phenotypes of cells, even on low magnification immunohistochemistry images."
+          blur=" STAIN.AI is a website-as-a-service software package that can count & quantify morphological phenotypes of cells, even on low magnification immunohistochemistry images."
           button="Learn more"
           url="/stainai/learn-more"
         />

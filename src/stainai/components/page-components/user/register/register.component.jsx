@@ -60,16 +60,16 @@ const Register = () => {
               background: `url(${background}) center center / cover no-repeat`,
             }}
           >
-            Stain.AI
+            STAIN.AI
           </div>
           <div className={classes.title}>
-            A Stain.AI account grants you access to all AI-Stain services.
+            A STAIN.AI account grants you access to all AI-Stain services.
           </div>
         </div>
         {
           !success && isExist && 
           <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
-           Email exists. Please create another Stain.AI account.
+           Email exists. Please create another STAIN.AI account.
         </p>
         }
 

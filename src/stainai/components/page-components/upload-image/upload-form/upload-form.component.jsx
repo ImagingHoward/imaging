@@ -21,7 +21,7 @@ const UploadForm = () => {
   const [toUpload, setToUpload] = useState({
     username: `${user.info.firstname} ${user.info.lastname}`,
     email: user.info.email,
-    project: `Stain.AI-${
+    project: `STAIN.AI-${
       new Date().getMonth() + 1
     }${new Date().getDate()}${new Date().getFullYear()}`,
     uploadInfo: {

@@ -23,7 +23,7 @@ const SignUp = () => {
               background: `url(${background}) center center / cover no-repeat`,
             }}
           >
-            Stain.AI
+            STAIN.AI
           </div>
           <div className={classes.title}>
             A MorStainAI account grants you access to all AI-Stain services.

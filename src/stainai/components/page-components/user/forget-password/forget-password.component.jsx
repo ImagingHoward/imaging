@@ -44,7 +44,7 @@ const ForgetPassword = () => {
               background: `url(${background}) center center / cover no-repeat`,
             }}
           >
-            Stain.AI
+            STAIN.AI
           </div>
           <div className={classes.subtitle}>Forget Your MorStain Password</div>
           {success ? (

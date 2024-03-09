@@ -49,7 +49,7 @@ const SignIn = () => {
       </div>
       <div className={classes.wrapper}>
         <div className={classes.usernav}>
-          <a href="/stainai/user/singup"> Create your Stain.AI ID</a>
+          <a href="/stainai/user/singup"> Create your STAIN.AI ID</a>
         </div>
         <div className={classes.signin}>
           <div
@@ -58,7 +58,7 @@ const SignIn = () => {
               background: `url(${background}) center center / cover no-repeat`,
             }}
           >
-            Stain.AI
+            STAIN.AI
           </div>
 
           {allow === false && (
@@ -111,7 +111,7 @@ const SignIn = () => {
           </div>
           <div className={classes.forget}>
             <a href="/stainai/user/forget-password">
-              Forget Stain.AI ID Password?
+              Forget STAIN.AI ID Password?
             </a>
           </div>
         </div>

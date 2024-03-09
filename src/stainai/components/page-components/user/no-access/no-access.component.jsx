@@ -22,7 +22,7 @@ const NoAccess = () => {
               background: `url(${background}) center center / cover no-repeat`,
             }}
           >
-            MorStainAI
+            STAIN.AI
           </div>
 
           <div className={classes.note}>
