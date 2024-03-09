@@ -1,9 +1,11 @@
 @mixin wrapper()
     background-color: #f4f4f4
-    min-height: 100vh
-    widows: 100vw
+    width: 100vw
     color: #000
     font-weight: 600
+    display: flex
+    align-items: flex-start
+    min-height: 100vh
 
 @mixin usernav()
     display: flex
@@ -16,19 +18,13 @@
         color: #7b7a7a
 
 @mixin signin()
-    margin: auto
-    // width: 50%
+    // margin: auto
+    width: 100%
     display: flex
     flex-direction: column
     align-items: center
-    // @media screen and (max-width: 890px)
-    //     width: 100%
-    //     max-width: 50%
-    //     margin: 0 auto
-    //     @media screen and (max-width: 1024px)
-    //         max-width: 65%
-    //     @media screen and (max-width: 890px)
-    //         max-width: 80%
+    align-content: center
+    justify-content: center
     & > form
         max-width: 450px
         width: 85%
@@ -132,10 +128,11 @@
         background: #156b6c
 
 @mixin note()
+    width: 75%
+    text-align: center
     color: #156b6c
-    & > a 
+    & > a
         color: #17b5b7
-
 
 .wrapper
     @include wrapper()

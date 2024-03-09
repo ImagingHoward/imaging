@@ -20,9 +20,7 @@ const Content = ({ key, contentbg, icon, heading, blur, button, url, isSmallScre
               {blur}
               {isSmallScreen ? <img src={contentbg} /> : ''}
             </div>
-            
             <div className={classes.button}>
-              
                 <a href={url}>{button}</a>
             </div>
         </div>
