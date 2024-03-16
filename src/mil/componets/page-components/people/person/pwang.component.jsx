@@ -25,7 +25,7 @@ const Pwang = () => {
       "University Imaging Core Facility Management",
     ],
     publicationsListLink:
-      `https://www.ncbi.nlm.nih.gov/myncbi/1JUZfscHm_ikv/bibliography/public/`,
+      `https://www.ncbi.nlm.nih.gov/myncbi/paul.wang.1/bibliography/public/`,
   };
   return (
     <>
