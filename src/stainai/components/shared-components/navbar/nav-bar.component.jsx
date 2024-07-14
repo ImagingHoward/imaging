@@ -72,8 +72,6 @@ const NavBar = () => {
               </div>
             )}
           </li>
-
-          stainaimicroglia
           <li>
             <a href="#">Q&A</a>
           </li>
