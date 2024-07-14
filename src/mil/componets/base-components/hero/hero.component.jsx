@@ -8,7 +8,7 @@ const Hero = ({ background, title, subtitle, register }) => {
         <li
           className={classes.hero}
           style={{
-            background: `url(${background}) center center / cover no-repeat`,
+            background: `url(${background})`,
           }}
         >
           <div className={classes.compartment}>
