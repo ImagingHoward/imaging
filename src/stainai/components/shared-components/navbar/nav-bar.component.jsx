@@ -67,9 +67,13 @@ const NavBar = () => {
               <div className={classes.dropContent}>
                 <a href="/stainai/upload-image">Upload Your Data</a>
                 <a href="https://stainaiviewer.azurewebsites.net/" target="_blank">See Your Result</a>
+                <a href="https://stainaimicroglia.azurewebsites.net/" target="_blank">Stainai Microglia</a>
+                
               </div>
             )}
           </li>
+
+          stainaimicroglia
           <li>
             <a href="#">Q&A</a>
           </li>
