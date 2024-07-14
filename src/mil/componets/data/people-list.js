@@ -55,22 +55,22 @@ const PeopleList = [
       email: "beming.chang@howard.edu",
       moreInfo: "/people/mandy",
     },
-    {
-      image: artur,
-      name: "Artur Agaronyan, BS",
-      title: "PhD Student",
-      phone: "(202) 865-7938",
-      email: "agaronyan@cua.edu",
-      moreInfo: "/people/aagaronyan",
-    },
-    {
-      image: "",
-      name: "Sunny Ji, B.S.",
-      title: "Research Assistant",
-      phone: "(202) 486-5681",
-      email: "Sunnyji1016@gmail.com",
-      moreInfo: "/people/sunny",
-    },
+    // {
+    //   image: artur,
+    //   name: "Artur Agaronyan, BS",
+    //   title: "PhD Student",
+    //   phone: "(202) 865-7938",
+    //   email: "agaronyan@cua.edu",
+    //   moreInfo: "/people/aagaronyan",
+    // },
+    // {
+    //   image: "",
+    //   name: "Sunny Ji, B.S.",
+    //   title: "Research Assistant",
+    //   phone: "(202) 486-5681",
+    //   email: "Sunnyji1016@gmail.com",
+    //   moreInfo: "/people/sunny",
+    // },
   ];
 
 export default PeopleList;
