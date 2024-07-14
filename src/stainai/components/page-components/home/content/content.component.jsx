@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./content.module.sass";
 
-const Content = ({ key, contentbg, icon, heading, blur, button, url, isSmallScreen }) => {
+const Content = ({ key, contentbg, icon, heading, blur, button, url, isSmallScreen, target }) => {
   // console.log(contentbg)
   return (
     <div className={classes.wrapper}>
@@ -21,7 +21,7 @@ const Content = ({ key, contentbg, icon, heading, blur, button, url, isSmallScre
               {isSmallScreen ? <img src={contentbg} /> : ''}
             </div>
             <div className={classes.button}>
-                <a href={url}>{button}</a>
+                <a href={url} target={target ? target : "_self"}>{button}</a>
             </div>
         </div>
       </div>
