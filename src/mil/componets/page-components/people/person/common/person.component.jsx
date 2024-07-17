@@ -47,26 +47,33 @@ const Person = ({ person }) => {
             <div className={classes.header}>Biography</div>
             <div dangerouslySetInnerHTML={{ __html: biography }}></div>
           </div>
-          <div className={classes.expertise}>
+          {
+            areasofExpertise.length > 0 &&
+            <div className={classes.expertise}>
             <div className={classes.header}>Areas of Expertise</div>
             <ul>
               {areasofExpertise.map((expertise) => (
                 <li>{expertise}</li>
               ))}
             </ul>
-          </div>
+            </div>
+
+          }
+         
           <div className={classes.publications}>
-            <div className={classes.header}>Publications List</div>
             {publicationsListLink && (
-              <div>
-                <a
-                  href={publicationsListLink}
-                  target="_blank"
-                  className={classes.link}
-                >
-                  {person.publicationsListLink}
-                </a>
-              </div>
+              <>
+                <div className={classes.header}>Publications List</div>
+                <div>
+                  <a
+                    href={publicationsListLink}
+                    target="_blank"
+                    className={classes.link}
+                  >
+                    {person.publicationsListLink}
+                  </a>
+                </div>
+              </>
             )}
             {publicationsList && (
               <div dangerouslySetInnerHTML={{ __html: publicationsList }}></div>
@@ -75,7 +82,10 @@ const Person = ({ person }) => {
           <div className={classes.contactIfon}>
             <div className={classes.header}>Contact Info</div>
             <div>Email: {email}</div>
-            <div>Tel: {phone}</div>
+            {
+              phone && 
+              <div>Tel: {phone}</div>
+            }
           </div>
         </div>
       </div>

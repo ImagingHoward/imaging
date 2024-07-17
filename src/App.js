@@ -27,22 +27,13 @@ import HighLight from "./mil/componets/page-components/research/research-highlig
 import Facility from "./mil/componets/page-components/facilities/facility/facility.component";
 import Mandy from "./mil/componets/page-components/people/person/mandy.component";
 import Sunny from "./mil/componets/page-components/people/person/sunny.component";
-
-// import MorStainAI from "./mil/componets/page-components/morstainai/home/morstainai.component";
-// import ImageUpload from "./mil/componets/page-components/morstainai/upload/upload.component";
-// import SignUp from "./mil/componets/page-components/morstainai/user/signup/signup.component";
-// import SignIn from "./mil/componets/page-components/morstainai/user/signin/signin.component";
-// import SignUpForm from "./mil/componets/page-components/morstainai/user/sign-form/signup-form.component";
-// import Reset from "./mil/componets/page-components/morstainai/user/reset/reset.component";
-// import ForgetPassword from "./mil/componets/page-components/morstainai/user/forget-password/forget-password.component";
-// import DashBoard from "./mil/componets/page-components/morstainai/user/dashboard/dashboard.component";
-// import DashBoardUsers from "./mil/componets/page-components/morstainai/user/dashboard/users.component";
-// import LearnMore from "./mil/componets/page-components/morstainai/learn-more/learn-more.component";
-// import About from "./mil/componets/page-components/morstainai/about/about.component";
-// import Services from "./mil/componets/page-components/morstainai/services/services.component";
-// import Support from "./mil/componets/page-components/morstainai/support/support.component";
-// import ContactUs from "./mil/componets/page-components/morstainai/contact-us/contact-us.component";
-// import FeatureWork from "./mil/componets/page-components/morstainai/feature-work/feature-work.component";
+import Kelsey from "./mil/componets/page-components/people/person/kelsey.component";
+import Donovan from "./mil/componets/page-components/people/person/donovan.component";
+import Nzechari from "./mil/componets/page-components/people/person/nzechari.component";
+import Oluwabukunmi from "./mil/componets/page-components/people/person/oluwabukunmi.component";
+import Bria from "./mil/componets/page-components/people/person/bria.component";
+import Russell from "./mil/componets/page-components/people/person/russell.component";
+import Julianna from "./mil/componets/page-components/people/person/julianna.component";
 
 import StainAI from "./stainai/components/page-components/home/home.component";
 import SignIn from "./stainai/components/page-components/user/signin/singin.component";
@@ -107,6 +98,14 @@ function App() {
             <Route exact path="/people/mandy" element={<Mandy />} />
             <Route exact path="/people/aagaronyan" element={<Aagaronyan />} />
             <Route exact path="/people/sunny" element={<Sunny />} />
+            <Route exact path="/people/kelsey" element={<Kelsey />} />
+            <Route exact path="/people/donovan" element={<Donovan />} />
+            <Route exact path="/people/nzechari" element={<Nzechari />} />
+            <Route exact path="/people/oluwabukunmi" element={<Oluwabukunmi />} />
+            <Route exact path="/people/bria" element={<Bria />} />
+            <Route exact path="/people/russell" element={<Russell />} />
+            <Route exact path="/people/julianna" element={<Julianna />} />
+            
 
             <Route exact path="/facilities" element={<Facilities />} />
             <Route
@@ -130,51 +129,6 @@ function App() {
             <Route exact path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
 
-            {/* <Route exact path="/morstainai" element={<MorStainAI />} />
-            <Route
-              exact
-              path="/morstainai/learn-more"
-              element={<LearnMore />}
-            />
-            <Route exact path="/morstainai/about" element={<About />} />
-            <Route exact path="/morstainai/services" element={<Services />} />
-            <Route exact path="/morstainai/support" element={<Support />} />
-            <Route
-              exact
-              path="/morstainai/contact-us"
-              element={<ContactUs />}
-            />
-            <Route
-              exact
-              path="/morstainai/feature-work"
-              element={<FeatureWork />}
-            />
-
-            <Route exact path="/morstainai/upload" element={<ImageUpload />} />
-
-            <Route exact path="/morstainai/user" element={<SignIn />} />
-            <Route exact path="/morstainai/user/singup" element={<SignUp />} />
-            <Route
-              exact
-              path="/morstainai/user/register"
-              element={<SignUpForm />}
-            />
-            <Route exact path="/morstainai/user/reset" element={<Reset />} />
-            <Route
-              exact
-              path="/morstainai/user/forget-password"
-              element={<ForgetPassword />}
-            />
-            <Route
-              exact
-              path="/morstainai/user/dashboard"
-              element={<DashBoard />}
-            />
-            <Route
-              exact
-              path="/morstainai/user/dashboard/users"
-              element={<DashBoardUsers />}
-            /> */}
 
             <Route exact path="/stainai" element={<StainAI />} />
             <Route exact path="/stainai/user/signin" element={<SignIn />} />
