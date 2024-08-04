@@ -71,7 +71,7 @@ const LearnMore = () => {
                   Morphotype mapping
                 </div>
               <div className={classes.show} onClick={()=>  setMorphometryExpand(!morphometryExpand)}>
-                Show more
+                {morphometryExpand ? "Show less" : "Show more"} 
                 {morphometryExpand ? <RiArrowDropUpFill size={45} /> : <RiArrowDownSFill size={35} />}
               </div>
             </div>
@@ -105,7 +105,7 @@ const LearnMore = () => {
             <div className={classes.profolioSectionHeader}>
               <div className={classes.title}> <img src={morphometry_Icon} /> Morphometry mapping</div>
               <div className={classes.show} onClick={()=>  setMorphotypeExpand(!morphotypeExpand)}>
-                Show more 
+                {morphotypeExpand ? "Show less" : "Show more"} 
                 {morphotypeExpand ? <RiArrowDropUpFill size={45} /> : <RiArrowDownSFill size={35} />}
               </div>
             </div>
@@ -136,7 +136,7 @@ const LearnMore = () => {
             <div className={classes.profolioSectionHeader}>
               <div className={classes.title}> <img src={whole_brain_Icon} /> Whole brain distributiong</div>
               <div className={classes.show} onClick={()=>  setWholeBrainExpand(!wholeBrainExpand)}>
-                Show more
+                {wholeBrainExpand ? "Show less" : "Show more"} 
                 {wholeBrainExpand ? <RiArrowDropUpFill size={45} /> : <RiArrowDownSFill size={35} />}
               </div>
             </div>
