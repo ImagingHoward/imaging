@@ -78,8 +78,10 @@ const LearnMore = () => {
       
             {
               morphometryExpand &&
-              <div style={{ position: "relative" }}>
-                <div style={{ position: "absolute", top: "-6vh", left: "11vw"}}> <i>Allow ROI analysis for region-specific comparison.</i> </div>
+              <div className={classes.expand}>
+                <div className={classes.subtitle}> 
+                  <i>Allow ROI analysis for region-specific comparison.</i> 
+                </div>
                 <div style={{ display: 'flex',  alignItems: 'center', padding: '0 10%', position: "relative" }}>
                   <div >
                     <p>
@@ -112,8 +114,8 @@ const LearnMore = () => {
          
             {
               morphotypeExpand &&
-              <div style={{ position: "relative" }}>
-                <div style={{ position: "absolute", top: "-6vh", left: "11vw"}}> 
+              <div className={classes.expand}>
+                <div className={classes.subtitle}>
                   <i>More insights into hetergeneous microglial morphology.</i> 
                 </div>
                 <div style={{ display: 'flex',  alignItems: 'center', padding: '0 10%', position: "relative" }}>
@@ -143,8 +145,8 @@ const LearnMore = () => {
          
             {
               wholeBrainExpand &&
-              <div style={{ position: "relative" }}>
-                <div style={{ position: "absolute", top: "-6vh", left: "11vw"}}> 
+              <div className={classes.expand}>
+                <div className={classes.subtitle}>
                   <i>Reveals microglial activation pattern throughout the entire brain.</i> 
                 </div>
                 <div style={{ display: 'flex', padding: '3% 10%', position: "relative" }}>

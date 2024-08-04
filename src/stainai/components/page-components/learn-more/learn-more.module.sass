@@ -29,7 +29,7 @@
     &>.frameworkContent
         position: absolute
         top: 35%
-        left: 12vw
+        left: 6vw
         color: #fff
         font-weight: bold
         font-size: 38px
@@ -37,14 +37,25 @@
             font-size: 20px
             padding-top: 20px
             width: 500px
+        
+        @media screen and (max-width: 1200px)
+            top: 35%
+            left: 6vw
+            font-size: 22px
+            &>.frameworkContentDetail
+                font-size: 12px
+                padding-top: 18px
+                width: 300px
         @media screen and (max-width: 800px)
-            top: 8%
+            top: 32%
             left: 10px
             font-size: 22px
             &>.frameworkContentDetail
                 font-size: 12px
                 padding-top: 16px
                 width: 250px
+        @media screen and (max-width: 800px)
+            top: 20%    
 
 
 
@@ -95,7 +106,21 @@
             @media screen and (max-width: 800px)
                 padding: 0
                 font-size: 12px
-    
+
+@mixin expand()
+    position: relative
+    &>.subtitle
+        position: absolute
+        top: -4vh
+        left: 9vw
+        @media screen and (max-width: 1400px)
+            top: -3vh
+            left: 11vw
+        @media screen and (max-width: 800px)
+            font-size: 12px
+            top: -1vh
+            left: 11vw
+     
 
 @mixin bottom()
     position: relative
@@ -145,6 +170,8 @@
             @include profolio()
             &>.profolioSection
                 @include profolioSection()
+                &>.expand
+                    @include expand()
         &>.bottom
             @include bottom()
             &>.bottomContent
