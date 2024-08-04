@@ -49,28 +49,35 @@
     //RGB: 251/ 247/ 252
     background-color: rgb(251, 247, 252)
     margin-bottom: 50px
-    display: flex
-    justify-content: space-between
-    align-items: center
+    // display: flex
+    // justify-content: space-between
+    // align-items: center
     &:last-child
         margin-bottom: 0
     &>.profolioSectionHeader
         padding: 30px
         display: flex
         align-items: center
+        justify-content: space-between
         color: rgb(44, 43, 44)
-        &>img
-            width: 100px
         &>.title
             font-weight: bolder
             font-size: 32px
             padding-left: 20px
-    &>.show
-        padding: 0 50px
-        color: rgb(127, 51, 146)
-        font-weight: bold
-        display: flex
-        align-items: center
+            display: flex
+            align-items: center
+            &>img
+                width: 100px
+                margin-right: 15px
+        &>.show
+            padding: 0 50px
+            color: rgb(127, 51, 146)
+            font-weight: bold
+            display: flex
+            align-items: center
+            cursor: pointer
+            &:hover
+                color: rgb(217, 93, 248)
 
 @mixin bottom()
     position: relative
