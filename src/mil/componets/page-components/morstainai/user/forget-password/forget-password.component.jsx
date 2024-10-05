@@ -20,7 +20,7 @@ const ForgetPassword = () => {
     const morstainURL = process.env.REACT_APP_MORSTAIN_URL;
     // const morstainURL = "http://localhost:3000";
 
-    console.log(data.email);
+    // console.log(data.email);
 
     axios
       .post(`${morstainURL}/forgetPassword`, {

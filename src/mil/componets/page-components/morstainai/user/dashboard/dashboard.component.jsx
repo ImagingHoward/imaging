@@ -47,7 +47,7 @@ const DashBoard = () => {
 
 
   const filterProject = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     const filterVal = e.target.value;
     setFilterprojects(
       projects.filter(

@@ -22,7 +22,7 @@ const Upload = () => {
   const [submit, setSubmit] = useState(false);
 
   const updateUploadedFiles = (files) => {
-    console.log(files)
+    // console.log(files)
     setToUpload({ ...toUpload, rawImages: files });
   };
 
@@ -35,7 +35,7 @@ const Upload = () => {
     // need to checkout how to use Azuer node.js api
     // const localURL = 'http://localhost:3000/uploadInfo/create';
     // const pathoradiURL = 'https://prbase.azurewebsites.net/uploadInfo/create';
-    console.log(process.env.REACT_APP_PATHO_RADI_URL);
+    // console.log(process.env.REACT_APP_PATHO_RADI_URL);
     axios
       .post(`${process.env.REACT_APP_PATHO_RADI_URL}`, {
         username: toUpload.username,
@@ -47,7 +47,7 @@ const Upload = () => {
         rawImages: "",
       })
       .then((res) => {
-        console.log(res.data.insertId);
+        // console.log(res.data.insertId);
         setSubmit(true);
       });
   };
