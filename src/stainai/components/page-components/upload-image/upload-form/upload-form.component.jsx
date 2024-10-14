@@ -280,11 +280,6 @@ const UploadForm = () => {
     setLoading(true);
 
     try {
-      // Make the POST request and wait for it to complete
-      await axios.post(`${stainURL}/uploadInfo/create`, {
-        ...toUpload,
-        userid,
-      });
 
       // Use map to create an array of promises for uploadFileToBlob
       const uploadPromises = Object.keys(toUpload.uploadInfo).map(
@@ -300,6 +295,12 @@ const UploadForm = () => {
 
       // Wait for all uploadFileToBlob promises to resolve
       await Promise.all(uploadPromises);
+
+      // Make the POST request and wait for it to complete
+      await axios.post(`${stainURL}/uploadInfo/create`, {
+        ...toUpload,
+        userid,
+      });
 
       // Set loading to false and success to true after all operations are complete
       setLoading(false);
