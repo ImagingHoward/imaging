@@ -1,17 +1,16 @@
 import React from "react";
 import classes from "./facilities.module.sass";
 
-import NavBar from "../../base-components/navbar/nav-bar.component";
-import Footer from "../../base-components/footer/footer.component";
-import Hero from "../../base-components/hero/hero.component";
-
 import { ImLab } from "react-icons/im";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
-
 import background from "../../../assets/images/Facilities.jpg";
 import Bruker from "../../../assets/images/imaging-Facilities-Bruker.jpg";
 import PET from "../../../assets/images/imaging-facilities-BrukerPET.jpg";
 import IVISSpectrum2 from "../../../assets/images/imaging-facilities-IVISSpectrum2.jpg";
+
+import NavBar from "../../base-components/navbar/nav-bar.component";
+import Footer from "../../base-components/footer/footer.component";
+import Hero from "../../base-components/hero/hero.component";
 
 const Facilities = () => {
   return (
@@ -42,7 +41,6 @@ const Facilities = () => {
             and a Bruker Avance 9.4 Tesla (400 MHz), 89 mm vertical bore MRI/MRS
             system.
             <div className={classes.viewMore}>
-              {" "}
               <a href="/facility/mri">
                 View More <BsFillArrowRightCircleFill size={22} />
               </a>

@@ -1,16 +1,15 @@
 import React from "react";
 import classes from "./contact.module.sass";
 
-import NavBar from "../../base-components/navbar/nav-bar.component";
-import Footer from "../../base-components/footer/footer.component";
-import Hero from "../../base-components/hero/hero.component";
-
 import { FiMapPin } from "react-icons/fi";
 import { FaInfoCircle } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { ImPhoneHangUp } from "react-icons/im";
-
 import background from "../../../assets/images/Direction.jpg";
+
+import NavBar from "../../base-components/navbar/nav-bar.component";
+import Footer from "../../base-components/footer/footer.component";
+import Hero from "../../base-components/hero/hero.component";
 
 const Contact = () => {
   return (

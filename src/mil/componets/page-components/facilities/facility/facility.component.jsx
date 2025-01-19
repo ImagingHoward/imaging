@@ -1,14 +1,18 @@
 import React from "react";
 import classes from "./facility.module.sass";
 
-import Hero from "../../../base-components/hero/hero.component";
 import { ImLab } from "react-icons/im";
 import { MdPhotoLibrary } from "react-icons/md";
 import background from "../../../../assets/images/Facilities.jpg";
 
+import NavBar from "../../../base-components/navbar/nav-bar.component";
+import Footer from "../../../base-components/footer/footer.component";
+import Hero from "../../../base-components/hero/hero.component";
+
 const Facility = ({ facility }) => {
   return (
     <>
+      <NavBar />
       <Hero background={background} title="" />
       <div className={classes.wrapper}>
         <div className={classes.navPath}>
@@ -44,6 +48,7 @@ const Facility = ({ facility }) => {
           </div>
         ))}
       </div>
+      <Footer />
     </>
   );
 };
