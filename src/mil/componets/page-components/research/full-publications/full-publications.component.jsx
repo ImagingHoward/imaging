@@ -1,11 +1,10 @@
 import React from "react";
 import classes from "./full-publications.module.sass";
+import { IoMdPaper } from "react-icons/io";
+import FullPublicationsList from "../../../data/full-publications-list";
 
 import NavBar from "../../../base-components/navbar/nav-bar.component";
 import Footer from "../../../base-components/footer/footer.component";
-
-import { IoMdPaper } from "react-icons/io";
-import FullPublicationsList from "../../../data/full-publications-list";
 
 const FullPublications = () => {
   return (

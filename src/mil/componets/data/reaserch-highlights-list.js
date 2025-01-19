@@ -12,8 +12,8 @@ import research_molecular_mrs from "../../assets/images/research_molecular_mr-1_
 import research_molecular_mrs_1 from "../../assets/images/research_molecular_mr-1.jpg";
 import research_molecular_mrs_2 from "../../assets/images/research_molecular_mr-2.jpg";
 
-const ReaserchHighlightsList = [
-  {
+const ReaserchHighlightsList = {
+  petatlas: {
     researchImg: research_atlas,
     highlight: "petatlas",
     title: `High-Throughput Image Analysis of MRI and PET Imaging`,
@@ -27,15 +27,15 @@ const ReaserchHighlightsList = [
       {
         img: research_atlas_2,
         blur: `<strong>Pipeline for high-throughput MRI-PET image analysis.</strong><br />
-      A three-dimensional population-representative baboon brain atlas is created in the MIL for atlas-based analysis of MRI and functional PET images.`,
+        A three-dimensional population-representative baboon brain atlas is created in the MIL for atlas-based analysis of MRI and functional PET images.`,
       },
     ],
     references: [
       `Agaronyan A, Syed R, Kim R, Hsu CH, Love SA, Hooker JM, Reid AE, Wang PC, Ishibashi N, Kang Y, Tu TW. A Baboon Brain Atlas for Magnetic Resonance, Imaging and Positron Emission Tomography Image Analysis.
-      Front Neuroanat. 2022 Jan 14;15:778769. doi: 10.3389/fnana.2021.778769. <a href='https://pubmed.ncbi.nlm.nih.gov/35095430/'/>PMID: 35095430</a>; <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8795914/'/>PMCID: PMC8795914</a>.`,
+        Front Neuroanat. 2022 Jan 14;15:778769. doi: 10.3389/fnana.2021.778769. <a href='https://pubmed.ncbi.nlm.nih.gov/35095430/'/>PMID: 35095430</a>; <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8795914/'/>PMCID: PMC8795914</a>.`,
     ],
   },
-  {
+  tbi: {
     researchImg: research_tbi,
     highlight: "tbi",
     title: `Imaging Tissue Damage and Metabolic Disorders in Diffuse Traumatic Brain Injury`,
@@ -55,7 +55,7 @@ const ReaserchHighlightsList = [
       `Tu TW, Lescher JD, Williams RA, Jikaria N, Turtzo LC, Frank JA, Abnormal injury response in spontaneous mild ventriculomegaly Wistar rat brains: a diffusion tensor and magnetization transfer imaging study, Journal of Neurotrauma, 2017 Jan 1;34(1):248-256. <a href='https://pubmed.ncbi.nlm.nih.gov/26905805/'>PMID 26905805</a> <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5198143/'>PMC5198143</a>`,
     ],
   },
-  {
+  chd: {
     researchImg: research_chd,
     highlight: "chd",
     title: `Brain Injury in Congenital Heart Disease`,
@@ -73,7 +73,7 @@ const ReaserchHighlightsList = [
       `Stinnett GR, Lin S, Korotcov AV, Korotcova L, Morton PD, Ramachandra SD, Pham A, Kumar S, Agematsu K, Zurakowski D, Wang PC, Jonas RA, Ishibashi N. Microstructural Alterations and Oligodendrocyte Dysmaturation in White Matter After Cardiopulmonary Bypass in a Juvenile Porcine Model. J Am Heart Assoc. 2017 Aug 15;6(8):e005997.doi: 10.1161/JAHA.117.005997. <a href='https://pubmed.ncbi.nlm.nih.gov/28862938/'>PMID 28862938</a> <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5586442/'/>PMC5586442</a>`,
     ],
   },
-  {
+  mrs: {
     researchImg: research_molecular_mrs,
     highlight: "mrs",
     title: `Molecular MR Imaging and Spectroscopy on Cancer and Brain Injury`,
@@ -96,6 +96,6 @@ const ReaserchHighlightsList = [
       `Hsu CH, Lin S, Ho AC, Johnson TD, Wang PC, Scafidi J, Tu TW. Comparison of in vivo and in situ detection of hippocampal metabolites in mouse brain using 1H-MRS. NMR Biomed. 2020 Nov 30:e4451. doi: 10.1002/nbm.4451. Epub ahead of print. PMID: 33258202 <a href='https://pubmed.ncbi.nlm.nih.gov/33258202/'>PMID 33258202</a>`,
     ],
   },
-];
+};
 
 export default ReaserchHighlightsList;

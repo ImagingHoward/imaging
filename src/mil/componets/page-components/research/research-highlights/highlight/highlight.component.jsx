@@ -1,10 +1,9 @@
 import React from "react";
 import classes from "./highlight.module.sass";
+import { IoMdPaper } from "react-icons/io";
 
 import NavBar from "../../../../base-components/navbar/nav-bar.component";
 import Footer from "../../../../base-components/footer/footer.component";
-
-import { IoMdPaper } from "react-icons/io";
 
 const HighLight = ({ research }) => {
   return (

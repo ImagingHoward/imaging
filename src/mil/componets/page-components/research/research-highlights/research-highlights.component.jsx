@@ -4,7 +4,7 @@ import classes from "./research-highlights.module.sass";
 const ReasrchHighlights = ({ reaserchHighlightsList }) => {
   return (
     <>
-      {reaserchHighlightsList.map((research) => (
+      {Object.values(reaserchHighlightsList).map((research) => (
         <div className={classes.researchHightlights}>
           <img src={research.researchImg} alt={research.title} />
           <div>

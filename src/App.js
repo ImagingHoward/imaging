@@ -60,10 +60,10 @@ function App() {
 
             <Route exact path="/research" element={<Research reaserchHighlightsList={ReaserchHighlightsList} />} />
             <Route exact path="/research/full" element={<FullPublications />} />
-            <Route exact path="/research/petatlas" element={<HighLight research={ReaserchHighlightsList[0]} />} />
-            <Route exact path="/research/tbi" element={<HighLight research={ReaserchHighlightsList[1]} />} />
-            <Route exact path="/research/chd" element={<HighLight research={ReaserchHighlightsList[2]} />} />
-            <Route exact path="/research/mrs" element={<HighLight research={ReaserchHighlightsList[3]} />} />
+            <Route exact path="/research/petatlas" element={<HighLight research={ReaserchHighlightsList.petatlas} />} />
+            <Route exact path="/research/tbi" element={<HighLight research={ReaserchHighlightsList.tbi} />} />
+            <Route exact path="/research/chd" element={<HighLight research={ReaserchHighlightsList.chd} />} />
+            <Route exact path="/research/mrs" element={<HighLight research={ReaserchHighlightsList.mrs} />} />
 
             <Route exact path="/people" element={<People />} />
             <Route exact path="/people/pwang" element={<Pwang />} />
