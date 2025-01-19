@@ -56,6 +56,11 @@
         flex-direction: column
         margin: 10px 30px 10px 0
 
+@mixin status()
+    flex: 60%
+    margin: 20px 0
+    font-size: 1.5rem
+
 @mixin button()
     display: flex
     justify-content: flex-end
@@ -90,6 +95,8 @@
                 @include title()
             &>.message
                 @include message()
+                & > .status
+                    @include status()
                 .button
                     @include button
             &>.info
