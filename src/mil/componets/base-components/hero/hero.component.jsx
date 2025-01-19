@@ -16,8 +16,7 @@ const Hero = ({ background, title, subtitle, register }) => {
               <h2>{title}</h2>
               {subtitle && (
                 <h3>
-                  {" "}
-                  {subtitle}{" "}
+                  {subtitle}
                   <a href="./pathoradi/upload" className={classes.register}>
                     {register}
                   </a>

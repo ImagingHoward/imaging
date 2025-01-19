@@ -1,23 +1,22 @@
 import React from "react";
 import classes from "./research.module.sass";
 
+import { IoMdPaper, IoMdPeople } from "react-icons/io";
+import { GoMegaphone } from "react-icons/go";
+import { HiArrowRight } from "react-icons/hi";
+import background from "../../../assets/images/ResearchPage.jpg";
+
 import NavBar from "../../base-components/navbar/nav-bar.component";
 import Footer from "../../base-components/footer/footer.component";
 import Hero from "../../base-components/hero/hero.component";
 import ReasrchHighlights from "./research-highlights/research-highlights.component";
-
-import background from "../../../assets/images/ResearchPage.jpg";
 import SupportedResearchProjects from "./supported-research-projects/supported-research-projects.component";
 import SelectedPublications from "./selected-publications/selected-publications.component";
-
-import { IoMdPaper, IoMdPeople } from "react-icons/io";
-import { GoMegaphone } from "react-icons/go";
-import { HiArrowRight } from "react-icons/hi";
 
 const Research = ({ reaserchHighlightsList }) => {
   return (
     <>
-      <NavBar /> 
+      <NavBar />
       <Hero background={background} title="" />
       <div className={classes.wrapper}>
         <div className={classes.navPath}>

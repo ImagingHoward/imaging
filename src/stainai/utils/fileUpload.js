@@ -9,8 +9,8 @@ const createBlobInContainer = async (username, project, file, idx) => {
   const blobService = new BlobServiceClient(uploadUrl);
 
   const containerClient = blobService.getContainerClient(`uploaded/${username}/${project}/imagebatch-${idx}`);
-  const blobClient = containerClient.getBlockBlobClient(file.name);
 
+  const blobClient = containerClient.getBlockBlobClient(file.name);
 
   const options = { blobHTTPHeaders: { blobContentType: file.type } };
 

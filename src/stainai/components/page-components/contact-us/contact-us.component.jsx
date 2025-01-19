@@ -17,7 +17,7 @@ const ContactUs = () => {
   const onSubmit = async () => {
       console.group(form);
       const stainURL = process.env.REACT_APP_STAINAI_URL;
-      // const stainURL = "http://localhost:3000";
+  
 
       axios
       .post(`${stainURL}/contactUs`, {

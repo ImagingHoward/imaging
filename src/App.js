@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./mil/componets/page-components/home/home.component";
 import Research from "./mil/componets/page-components/research/research.component";
@@ -9,8 +9,6 @@ import Pwang from "./mil/componets/page-components/people/person/pwang.component
 import Wtu from "./mil/componets/page-components/people/person/wtu.component";
 import NotFound from "./mil/componets/page-components/not-found/not-found.component";
 
-import NavBar from "./mil/componets/base-components/navbar/nav-bar.component";
-import Footer from "./mil/componets/base-components/footer/footer.component";
 import Slin from "./mil/componets/page-components/people/person/slin.component";
 import Hhsu from "./mil/componets/page-components/people/person/hhsu.component";
 import Swashington from "./mil/componets/page-components/people/person/swashington.component";
@@ -54,40 +52,18 @@ function App() {
 
   return (
     <>
-      {/* <NavBar /> */}
       <Router>
         <UserContext.Provider value={{ user: user, setUser: setUser }}>
           <Routes>
+
             <Route exact path="/" element={<Home />} />
 
-            <Route
-              exact
-              path="/research"
-              element={
-                <Research reaserchHighlightsList={ReaserchHighlightsList} />
-              }
-            />
+            <Route exact path="/research" element={<Research reaserchHighlightsList={ReaserchHighlightsList} />} />
             <Route exact path="/research/full" element={<FullPublications />} />
-            <Route
-              exact
-              path="/research/petatlas"
-              element={<HighLight research={ReaserchHighlightsList[0]} />}
-            />
-            <Route
-              exact
-              path="/research/tbi"
-              element={<HighLight research={ReaserchHighlightsList[1]} />}
-            />
-            <Route
-              exact
-              path="/research/chd"
-              element={<HighLight research={ReaserchHighlightsList[2]} />}
-            />
-            <Route
-              exact
-              path="/research/mrs"
-              element={<HighLight research={ReaserchHighlightsList[3]} />}
-            />
+            <Route exact path="/research/petatlas" element={<HighLight research={ReaserchHighlightsList[0]} />} />
+            <Route exact path="/research/tbi" element={<HighLight research={ReaserchHighlightsList[1]} />} />
+            <Route exact path="/research/chd" element={<HighLight research={ReaserchHighlightsList[2]} />} />
+            <Route exact path="/research/mrs" element={<HighLight research={ReaserchHighlightsList[3]} />} />
 
             <Route exact path="/people" element={<People />} />
             <Route exact path="/people/pwang" element={<Pwang />} />
@@ -105,24 +81,12 @@ function App() {
             <Route exact path="/people/bria" element={<Bria />} />
             <Route exact path="/people/russell" element={<Russell />} />
             <Route exact path="/people/julianna" element={<Julianna />} />
-            
+
 
             <Route exact path="/facilities" element={<Facilities />} />
-            <Route
-              exact
-              path="/facility/mri"
-              element={<Facility facility={FacilitiesList.mri} />}
-            />
-            <Route
-              exact
-              path="/facility/optical"
-              element={<Facility facility={FacilitiesList.optical} />}
-            />
-            <Route
-              exact
-              path="/facility/pet"
-              element={<Facility facility={FacilitiesList.pet} />}
-            />
+            <Route exact path="/facility/mri" element={<Facility facility={FacilitiesList.mri} />} />
+            <Route exact path="/facility/optical" element={<Facility facility={FacilitiesList.optical} />} />
+            <Route exact path="/facility/pet" element={<Facility facility={FacilitiesList.pet} />} />
 
             <Route exact path="/events" element={<Events />} />
             <Route exact path="/positions" element={<Positions />} />
