@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import classes from "./home.module.sass";
-import NavBar from "../../shared-components/navbar/nav-bar.component";
-import Hero from "../../shared-components/hero/hero.component";
 
 import contentbg1 from "../../../assets/1_section.png";
 import contentbg1_small from "../../../assets/APP files/Homepage/Section 1/Section 1.svg";
@@ -12,22 +10,21 @@ import contentbg3_small from "../../../assets/APP files/Homepage/Section 3/Secti
 import icon1 from "../../../assets/1_icon_50x50.png";
 import icon2 from "../../../assets/2_icon_50x50.png";
 import icon3 from "../../../assets/3_icon_50x50.png";
-import background from "../../../assets/home_hero.png";
+
+import NavBar from "../../shared-components/navbar/nav-bar.component";
+import Hero from "../../shared-components/hero/hero.component";
 import Content from "./content/content.component";
 
 const StainAI = () => {
-  // const isSmallScreen = window.innerWidth < 690;
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 690);
 
-  const [isSmallScreen, setIsSmallScreen ] = useState(window.innerWidth < 690);
-
-  useEffect(() =>{
+  useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 690);
     };
 
     window.addEventListener("resize", handleResize);
 
-    // Clean up the event listener
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -47,9 +44,7 @@ const StainAI = () => {
         />
       </div>
       <div className={classes.section}>
-        
         <Content
-          // key={isSmallScreen ? "smallScreen" : "largeScreen"}
           contentbg={isSmallScreen ? contentbg1_small : contentbg1}
           isSmallScreen={isSmallScreen}
           icon={icon1}
@@ -59,7 +54,6 @@ const StainAI = () => {
           url="/stainai/upload-image"
         />
         <Content
-          // key={isSmallScreen ? "smallScreen" : "largeScreen"}
           contentbg={isSmallScreen ? contentbg2_small : contentbg2}
           isSmallScreen={isSmallScreen}
           icon={icon2}
@@ -70,7 +64,6 @@ const StainAI = () => {
           target="_blank"
         />
         <Content
-          // key={isSmallScreen ? "smallScreen" : "largeScreen"}
           contentbg={isSmallScreen ? contentbg3_small : contentbg3}
           isSmallScreen={isSmallScreen}
           icon={icon3}

@@ -7,7 +7,7 @@ import axios from "axios";
 
 const ContactUs = () => {
   const [success, setSuccess] = useState(false);
-  const [form, setForm] = useState ({
+  const [form, setForm] = useState({
     firstname: '',
     lastname: '',
     email: '',
@@ -15,11 +15,11 @@ const ContactUs = () => {
   });
 
   const onSubmit = async () => {
-      console.group(form);
-      const stainURL = process.env.REACT_APP_STAINAI_URL;
-  
+    console.group(form);
+    const stainURL = process.env.REACT_APP_STAINAI_URL;
 
-      axios
+
+    axios
       .post(`${stainURL}/contactUs`, {
         firstname: form.firstname,
         lastname: form.lastname,
@@ -33,7 +33,7 @@ const ContactUs = () => {
   };
 
   console.log(success)
-  
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.header}>
@@ -65,42 +65,42 @@ const ContactUs = () => {
           </div>
 
           <div className={classes.message}>
-          {success ? (
-            <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
-               Messaged has been sent!
-            </p>
-          ) : (
-            <form onSubmit={(e) => e.preventDefault()}>
-              <div>
-                <div className={classes.title}>PSRSON INFO</div>
-                <div className={classes.row}>
-                  <div className={classes.inputGroup}>
-                    First Name
-                    <input name="firstname" type="text" id="firstname" value={form.firstname} onChange={e => setForm({...form, firstname: e.target.value})}/>
+            {success ? (
+              <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
+                Messaged has been sent!
+              </p>
+            ) : (
+              <form onSubmit={(e) => e.preventDefault()}>
+                <div>
+                  <div className={classes.title}>PSRSON INFO</div>
+                  <div className={classes.row}>
+                    <div className={classes.inputGroup}>
+                      First Name
+                      <input name="firstname" type="text" id="firstname" value={form.firstname} onChange={e => setForm({ ...form, firstname: e.target.value })} />
+                    </div>
+                    <div className={classes.inputGroup}>
+                      Last Name
+                      <input name="lastname" type="text" id="lastname" value={form.lastname} onChange={e => setForm({ ...form, lastname: e.target.value })} />
+                    </div>
                   </div>
                   <div className={classes.inputGroup}>
-                    Last Name
-                    <input name="lastname" type="text" id="lastname"  value={form.lastname} onChange={e => setForm({...form, lastname: e.target.value})}/>
+                    Email
+                    <input name="email" type="text" id="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
                   </div>
                 </div>
-                <div className={classes.inputGroup}>
-                  Email
-                  <input name="email" type="text" id="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})}/>
+                <div>
+                  <div className={classes.title}>MESSAGE</div>
+                  <textarea value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}></textarea>
                 </div>
-              </div>
-              <div>
-                <div className={classes.title}>MESSAGE</div>
-                <textarea  value={form.message} onChange={e => setForm({...form, message: e.target.value})}></textarea>
-              </div>
-              <div className={classes.button}>
-                <input
-                  type="submit"
-                  onClick={onSubmit}
-                  value="submit"
-                />
-              </div>
-            </form>
-          )}
+                <div className={classes.button}>
+                  <input
+                    type="submit"
+                    onClick={onSubmit}
+                    value="submit"
+                  />
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>

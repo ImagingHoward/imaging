@@ -42,7 +42,7 @@ import DashBoard from "./stainai/components/page-components/user/dashboard/dashb
 import DashBoardUsers from "./stainai/components/page-components/user/dashboard/users.component";
 import ContactUs from "./stainai/components/page-components/contact-us/contact-us.component";
 import UploadImage from "./stainai/components/page-components/upload-image/upload-image.component";
-import LearnMore from "./stainai/components/page-components/learn-more/learn-more";
+import LearnMore from "./stainai/components/page-components/learn-more/learn-more.component";
 
 export const UserContext = React.createContext(null);
 
@@ -80,8 +80,7 @@ function App() {
             <Route exact path="/people/bria" element={<Bria />} />
             <Route exact path="/people/russell" element={<Russell />} />
             <Route exact path="/people/julianna" element={<Julianna />} />
-
-
+ 
             <Route exact path="/facilities" element={<Facilities />} />
             <Route exact path="/facility/mri" element={<Facility facility={FacilitiesList.mri} />} />
             <Route exact path="/facility/optical" element={<Facility facility={FacilitiesList.optical} />} />
@@ -91,7 +90,6 @@ function App() {
             <Route exact path="/positions" element={<Positions />} />
             <Route exact path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
-
 
             <Route exact path="/stainai" element={<StainAI />} />
             <Route exact path="/stainai/user/signin" element={<SignIn />} />
