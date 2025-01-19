@@ -1,16 +1,15 @@
 import React from "react";
 import classes from "./people.module.sass";
 
-import NavBar from "../../base-components/navbar/nav-bar.component";
-import Footer from "../../base-components/footer/footer.component";
-import Hero from "../../base-components/hero/hero.component";
-
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { HiArrowRight } from "react-icons/hi";
 import { BsFillPersonFill } from "react-icons/bs";
-
 import background from "../../../assets/images/People.jpg";
 import PeopleList from "../../data/people-list";
+
+import NavBar from "../../base-components/navbar/nav-bar.component";
+import Footer from "../../base-components/footer/footer.component";
+import Hero from "../../base-components/hero/hero.component";
 
 const People = () => {
   return (

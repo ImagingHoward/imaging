@@ -5,7 +5,7 @@ import linCrop from "../../../../assets/images/Lin_Crop.jpg";
 
 const Slin = () => {
   const person = {
-    image: linCrop ,
+    image: linCrop,
     name: "Stephen Lin, MEng",
     title: "Lab Manager",
     phone: "(202) 865-3729",
@@ -20,11 +20,8 @@ const Slin = () => {
     publicationsList:
       "http://www.ncbi.nlm.nih.gov/sites/myncbi/1Lg9ajaK712kk/bibliography/48935660/public/",
   };
-  return (
-    <>
-      <Person person={person}/>
-    </>
-  );
+
+  return (<Person person={person} />);
 };
 
 export default Slin;

@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./person.module.sass";
 
-import Footer from "../../../../base-components/footer/footer.component";
-import NavBar from "../../../../base-components/navbar/nav-bar.component";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { BsFillPersonFill } from "react-icons/bs";
+
+import Footer from "../../../../base-components/footer/footer.component";
+import NavBar from "../../../../base-components/navbar/nav-bar.component";
 
 const Person = ({ person }) => {
   const {
@@ -50,16 +51,16 @@ const Person = ({ person }) => {
           {
             areasofExpertise.length > 0 &&
             <div className={classes.expertise}>
-            <div className={classes.header}>Areas of Expertise</div>
-            <ul>
-              {areasofExpertise.map((expertise) => (
-                <li>{expertise}</li>
-              ))}
-            </ul>
+              <div className={classes.header}>Areas of Expertise</div>
+              <ul>
+                {areasofExpertise.map((expertise) => (
+                  <li>{expertise}</li>
+                ))}
+              </ul>
             </div>
 
           }
-         
+
           <div className={classes.publications}>
             {publicationsListLink && (
               <>
@@ -83,7 +84,7 @@ const Person = ({ person }) => {
             <div className={classes.header}>Contact Info</div>
             <div>Email: {email}</div>
             {
-              phone && 
+              phone &&
               <div>Tel: {phone}</div>
             }
           </div>

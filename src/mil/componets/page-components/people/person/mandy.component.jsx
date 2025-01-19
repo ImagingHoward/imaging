@@ -20,9 +20,9 @@ const Mandy = () => {
 
     `,
     areasofExpertise: [
-        "Material Development and Analysis",
-        "Imaging technology (Biomedical imaging and Optical physics)",
-        "Multi-disciplinary research"
+      "Material Development and Analysis",
+      "Imaging technology (Biomedical imaging and Optical physics)",
+      "Multi-disciplinary research"
     ],
     publicationsList: `
     B.-M. Chang, H.-C. Chang, and Dean Ho. “Biomarkers and drug delivery applications.” in Nanodiamonds: Advanced Material Analysis, Properties and Applications. (Elsevier, 2017), Chapter 16.
@@ -45,11 +45,8 @@ const Mandy = () => {
 
     `,
   };
-  return (
-    <>
-      <Person person={person} />
-    </>
-  );
+  
+  return (<Person person={person} />);
 };
 
 export default Mandy;

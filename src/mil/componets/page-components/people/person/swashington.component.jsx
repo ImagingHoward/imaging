@@ -6,7 +6,7 @@ import stuart from "../../../../assets/images/SWashington.jpg";
 
 const Swashington = () => {
   const person = {
-    image: stuart ,
+    image: stuart,
     name: "Stuart Washington, PhD",
     title: "Postdoctoral Fellow",
     phone: "(202) 865-4980",
@@ -62,11 +62,8 @@ const Swashington = () => {
       S.D. Washington, G.A. Ascoli, J.L. Krichmar. A statistical analysis of dendritic morphology’s effect on neuron electrophysiology of CA3 pyramidal cells. Neurocomputing 32-33 (2000) 261-269.
       `,
   };
-  return (
-    <>
-      <Person person={person}/>
-    </>
-  );
+  
+  return (<Person person={person} />);
 };
 
 export default Swashington;

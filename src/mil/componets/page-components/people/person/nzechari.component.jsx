@@ -17,11 +17,8 @@ const Nzechari = () => {
     areasofExpertise: [],
     publicationsList: ''
   };
-  return (
-    <>
-      <Person person={person} />
-    </>
-  );
+  
+  return (<Person person={person} />);
 };
 
 export default Nzechari;

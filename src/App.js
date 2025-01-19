@@ -7,8 +7,6 @@ import FullPublications from "./mil/componets/page-components/research/full-publ
 import People from "./mil/componets/page-components/people/people.component";
 import Pwang from "./mil/componets/page-components/people/person/pwang.component";
 import Wtu from "./mil/componets/page-components/people/person/wtu.component";
-import NotFound from "./mil/componets/page-components/not-found/not-found.component";
-
 import Slin from "./mil/componets/page-components/people/person/slin.component";
 import Hhsu from "./mil/componets/page-components/people/person/hhsu.component";
 import Swashington from "./mil/componets/page-components/people/person/swashington.component";
@@ -17,6 +15,7 @@ import Facilities from "./mil/componets/page-components/facilities/facilities.co
 import Events from "./mil/componets/page-components/events/events.component";
 import Contact from "./mil/componets/page-components/contact/contact.component";
 import Positions from "./mil/componets/page-components/positions/positions.component";
+import NotFound from "./mil/componets/page-components/not-found/not-found.component";
 
 import ReaserchHighlightsList from "./mil/componets/data/reaserch-highlights-list";
 import FacilitiesList from "./mil/componets/data/facilities-list";

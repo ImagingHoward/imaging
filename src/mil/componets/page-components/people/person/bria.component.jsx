@@ -19,11 +19,8 @@ const Bria = () => {
     areasofExpertise: [],
     publicationsList: ''
   };
-  return (
-    <>
-      <Person person={person} />
-    </>
-  );
+  
+  return (<Person person={person} />);
 };
 
 export default Bria;

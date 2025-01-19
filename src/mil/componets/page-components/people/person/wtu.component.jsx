@@ -6,7 +6,7 @@ import wtu from "../../../../assets/images/WTu.jpg";
 
 const Wtu = () => {
   const person = {
-    image: wtu ,
+    image: wtu,
     name: "Tsang-Wei Tu, PhD",
     title: "Associate Professor",
     phone: "(202) 865-3742",
@@ -24,11 +24,8 @@ const Wtu = () => {
     publicationsListLink:
       "https://www.ncbi.nlm.nih.gov/myncbi/tsang-wei.tu.2/bibliography/public/",
   };
-  return (
-    <>
-      <Person person={person}/>
-    </>
-  );
+  
+  return (<Person person={person} />);
 };
 
 export default Wtu;

@@ -6,7 +6,7 @@ import artur from "../../../../assets/images/Artur.jpg";
 
 const Aagaronyan = () => {
   const person = {
-    image: artur ,
+    image: artur,
     name: "Artur Agaronyan, BS",
     title: "PhD Student",
     phone: "(202) 865-7938",
@@ -21,11 +21,8 @@ const Aagaronyan = () => {
     publicationsListLink:
       "https://www.ncbi.nlm.nih.gov/myncbi/artur.agaronyan.1/bibliography/public/",
   };
-  return (
-    <>
-      <Person person={person}/>
-    </>
-  );
+  
+  return (<Person person={person} />);
 };
 
 export default Aagaronyan;

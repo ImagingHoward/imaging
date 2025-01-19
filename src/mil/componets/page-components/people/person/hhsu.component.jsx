@@ -6,7 +6,7 @@ import chhsu from "../../../../assets/images/CHHsu.jpg";
 
 const Hhsu = () => {
   const person = {
-    image: chhsu ,
+    image: chhsu,
     name: "Chao-Hsiung Hsu, PhD",
     title: "Senior Scientist",
     phone: "(202) 865-7938",
@@ -36,12 +36,8 @@ const Hhsu = () => {
       Hsu, C.-H.*; Chen, Y.-W.*; Hwang, D. W. Novel MRI Contrast Development by Lock-in Suppression. Magn. Reson. Med. 2014, 71 (5), 1676-1681.
       `,
   };
-  return (
-    <>
-      <Person person={person}/>
-    </>
-  );
   
+  return (<Person person={person} />);
 };
 
 export default Hhsu;

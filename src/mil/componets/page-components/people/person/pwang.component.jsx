@@ -27,11 +27,8 @@ const Pwang = () => {
     publicationsListLink:
       `https://www.ncbi.nlm.nih.gov/myncbi/paul.wang.1/bibliography/public/`,
   };
-  return (
-    <>
-      <Person person={person}/>
-    </>
-  );
+  
+  return (<Person person={person} />);
 };
 
 export default Pwang;

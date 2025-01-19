@@ -4,7 +4,7 @@ import Person from "./common/person.component";
 
 const Sunny = () => {
   const person = {
-    image: "" ,
+    image: "",
     name: "Sunny Ji, B.S.",
     title: "Research Assistant",
     phone: "(202) 486-5681",
@@ -15,12 +15,7 @@ const Sunny = () => {
       `In progress! `,
   };
 
-  return (
-    <>
-      <Person person={person}/>
-    </>
-  );
-  
+  return (<Person person={person} />);
 };
 
 export default Sunny;

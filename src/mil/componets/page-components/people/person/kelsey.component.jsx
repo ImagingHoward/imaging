@@ -17,11 +17,8 @@ const Kelsey = () => {
     areasofExpertise: [],
     publicationsList: ''
   };
-  return (
-    <>
-      <Person person={person} />
-    </>
-  );
+  
+  return (<Person person={person} />);
 };
 
 export default Kelsey;
