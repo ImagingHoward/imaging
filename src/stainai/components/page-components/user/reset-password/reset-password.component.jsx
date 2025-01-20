@@ -2,36 +2,17 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import classes from "./reset-password.module.sass";
-import axios from "axios";
-
-import NavBar from "../../../shared-components/navbar/nav-bar.component";
 import background from "../../../../assets/signin.png";
 
+import NavBar from "../../../shared-components/navbar/nav-bar.component";
+
+
 const ResetPasword = () => {
-
   let params = new URL(document.location).searchParams;
-
-  const [allow, Setallow] = useState(false);
-  const [email, SetEmail] = useState(params.get("email"));
   const [token, SetToken] = useState(params.get("token"));
-  
-
-  // if (!email && !token) return (window.location = "/stainai/user/signin");
-
-  useEffect(() => {
-    const stainURL = process.env.REACT_APP_STAINAI_URL;
-    // const stainURL = "http://localhost:3000";
-
-    axios
-      .get(`${stainURL}/resetPassword?email=${email}&token=${token}`)
-      .then((res) => {
-        // console.log(res.data.allow);
-        Setallow(res.data.allow);
-      });
-  }, [params]);
-
-
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const {
     register,
     formState: { errors },
@@ -44,18 +25,43 @@ const ResetPasword = () => {
   password.current = watch("password", "");
 
   const onSubmit = async (data) => {
-    const stainURL = process.env.REACT_APP_STAINAI_URL;
-    // const stainURL = "http://localhost:3000";
+    const stainaiURL = process.env.REACT_APP_STAINAI_URL;
+    console.log(data);
+    console.log(token);
 
-    axios
-      .post(`${stainURL}/resetPassword/update`, {
-        email: email,
-        token: token,
-        password: data.password,
-      })
-      .then((res) => {
-        return (window.location = "/stainai/user/signin")
+    if (data.password !== data.cpassword) {
+      return;
+    }
+
+    // Send token, password, and cpassword to the backend
+    try {
+      const response = await fetch(`${stainaiURL}/user/reset-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: token,
+          password: data.password,
+        }),
       });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // If the reset is successful, show success message
+        setSuccess(true);
+        setErrorMessage(null); // Clear any previous errors
+      } else {
+        // Handle failed password reset (e.g., token invalid)
+        setSuccess(false);
+        setErrorMessage(result.message || "An error occurred while resetting your password.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSuccess(false);
+      setErrorMessage("An error occurred while processing your request.");
+    }
   };
 
   return (
@@ -63,7 +69,6 @@ const ResetPasword = () => {
       <div className={classes.header}>
         <NavBar />
       </div>
-
       <div className={classes.wrapper}>
         <div className={classes.signin}>
           <div
@@ -76,17 +81,34 @@ const ResetPasword = () => {
           </div>
           <div className={classes.subtitle}>Reset Your STAIN.AI Password</div>
 
-          {allow ? (
+          {/* Display success message */}
+          {success && (
+            <p className={classes.successMessage}>
+              Your password has been reset successfully. please <a href="/stainai/user/signin">click here</a> to sigin.
+            </p>
+          )}
+
+          {/* Display error message */}
+          {errorMessage && !success && (
+            <p className={classes.errorMessage}>
+              {errorMessage}
+              <br />
+              If you're having trouble, please <a href="/stainai/user/request-password-reset">click here</a> to request a new password reset link.
+            </p>
+          )}
+
+          {
+            !success &&
             <form onSubmit={(e) => e.preventDefault()}>
               <div className={classes.morstainid}>
-                 <label>Email</label>
-                <input
-                  name="email"
-                  type="text"
-                  id="email"
-                  value={email}
-                  disabled
-                />
+                {/* <label>Email</label>
+              <input
+                name="email"
+                type="text"
+                id="email"
+                value={email}
+                disabled
+              /> */}
                 <label>Password</label>
                 <input
                   name="password"
@@ -117,12 +139,7 @@ const ResetPasword = () => {
 
               <input type="submit" onClick={handleSubmit(onSubmit)} value="Reset Password" />
             </form>
-          ) : (
-            <div className={classes.error}>
-              Your email or toke is invalided. Please go back to{" "}
-              <a href="/stainai/user/signin">sign in</a> page
-            </div>
-          )}
+          }
         </div>
       </div>
     </>
