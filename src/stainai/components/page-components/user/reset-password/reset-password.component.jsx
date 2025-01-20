@@ -26,8 +26,6 @@ const ResetPasword = () => {
 
   const onSubmit = async (data) => {
     const stainaiURL = process.env.REACT_APP_STAINAI_URL;
-    console.log(data);
-    console.log(token);
 
     if (data.password !== data.cpassword) {
       return;

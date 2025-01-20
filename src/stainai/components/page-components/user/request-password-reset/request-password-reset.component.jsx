@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import classes from "./forget-password.module.sass";
-import axios from "axios";
-
-import NavBar from "../../../shared-components/navbar/nav-bar.component";
+import classes from "./request-password-reset.module.sass";
 import background from "../../../../assets/signin.png";
 
-const ForgetPassword = () => {
+import NavBar from "../../../shared-components/navbar/nav-bar.component";
+
+
+const PasswordResetRequest = () => {
   const [success, setSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const {
     register,
     formState: { errors },
@@ -17,17 +18,37 @@ const ForgetPassword = () => {
   } = useForm({});
 
   const onSubmit = async (data) => {
-    const stainURL = process.env.REACT_APP_STAINAI_URL;
-    // const stainURL = "http://localhost:3000";
+    console.log(data);
+    const stainaiURL = process.env.REACT_APP_STAINAI_URL;
 
-    axios
-      .post(`${stainURL}/forgetPassword`, {
-        email: data.email,
-      })
-      .then((res) => {
-        setSuccess(true);
-        // return (window.location = "/morstainai/user");
+    // Send token, password, and cpassword to the backend
+    try {
+      const response = await fetch(`${stainaiURL}/user/request-password-reset`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data.email
+        }),
       });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // If the reset is successful, show success message
+        setSuccess(true);
+        setErrorMessage(null); // Clear any previous errors
+      } else {
+        // Handle failed password reset (e.g., token invalid)
+        setSuccess(false);
+        setErrorMessage(result.message || "An error occurred while resetting your password.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSuccess(false);
+      setErrorMessage("An error occurred while processing your request.");
+    }
   };
 
   return (
@@ -47,18 +68,22 @@ const ForgetPassword = () => {
             STAIN.AI
           </div>
           <div className={classes.subtitle}>Forget Your MorStain Password</div>
-          {success ? (
-            <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
-               Reset password email has been set.   Please check your Email.
+          {/* Display success message */}
+          {success && (
+            <p className={classes.successMessage}>
+              A password reset link has been sent to your email. Please check your inbox.
             </p>
-          ) : (
+          )}
+
+          {/* Display error message */}
+          {errorMessage && !success && (
+            <p className={classes.errorMessage}>
+              {errorMessage}
+            </p>
+          )}
+          {!success &&
             <form onSubmit={(e) => e.preventDefault()}>
               <div className={classes.morstainid}>
-                {/* <input placeholder="Password" className={classes.input} />
-                <input
-                  placeholder="Comfirm Password"
-                  className={classes.input}
-                /> */}
                 <label>Email</label>
                 <input
                   name="email"
@@ -75,18 +100,17 @@ const ForgetPassword = () => {
                 />
                 {errors.email && <p>{errors.email.message}</p>}
               </div>
-
               <input
                 type="submit"
                 onClick={handleSubmit(onSubmit)}
                 value="Reset Password"
               />
             </form>
-          )}
+          }
         </div>
       </div>
     </>
   );
 };
 
-export default ForgetPassword;
+export default PasswordResetRequest;
