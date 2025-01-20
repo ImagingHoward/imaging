@@ -52,7 +52,7 @@ const NavBar = () => {
           </li>
           <li className={classes.login}>
             <BsFillPersonFill size={25} />
-            {user?.info ? <a href="/stainai/user/dashboard">{user?.info?.firstname} {user?.info?.lastname}</a> : <a href="/stainai/user"> SIGNIN</a>}
+            {user?.info ? <a href="/stainai/user/dashboard">{user?.info?.firstname} {user?.info?.lastname}</a> : <a href="/stainai/user/signin"> SIGNIN</a>}
           </li>
           <li>
             {user?.info &&
@@ -97,7 +97,7 @@ const NavBar = () => {
                 <a href="/stainai/contact-us">CONTACT US</a>
               </li>
               <li>
-                {user?.info ? <a href="/stainai/user/dashboard">${user?.info?.firstname} ${user?.info?.lastname} </a> : <a href="/stainai/user">SIGNIN</a>}
+                {user?.info ? <a href="/stainai/user/dashboard">${user?.info?.firstname} ${user?.info?.lastname} </a> : <a href="/stainai/user/signin">SIGNIN</a>}
               </li>
               <li>
                 {user?.info &&

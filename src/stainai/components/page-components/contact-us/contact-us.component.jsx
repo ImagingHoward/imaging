@@ -14,9 +14,9 @@ const ContactUs = () => {
   });
 
   const onSubmit = async () => {
-    const stainURL = process.env.REACT_APP_STAINAI_URL
+    const stainaiURL = process.env.REACT_APP_STAINAI_URL;
 
-    const response = await fetch(`${stainURL}/contact`, {
+    const response = await fetch(`${stainaiURL}/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,13 +1,13 @@
 import React from "react";
 import classes from "./signup.module.sass";
 
-import NavBar from "../../../shared-components/navbar/nav-bar.component";
-import background from "../../../../assets/signin.png";
-import SingUpContent from "./signup-content/signup-content.component";
-
 import icon1 from "../../../../assets/Icon_in control.png";
 import icon2 from "../../../../assets/Icon_secure.png";
 import icon3 from "../../../../assets/Icon_why ID.png";
+import background from "../../../../assets/signin.png";
+
+import NavBar from "../../../shared-components/navbar/nav-bar.component";
+import SingUpContent from "./signup-content/signup-content.component";
 
 const SignUp = () => {
   return (

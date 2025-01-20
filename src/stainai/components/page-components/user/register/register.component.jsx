@@ -1,11 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-
 import classes from "./register.module.sass";
+import background from "../../../../assets/signin.png";
 
 import NavBar from "../../../shared-components/navbar/nav-bar.component";
-import background from "../../../../assets/signin.png";
-import axios from "axios";
 
 const Register = () => {
   const [success, setSuccess] = useState(false);
@@ -18,33 +16,43 @@ const Register = () => {
   } = useForm({});
 
   const password = useRef({});
-
   password.current = watch("password", "");
 
   const onSubmit = async (data) => {
-    const stainURL = process.env.REACT_APP_STAINAI_URL;
-    // const stainURL = "http://localhost:3000";
+    try {
+      const stainaiURL = process.env.REACT_APP_STAINAI_URL;
+      console.log(data);
 
-    
-    axios;
-    axios.get(`${stainURL}/userInfo/${data.email}`).then((res) => {
-      // checkt if email exists
-      if (res.data.length > 0) {
+      const response = await fetch(`${stainaiURL}/user/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // If registration is successful
+        setSuccess(true);
+        setIsExist(false);
+      } else if (result.message === "Email already exists") {
+        // If email already exists
         setIsExist(true);
+        setSuccess(false);
       } else {
-        axios
-          .post(`${stainURL}/userInfo/create`, {
-            firstname: data.firstname,
-            lastname: data.lastname,
-            organization: data.organization,
-            email: data.email,
-          })
-          .then((res) => {
-            setSuccess(true);
-          })
-          .catch((error) => console.log(error));
+        // Handle other errors
+        setSuccess(false);
+        setIsExist(false);
+        console.error("Unexpected error:", result);
       }
-    });
+    } catch (error) {
+      // Handle network or other errors
+      console.error("Error during registration:", error);
+      setSuccess(false);
+      setIsExist(false);
+    }
   };
 
   return (
@@ -66,19 +74,21 @@ const Register = () => {
             A STAIN.AI account grants you access to all AI-Stain services.
           </div>
         </div>
-        {
-          !success && isExist && 
-          <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
-           Email exists. Please create another STAIN.AI account.
-        </p>
-        }
-
-        {success ? (
-          <p className="font-semibold text-green-500 mb-10 mt-10 flex items-center justify-center gap-1">
-            Thank you for register. Please check your Email.
+        {/* Display success message */}
+        {success && (
+          <p className={classes.successMessage}>
+            Thank you for registering. Please check your Email.
           </p>
-        ) : (
-          <form onSubmit={(e) => e.preventDefault()}>
+        )}
+        {/* Display email exists message */}
+        {!success && isExist && (
+          <p className={classes.existsMessage}>
+            Email already exists. Please use a different email.
+          </p>
+        )}
+
+        {!success &&
+          (<form onSubmit={(e) => e.preventDefault()}>
             <div>
               <label>First Name</label>
               <input
@@ -147,7 +157,7 @@ const Register = () => {
               value="Register"
             />
           </form>
-        )}
+          )}
       </div>
     </>
   );

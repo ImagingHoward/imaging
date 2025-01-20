@@ -126,6 +126,26 @@
         &:hover
             background: #156b6c
 
+@mixin successMessage()
+    font-weight: 600
+    color: #38b2ac
+    margin-bottom: 2.5rem
+    margin-top: 2.5rem
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 0.25rem
+
+@mixin existsMessage()
+    font-weight: 600
+    color: #ff0000
+    margin-bottom: 2.5rem
+    margin-top: 2.5rem
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 0.25rem
+
 .wrapper
     @include wrapper()
     & > .usernav
@@ -140,6 +160,10 @@
             @include blur()
         & > .button
             @include button()
+    & > .successMessage
+        @include successMessage()
+    & > .existsMessage
+        @include existsMessage()
 
 @mixin header()
     position: relative
