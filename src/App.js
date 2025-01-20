@@ -36,7 +36,7 @@ import StainAI from "./stainai/components/page-components/home/home.component";
 import SignIn from "./stainai/components/page-components/user/signin/singin.component";
 import SignUp from "./stainai/components/page-components/user/signup/signup.component";
 import Register from "./stainai/components/page-components/user/register/register.component";
-import PasswordResetRequest from "./stainai/components/page-components/user/request-password-reset/request-password-reset.component";
+import RequestPasswordReset from "./stainai/components/page-components/user/request-password-reset/request-password-reset.component";
 import ResetPasword from "./stainai/components/page-components/user/reset-password/reset-password.component";
 import DashBoard from "./stainai/components/page-components/user/dashboard/dashboard.component";
 import DashBoardUsers from "./stainai/components/page-components/user/dashboard/users.component";
@@ -44,15 +44,17 @@ import ContactUs from "./stainai/components/page-components/contact-us/contact-u
 import UploadImage from "./stainai/components/page-components/upload-image/upload-image.component";
 import LearnMore from "./stainai/components/page-components/learn-more/learn-more.component";
 
-export const UserContext = React.createContext(null);
+// export const UserContext = React.createContext(null);
+import { UserProvider } from "./stainai/hook/auth/user.hook";
+
 
 function App() {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
   return (
     <>
       <Router>
-        <UserContext.Provider value={{ user: user, setUser: setUser }}>
+        <UserProvider>
           <Routes>
 
             <Route exact path="/" element={<Home />} />
@@ -92,11 +94,11 @@ function App() {
             <Route path="*" element={<NotFound />} />
 
             <Route exact path="/stainai" element={<StainAI />} />
-            <Route exact path="/stainai/user/signin" element={<SignIn />} />
             <Route exact path="/stainai/user/singup" element={<SignUp />} />
             <Route exact path="/stainai/user/register" element={<Register />} />
-            <Route exact path="/stainai/user/request-password-reset" element={<PasswordResetRequest />} />
             <Route exact path="/stainai/user/reset-password" element={<ResetPasword />} />
+            <Route exact path="/stainai/user/request-password-reset" element={<RequestPasswordReset />} />
+            <Route exact path="/stainai/user/signin" element={<SignIn />} />
             <Route exact path="/stainai/user/dashboard" element={<DashBoard />} />
             <Route exact path="/stainai/user/dashboard/users" element={<DashBoardUsers />} />
             <Route exact path="/stainai/contact-us" element={<ContactUs />} />
@@ -104,7 +106,7 @@ function App() {
             <Route exact path="/stainai/learn-more" element={<LearnMore />} />
 
           </Routes>
-        </UserContext.Provider>
+        </UserProvider>
       </Router>
     </>
   );

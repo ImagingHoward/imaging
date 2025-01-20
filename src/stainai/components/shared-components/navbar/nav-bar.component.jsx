@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./nav-bar.module.sass";
 
@@ -7,11 +7,11 @@ import { BsFillPersonFill } from "react-icons/bs";
 import logo from "../../../assets/logo.png";
 import hulogo from "../../../assets/hu_log.svg";
 
-import UseUserContext from "../../../hook/auth/user.hook";
+import UserContext from "../../../hook/auth/user.hook";
 
 const NavBar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const user = UseUserContext();
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
@@ -20,7 +20,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("STAINAI_USER_PROFILE");
-    user.loadUserProfile();
+    setUser(null);
     navigate.push("/stainai");
   };
 
@@ -52,10 +52,10 @@ const NavBar = () => {
           </li>
           <li className={classes.login}>
             <BsFillPersonFill size={25} />
-            {user?.info ? <a href="/stainai/user/dashboard">{user?.info?.firstname} {user?.info?.lastname}</a> : <a href="/stainai/user/signin"> SIGNIN</a>}
+            {user ? <a href="/stainai/user/dashboard">{user?.firstname} {user?.lastname}</a> : <a href="/stainai/user/signin"> SIGNIN</a>}
           </li>
           <li>
-            {user?.info &&
+            {user &&
               <a onClick={handleLogout}>
                 Sign Out
               </a>
@@ -97,10 +97,10 @@ const NavBar = () => {
                 <a href="/stainai/contact-us">CONTACT US</a>
               </li>
               <li>
-                {user?.info ? <a href="/stainai/user/dashboard">${user?.info?.firstname} ${user?.info?.lastname} </a> : <a href="/stainai/user/signin">SIGNIN</a>}
+                {user ? <a href="/stainai/user/dashboard">${user?.firstname} ${user?.lastname} </a> : <a href="/stainai/user/signin">SIGNIN</a>}
               </li>
               <li>
-                {user?.info &&
+                {user &&
                   <a onClick={handleLogout}>
                     Sign Out
                   </a>

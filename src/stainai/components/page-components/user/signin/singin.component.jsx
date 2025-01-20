@@ -1,15 +1,13 @@
 import React, { useRef, useState, useContext } from "react";
-import classes from "./signin.module.sass";
-
-
-import background from "../../../../assets/signin.png";
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import { UserContext } from "../../../../../App";
+import classes from "./signin.module.sass";
 import NavBar from "../../../shared-components/navbar/nav-bar.component";
+import background from "../../../../assets/signin.png";
+
+import UserContext from "../../../../hook/auth/user.hook";
 
 const SignIn = () => {
-  const [allow, SetAllow] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const { user, setUser } = useContext(UserContext);
 
   const {
@@ -25,21 +23,30 @@ const SignIn = () => {
 
   const onSubmit = async (data) => {
     const stainaiURL = process.env.REACT_APP_STAINAI_URL;
-    // const stainaiURL = "http://localhost:3000";
+    try {
+      const response = await fetch(`${stainaiURL}/user/signin`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    axios
-      .post(`${stainaiURL}/singin`, {
-        email: data.email,
-        password: data.password,
-      })
-      .then((res) => {
-        localStorage.setItem("STAINAI_USER_PROFILE", JSON.stringify(res.data));
-        if (res.data.allow) {
-          setUser(res.data);
-          return (window.location = "/stainai");
-        } else SetAllow(false);
-      })
-      .catch((error) => console.log(error));
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log(result)
+        localStorage.setItem('STAINAI_USER_PROFILE', JSON.stringify(result.user));
+        setUser(result.user);
+        return (window.location = "/stainai");
+      } else {
+        setErrorMessage(result.message)
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error("Error during signin:", error);
+      setErrorMessage('Error during signin');
+    }
   };
 
   return (
@@ -61,8 +68,8 @@ const SignIn = () => {
             STAIN.AI
           </div>
 
-          {allow === false && (
-            <div className={classes.error}>Email or Password is Invalid!</div>
+          {errorMessage && (
+            <div className={classes.errorMessage}>{errorMessage}</div>
           )}
 
           <form onSubmit={(e) => e.preventDefault()}>
@@ -104,13 +111,8 @@ const SignIn = () => {
               value="Sing In"
             />
           </form>
-
-          <div className={classes.rememberme}>
-            <input type="checkbox" className={classes.checkbox} />
-            Remember me
-          </div>
           <div className={classes.forget}>
-            <a href="/stainai/user/forget-password">
+            <a href="/stainai/user/request-password-reset">
               Forget STAIN.AI ID Password?
             </a>
           </div>

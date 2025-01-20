@@ -7,7 +7,7 @@ import background from "../../../../assets/signin.png";
 import NavBar from "../../../shared-components/navbar/nav-bar.component";
 
 
-const PasswordResetRequest = () => {
+const RequestPasswordReset = () => {
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const {
@@ -113,4 +113,4 @@ const PasswordResetRequest = () => {
   );
 };
 
-export default PasswordResetRequest;
+export default RequestPasswordReset;

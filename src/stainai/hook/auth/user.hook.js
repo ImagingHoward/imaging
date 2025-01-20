@@ -1,11 +1,20 @@
-import React, { useContext } from "react";
+import React, { createContext, useState, useEffect } from 'react';
 
-const UseUserContext = () => {
-  return {
-    info: localStorage.getItem("STAINAI_USER_PROFILE")
-      ? JSON.parse(localStorage.getItem("STAINAI_USER_PROFILE"))
-      : "",
-  };
+// Create the context
+const UserContext = createContext();
+
+export const UserProvider = ({ children }) => {
+  // Initialize the state with the user from localStorage if it exists
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem('STAINAI_USER_PROFILE');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
-export default UseUserContext;
+export default UserContext;

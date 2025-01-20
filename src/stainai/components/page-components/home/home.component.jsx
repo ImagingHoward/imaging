@@ -28,8 +28,7 @@ const StainAI = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-
-  }, [])
+  }, []);
 
   return (
     <>
