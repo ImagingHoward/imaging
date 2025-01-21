@@ -3,7 +3,7 @@ import classes from "./dashboard.module.sass";
 
 import UseUserContext from "../../../../hook/auth/user.hook";
 import NavBar from "./navbar/nav-bar.component";
-import NoAccess from "../no-access/no-access.component";
+import NoAccess from "../../no-access/no-access.component";
 
 import { FaUserCog } from "react-icons/fa";
 import { FcSearch } from "react-icons/fc";

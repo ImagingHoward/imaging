@@ -7,10 +7,10 @@ import UseUserContext from "../../../hook/auth/user.hook";
 import NoAccess from "../user/no-access/no-access.component";
 
 const UploadImage = () => {
-  const user = UseUserContext();
+  // const user = UseUserContext();
 
-  if(!user.info) 
-    return <NoAccess />
+  // if(!user.info) 
+  //   return <NoAccess />
   
   return (
     <>

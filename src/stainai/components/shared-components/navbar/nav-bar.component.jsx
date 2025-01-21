@@ -21,7 +21,7 @@ const NavBar = () => {
   const handleLogout = () => {
     localStorage.removeItem("STAINAI_USER_PROFILE");
     setUser(null);
-    navigate.push("/stainai");
+    return (window.location = "/stainai");
   };
 
   return (
