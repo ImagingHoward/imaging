@@ -9,7 +9,6 @@ const createBlobInContainer = async (username, project, file) => {
 
   // <snippet_get_client>
   const uploadUrl = `https://pathoradi.blob.core.windows.net/?${sasToken}`;
-  // console.log(uploadUrl);
 
   // get BlobService = notice `?` is pulled out of sasToken - if created in Azure portal
   const blobService = new BlobServiceClient(uploadUrl);

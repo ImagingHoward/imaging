@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./content.module.sass";
 
 const Content = ({ key, contentbg, icon, heading, blur, button, url, isSmallScreen, target }) => {
-  // console.log(contentbg)
   return (
     <div className={classes.wrapper}>
       <div

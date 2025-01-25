@@ -21,7 +21,6 @@ const Register = () => {
   const onSubmit = async (data) => {
     try {
       const stainaiURL = process.env.REACT_APP_STAINAI_URL;
-      console.log(data);
 
       const response = await fetch(`${stainaiURL}/user/register`, {
         method: 'POST',

@@ -39,7 +39,6 @@ import Register from "./stainai/components/page-components/user/register/registe
 import RequestPasswordReset from "./stainai/components/page-components/user/request-password-reset/request-password-reset.component";
 import ResetPasword from "./stainai/components/page-components/user/reset-password/reset-password.component";
 import DashBoard from "./stainai/components/page-components/user/dashboard/dashboard.component";
-import DashBoardUsers from "./stainai/components/page-components/user/dashboard/users.component";
 import ContactUs from "./stainai/components/page-components/contact-us/contact-us.component";
 import UploadImages from "./stainai/components/page-components/upload-images/upload-images.component";
 import LearnMore from "./stainai/components/page-components/learn-more/learn-more.component";
@@ -95,8 +94,10 @@ function App() {
             <Route exact path="/stainai/user/reset-password" element={<ResetPasword />} />
             <Route exact path="/stainai/user/request-password-reset" element={<RequestPasswordReset />} />
             <Route exact path="/stainai/user/signin" element={<SignIn />} />
+
             <Route exact path="/stainai/user/dashboard" element={<DashBoard />} />
-            <Route exact path="/stainai/user/dashboard/users" element={<DashBoardUsers />} />
+            {/* <Route exact path="/stainai/user/dashboard/users" element={<DashBoardUsers />} /> */}
+
             <Route exact path="/stainai/contact-us" element={<ContactUs />} />
             <Route exact path="/stainai/upload-images" element={<UploadImages />} />
             <Route exact path="/stainai/learn-more" element={<LearnMore />} />

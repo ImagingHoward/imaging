@@ -1,143 +1,115 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useCallback, useContext, useEffect, useState, useRef } from "react";
 import classes from "./dashboard.module.sass";
-
-import UseUserContext from "../../../../hook/auth/user.hook";
-import NavBar from "./navbar/nav-bar.component";
-import NoAccess from "../../no-access/no-access.component";
-
 import { FaUserCog } from "react-icons/fa";
 import { FcSearch } from "react-icons/fc";
-import { FaDownload } from "react-icons/fa";
-import { ImDownload } from "react-icons/im";
-import { FaCloudUploadAlt } from "react-icons/fa";
 
-import axios from "axios";
+import NavBar from "../../../shared-components/navbar/nav-bar.component";
+
+import UserContext from "../../../../hook/auth/user.hook";
 
 const DashBoard = () => {
-  const user = UseUserContext();
+  const { user, setUser } = useContext(UserContext);
+  const [data, setData] = useState(null);
+  const [filteredData, setFilteredData] = useState(null);
+  const [error, setError] = useState(null);
 
-  const [role, setRole] = useState(user?.info?.role);
-  const [keyword, setKeyword] = useState();
-
-  if (!user.info) return <NoAccess />;
-
-  const [projects, setProjects] = useState([]);
-  const [filterprojects, setFilterprojects] = useState([]);
-
-  const STORAGE_URL = "https://pathoradi.blob.core.windows.net/uploaded/"
-  const ssaToken = "sp=r&st=2023-09-24T14:48:18Z&se=2024-09-24T14:48:18Z&sv=2022-11-02&sr=c&sig=xyyA6BN7xmPh8ILC7aclmIK%2BjjWNUJylUeuWpyHMVo8%3D"
-
-
+  // New state variables to manage download status
+  const [downloadStatus, setDownloadStatus] = useState(null);
 
   useEffect(() => {
-    const stainURL = process.env.REACT_APP_STAINAI_URL;
-    // const stainURL = "http://localhost:3000";
+    if (!user?.userid) return;
 
-    const qery =
-      role === "admin"
-        ? `${stainURL}/uploadInfo/`
-        : `${stainURL}/uploadInfo/user/${user.info.userid}`;
-        
+    const fetchProjects = async () => {
+      try {
+        const stainaiURL = process.env.REACT_APP_STAINAI_URL;
+        const response = await fetch(`${stainaiURL}/user/dashboard?userid=${user?.userid}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
 
-    axios.get(`${qery}`).then((res) => {
-      setProjects([...res.data]);
-      setFilterprojects([...res.data]);
-    });
-  }, [setProjects]);
+        if (!response.ok) {
+          throw new Error('Failed to fetch projects');
+        }
 
+        const results = await response.json();
+        setData(results);
+        setFilteredData(results);
 
-  const filterProject = (e) => {
-    // console.log(e.target.value)
-    const filterVal = e.target.value;
-    setFilterprojects(
-      projects.filter(
-        (project) =>
-          project.project.includes(filterVal) ||
-          (role === "admin" && project.firstname.includes(filterVal)) ||
-          (role === "admin" && project.lastname.includes(filterVal)) ||
-          project.status.includes(filterVal)
-      )
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setError('Failed to load data. Please try again later.');
+      }
+    };
+
+    fetchProjects();
+  }, [user]);
+
+  const filter = useCallback((e) => {
+    if (!data) return;
+
+    const filtered = data.filter((row) =>
+      Object.values(row).some((value) => typeof value === 'string' && value.toLowerCase().includes(e.target.value.toLowerCase()))
     );
-    // setKeyword(e.target.value)
-  };
 
+    setFilteredData(filtered);
+  }, [user, data]);
 
   return (
     <>
-      <NavBar />
+      <div className={classes.header}>
+        <NavBar />
+      </div>
       <div className={classes.wrapper}>
-        <div className={classes.nav}>
-          {role === "admin" && (
-            <>
-              <a href="/stainai/user/dashboard"> PRPJECT </a>
-              {` | `}
-              <a href="/stainai/user/dashboard/users"> USER </a>
-            </>
-          )}
+        <div className={classes.userSection}>
+          <div>
+            <FaUserCog size={30} />
+          </div>
+          <div>Use Name: {user?.firstname} {user?.lastname}</div>
+          <div>Email: {user?.email}</div>
         </div>
 
-        <div className={classes.project}>
-          <div className={classes.userInfo}>
-            <FaUserCog size={25} />
-            <p>
-              UserName: {user.info.firstname} {user.info.lastname}
-            </p>
-            <p>Email: {user.info.email}</p>
+        {downloadStatus && (
+          <div className={classes.downloadStatus}>
+            {downloadStatus}
           </div>
-          <h2>Microglial Image </h2>
-          <div className={classes.inputgroup}>
-            <FcSearch size={20} />
-            <div>Search: </div>
+        )}
 
-            <input
-              type="text"
-              placeholder="Search Here ..."
-              // value={keyword}
-              onChange={(e) => {
-                filterProject(e);
-              }}
-              // onClick={() => filterProject()}
-            />
-          </div>
-
-          <table>
-            <tbody>
-              <tr>
-                {role === "admin" && <th>UserName</th>}
-                <th>Project</th>
-                {/* <th>Thickness</th>
-                <th>Pixel</th>
-                <th>Images</th> */}
-                <th>Status</th>
-                <th>Result</th>
-              </tr>
-              {filterprojects.map((project, idx) => (
-                <tr key={`project_${idx}`}>
-                  {role === "admin" && (
-                    <td>
-                      {project.firstname} {project.lastname}
-                    </td>
+        <div className={classes.searchSection}>
+          <FcSearch size={20} />
+          <input
+            type="text"
+            placeholder="Search Keyword"
+            onChange={(e) => {
+              filter(e);
+            }}
+          />
+        </div>
+        <table className={classes.tableInfo}>
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Status</th>
+              <th>Submission Date</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredData?.map((row, idx) => (
+              <tr key={idx}>
+                <td>{row.project}</td>
+                <td>{row.status}</td>
+                <td>{row.timestamp}</td>
+                <td>
+                  {row.status === 'done' && (
+                    <a onClick={(e) => onDownload(e, row.project)}>Download</a>
                   )}
-                  <td style={{ display: "flex" }}>
-                    {/* {role === "admin" && <ImDownload size={14} />} */}
-                    <p style={{ marginLeft: "5px", cursor: "pointer" }}>
-                      {project.project}
-                    </p>
-                  </td>
-                  {/* <td>{project.thickness}</td>
-                  <td>{project.pixel}</td>
-                  <td>{project.images}</td> */}
-                  <td>{project.status}</td>
-                  <td>
-                    <a href={`${STORAGE_URL}/${user.info.firstname} ${user.info.lastname}/${project.project}/result/result.zip?${ssaToken}`}>
-                      Download
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );

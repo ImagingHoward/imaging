@@ -18,7 +18,6 @@ const RequestPasswordReset = () => {
   } = useForm({});
 
   const onSubmit = async (data) => {
-    console.log(data);
     const stainaiURL = process.env.REACT_APP_STAINAI_URL;
 
     // Send token, password, and cpassword to the backend

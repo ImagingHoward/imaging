@@ -89,8 +89,6 @@ export const useUploadImages = () => {
       loading: true,
     }));
 
-    console.log(batches)
-
     try {
       const uploadPromises = batches.uploadInfo.map(
         async (batch, idx) => {
@@ -124,7 +122,6 @@ export const useUploadImages = () => {
       const result = await response.json();
 
       if (response.ok) {
-        console.log('response.ok');
         setBatches((prevBatches) => ({
           ...prevBatches,
           loading: false,
