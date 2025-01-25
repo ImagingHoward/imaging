@@ -56,6 +56,43 @@ const DashBoard = () => {
     setFilteredData(filtered);
   }, [user, data]);
 
+  const onDownload = useCallback(async (e, project) => {
+    // Start by setting the download status to "Downloading..."
+    setDownloadStatus('Downloading...');
+
+    try {
+      const stainaiURL = process.env.REACT_APP_STAINAI_URL;
+      const response = await fetch(`${stainaiURL}/download-results?username=${user?.firstname} ${user?.lastname}&project=${project}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to download file');
+      }
+
+      const blob = await response.blob();
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'results.zip';
+      link.click();
+      link.remove();
+
+      // Set the status to "Download successful!" after the download is complete
+      setDownloadStatus(`Project "${project}" has been successfully downloaded!`);
+
+      // Reset the download status after a short delay
+      setTimeout(() => {
+        setDownloadStatus(null);
+      }, 3000);  // Reset status after 2 seconds
+    } catch (error) {
+      console.error('Download failed:', error);
+      setDownloadStatus('Failed to download the file. Please try again.');
+    }
+  });
+
   return (
     <>
       <div className={classes.header}>
