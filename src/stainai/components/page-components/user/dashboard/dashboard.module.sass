@@ -38,6 +38,8 @@
       text-transform: uppercase
   & > tbody
     & > tr
+      & > .projectName
+        cursor: pointer
       & > td
         font-size: 1.1rem
         font-weight: 500
@@ -49,6 +51,11 @@
             color: #191d32
       &:nth-child(even)
         background-color: #fff
+      & > .projectDetailsRow
+        & > div
+          padding: 10px
+        & > div:nth-child(odd)
+          border-bottom: 1px solid #191d32
 
 @mixin downloadStatus()
   padding: 10px

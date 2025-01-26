@@ -1,10 +1,9 @@
-import React, { useCallback, useContext, useEffect, useState, useRef } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import classes from "./dashboard.module.sass";
 import { FaUserCog } from "react-icons/fa";
 import { FcSearch } from "react-icons/fc";
 
 import NavBar from "../../../shared-components/navbar/nav-bar.component";
-
 import UserContext from "../../../../hook/auth/user.hook";
 
 const DashBoard = () => {
@@ -13,8 +12,9 @@ const DashBoard = () => {
   const [filteredData, setFilteredData] = useState(null);
   const [error, setError] = useState(null);
 
-  // New state variables to manage download status
   const [downloadStatus, setDownloadStatus] = useState(null);
+
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     if (!user?.userid) return;
@@ -34,8 +34,27 @@ const DashBoard = () => {
         }
 
         const results = await response.json();
-        setData(results);
-        setFilteredData(results);
+
+        const parseResults = results.reduce((acc, item) => {
+          const { project, status, timestamp, ...detail } = item;
+          const existingProject = acc.find(p => p.project === project);
+
+          if (existingProject) {
+            existingProject.details.push(detail);
+          } else {
+            acc.push({
+              project,
+              status,
+              timestamp,
+              details: [detail],
+            });
+          }
+
+          return acc;
+        }, []);
+
+        setData(parseResults);
+        setFilteredData(parseResults);
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -54,10 +73,9 @@ const DashBoard = () => {
     );
 
     setFilteredData(filtered);
-  }, [user, data]);
+  }, [data]);
 
   const onDownload = useCallback(async (e, project) => {
-    // Start by setting the download status to "Downloading..."
     setDownloadStatus('Downloading...');
 
     try {
@@ -80,18 +98,26 @@ const DashBoard = () => {
       link.click();
       link.remove();
 
-      // Set the status to "Download successful!" after the download is complete
       setDownloadStatus(`Project "${project}" has been successfully downloaded!`);
 
-      // Reset the download status after a short delay
       setTimeout(() => {
         setDownloadStatus(null);
-      }, 3000);  // Reset status after 2 seconds
+      }, 3000);  
     } catch (error) {
       console.error('Download failed:', error);
       setDownloadStatus('Failed to download the file. Please try again.');
     }
   });
+
+  // Handle row click to toggle project details visibility
+  const handleRowClick = (project) => {
+    // Toggle the details display by checking if this project is already selected
+    if (selectedProject?.project === project.project) {
+      setSelectedProject(null); // Deselect if it's already selected
+    } else {
+      setSelectedProject(project); // Select the clicked project
+    }
+  };
 
   return (
     <>
@@ -123,6 +149,7 @@ const DashBoard = () => {
             }}
           />
         </div>
+
         <table className={classes.tableInfo}>
           <thead>
             <tr>
@@ -134,16 +161,45 @@ const DashBoard = () => {
           </thead>
           <tbody>
             {filteredData?.map((row, idx) => (
-              <tr key={idx}>
-                <td>{row.project}</td>
-                <td>{row.status}</td>
-                <td>{row.timestamp}</td>
-                <td>
-                  {row.status === 'done' && (
-                    <a onClick={(e) => onDownload(e, row.project)}>Download</a>
-                  )}
-                </td>
-              </tr>
+              <>
+                <tr key={idx}>
+                  <td
+                    onClick={() => handleRowClick(row)} // Click to show details
+                    className={classes.projectName}
+                  >
+                    {row.project}
+                  </td>
+                  <td>{row.status}</td>
+                  <td>{new Date(row.timestamp).toLocaleDateString()}</td>
+                  <td>
+                    {row.status === 'done' && (
+                      <a onClick={(e) => onDownload(e, row.project)}>Download</a>
+                    )}
+                  </td>
+                </tr>
+
+                {/* Render details row if the project is selected */}
+                {selectedProject?.project === row.project && (
+                  <tr>
+                    <td colSpan="4" className={classes.projectDetailsRow}>
+                      {
+                        row.details?.map((detail, idx) => (
+                          <div key={idx}>
+                            <p><strong>Species:</strong> {detail.species}</p>
+                            <p><strong>Strain:</strong> {detail.strain}</p>
+                            <p><strong>Treatment:</strong> {detail.treatment}</p>
+                            <p><strong>Organ:</strong> {detail.organ}</p>
+                            <p><strong>Slice:</strong> {detail.slice}</p>
+                            <p><strong>Region:</strong> {detail.region}</p>
+                            <p><strong>Structure:</strong> {detail.structure}</p>
+                            <p><strong>Images:</strong> {detail.images}</p>
+                          </div>
+                        ))
+                      }
+                    </td>
+                  </tr>
+                )}
+              </>
             ))}
           </tbody>
         </table>
