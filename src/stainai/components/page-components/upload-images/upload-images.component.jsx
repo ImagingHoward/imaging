@@ -29,41 +29,41 @@ const UploadImages = () => {
         />
       </div>
       <div className={classes.wrapper}>
-        {!batches.email && <NoAccess />}
+        {!batches.email
+          ? <NoAccess />
+          : batches.loading
+            ? <Spinner className={classes.spinner} />
+            : batches.message.length > 0
+              ? <div className={classes.message} dangerouslySetInnerHTML={{ __html: batches.message }} />
+              : <form className={classes.form}>
+                <ProjectInfo
+                  batches={batches}
+                  setBatches={setBatches}
+                />
 
-        {batches.loading
-          ? <Spinner className={classes.spinner} />
-          : batches.message.length > 0
-            ? <div className={classes.message} dangerouslySetInnerHTML={{ __html: batches.message }} />
-            : <form className={classes.form}>
-              <ProjectInfo
-                batches={batches}
-                setBatches={setBatches}
-              />
+                <div className={classes.imageBatchInof}>
+                  {batches.uploadInfo.map((batch, idx) => (
+                    <ImageBatchInfo
+                      key={idx}
+                      idx={idx}
+                      handleField={handleField}
+                      updateUploadedFiles={updateUploadedFiles}
+                    />
+                  ))}
+                  <button onClick={addNewBatch}>+ Add New Batch</button>
+                </div>
 
-              <div className={classes.imageBatchInof}>
-                {batches.uploadInfo.map((batch, idx) => (
-                  <ImageBatchInfo
-                    key={idx}
-                    idx={idx}
-                    handleField={handleField}
-                    updateUploadedFiles={updateUploadedFiles}
-                  />
-                ))}
-                <button onClick={addNewBatch}>+ Add New Batch</button>
-              </div>
-
-              <Agreement setAgree={setAgree} agree={agree} />
-              <div className={classes.submitButton}>
-                <button
-                  className={classnames(classes.submit, agree && classes.active)}
-                  disabled={!agree ? true : false}
-                  onClick={onSubmit}
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
+                <Agreement setAgree={setAgree} agree={agree} />
+                <div className={classes.submitButton}>
+                  <button
+                    className={classnames(classes.submit, agree && classes.active)}
+                    disabled={!agree ? true : false}
+                    onClick={onSubmit}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
         }
       </div>
 
