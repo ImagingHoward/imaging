@@ -107,7 +107,7 @@ const SignIn = () => {
             <input
               type="submit"
               onClick={handleSubmit(onSubmit)}
-              value="Sing In"
+              value="Sign In"
             />
           </form>
           <div className={classes.forget}>
