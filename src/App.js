@@ -23,6 +23,7 @@ import FacilitiesList from "./mil/componets/data/facilities-list";
 import HighLight from "./mil/componets/page-components/research/research-highlights/highlight/highlight.component";
 import Facility from "./mil/componets/page-components/facilities/facility/facility.component";
 import Mandy from "./mil/componets/page-components/people/person/mandy.component";
+import Essiet from "./mil/componets/page-components/people/person/essiet.component";
 import Sunny from "./mil/componets/page-components/people/person/sunny.component";
 import Kelsey from "./mil/componets/page-components/people/person/kelsey.component";
 import Donovan from "./mil/componets/page-components/people/person/donovan.component";
@@ -68,6 +69,7 @@ function App() {
             <Route exact path="/people/chhsu" element={<Hhsu />} />
             <Route exact path="/people/swashington" element={<Swashington />} />
             <Route exact path="/people/mandy" element={<Mandy />} />
+            <Route exact path="/people/essiet" element={<Essiet/>} />
             <Route exact path="/people/aagaronyan" element={<Aagaronyan />} />
             <Route exact path="/people/sunny" element={<Sunny />} />
             <Route exact path="/people/kelsey" element={<Kelsey />} />
