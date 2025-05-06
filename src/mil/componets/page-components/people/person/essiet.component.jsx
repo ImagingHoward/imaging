@@ -7,7 +7,7 @@ import essiet from "../../../../assets/images/essiet-adidongEtte.jpeg";
 const Essiet = () => {
   const person = {
     image: essiet,
-    name: "Essiet-Adidiong Ette",
+    name: "Essiet-Adidiong Ette1",
     title: "CZI NDCF Research Fellow",
     phone: "",
     email: "essietadid.ette@howard.edu",
