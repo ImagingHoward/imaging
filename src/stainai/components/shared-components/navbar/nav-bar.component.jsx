@@ -24,6 +24,48 @@ const NavBar = () => {
     return (window.location = "/stainai");
   };
 
+  // Newly added function to handle opening the viewer with token authentication
+  const handleOpenViewer = async (e) => {
+    e.preventDefault();
+
+    try {
+      const stainaiURL = process.env.REACT_APP_STAINAI_URL;
+      const storedUser = localStorage.getItem("STAINAI_USER_PROFILE");
+      const parsedUser = storedUser ? JSON.parse(storedUser) : null;
+
+      if (!parsedUser) {
+        window.location.href = "/stainai/user/signin";
+        return;
+      }
+
+      const response = await fetch(`${stainaiURL}/user/create-viewer-token`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userid: parsedUser.userid,
+          email: parsedUser.email,
+          firstname: parsedUser.firstname,
+          lastname: parsedUser.lastname,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.token) {
+        alert(result.message || "Failed to open viewer");
+        return;
+      }
+
+      const viewerUrl = `https://stainaiviewer.azurewebsites.net/auth/login-bridge/?token=${encodeURIComponent(result.token)}`;
+      window.open(viewerUrl, "_blank");
+    } catch (error) {
+      console.error("Error opening viewer:", error);
+      alert("Failed to open viewer");
+    }
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.logoGroup}>
@@ -43,7 +85,8 @@ const NavBar = () => {
             <a href="#">TRY IT</a>
             <div className={classes.dropdownContent}>
               <a href="/stainai/upload-images">Upload Your Data</a>
-              <a href="https://stainaiviewer.azurewebsites.net/" target="_blank">See Your Result</a>
+              {/* <a href="https://stainaiviewer.azurewebsites.net/" target="_blank">See Your Result</a> */}
+              <a href="#" onClick={handleOpenViewer}>See Your Result</a>
               <a href="https://stainaimicroglia.azurewebsites.net/" target="_blank">Stainai Microglia</a>
             </div>
           </li>
@@ -86,7 +129,8 @@ const NavBar = () => {
                     <a href="/stainai/upload-images">Upload Your Data</a>
                   </li>
                   <li>
-                    <a href="https://stainaiviewer.azurewebsites.net/" target="_blank">See Your Result</a>
+                    <a href="#" onClick={handleOpenViewer}>See Your Result</a>
+                    {/* <a href="https://stainaiviewer.azurewebsites.net/" target="_blank">See Your Result</a> */}
                   </li>
                   <li>
                     <a href="https://stainaimicroglia.azurewebsites.net/" target="_blank">Stainai Microglia</a>
