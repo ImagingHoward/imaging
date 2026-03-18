@@ -18,10 +18,22 @@ const NavBar = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // const handleLogout = () => {
+  //   localStorage.removeItem("STAINAI_USER_PROFILE");
+  //   setUser(null);
+  //   return (window.location = "/stainai");
+  // };
   const handleLogout = () => {
-    localStorage.removeItem("STAINAI_USER_PROFILE");
+    try {
+      localStorage.removeItem("STAINAI_USER_PROFILE");
+      localStorage.removeItem("STAINAI_ACCESS_TOKEN");
+    } catch (e) {}
+
     setUser(null);
-    return (window.location = "/stainai");
+
+    const returnTo = encodeURIComponent("https://imaging.howard.edu/stainai");
+    window.location.href =
+      `https://stainaiviewer.azurewebsites.net/auth/logout-bridge/?return_to=${returnTo}`;
   };
 
   // Newly added function to handle opening the viewer with token authentication
@@ -85,7 +97,6 @@ const NavBar = () => {
             <a href="#">TRY IT</a>
             <div className={classes.dropdownContent}>
               <a href="/stainai/upload-images">Upload Your Data</a>
-              {/* <a href="https://stainaiviewer.azurewebsites.net/" target="_blank">See Your Result</a> */}
               <a href="#" onClick={handleOpenViewer}>See Your Result</a>
               <a href="https://stainaimicroglia.azurewebsites.net/" target="_blank">Stainai Microglia</a>
             </div>
@@ -130,7 +141,6 @@ const NavBar = () => {
                   </li>
                   <li>
                     <a href="#" onClick={handleOpenViewer}>See Your Result</a>
-                    {/* <a href="https://stainaiviewer.azurewebsites.net/" target="_blank">See Your Result</a> */}
                   </li>
                   <li>
                     <a href="https://stainaimicroglia.azurewebsites.net/" target="_blank">Stainai Microglia</a>
@@ -141,7 +151,7 @@ const NavBar = () => {
                 <a href="/stainai/contact-us">CONTACT US</a>
               </li>
               <li>
-                {user ? <a href="/stainai/user/dashboard">${user?.firstname} ${user?.lastname} </a> : <a href="/stainai/user/signin">SIGNIN</a>}
+                {user ? <a href="/stainai/user/dashboard">{user?.firstname} {user?.lastname} </a> : <a href="/stainai/user/signin">SIGNIN</a>}
               </li>
               <li>
                 {user &&
