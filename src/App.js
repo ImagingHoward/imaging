@@ -104,6 +104,8 @@ function App() {
             <Route exact path="/stainai/upload-images" element={<UploadImages />} />
             <Route exact path="/stainai/learn-more" element={<LearnMore />} />
 
+            <Route path="/stainai/logout-sync" element={<LogoutSync />} />
+
           </Routes>
         </UserProvider>
       </Router>

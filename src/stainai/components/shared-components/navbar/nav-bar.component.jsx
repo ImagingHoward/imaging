@@ -19,9 +19,16 @@ const NavBar = () => {
   };
 
   // const handleLogout = () => {
-  //   localStorage.removeItem("STAINAI_USER_PROFILE");
+  //   try {
+  //     localStorage.removeItem("STAINAI_USER_PROFILE");
+  //     localStorage.removeItem("STAINAI_ACCESS_TOKEN");
+  //   } catch (e) {}
+
   //   setUser(null);
-  //   return (window.location = "/stainai");
+
+  //   const returnTo = encodeURIComponent("https://imaging.howard.edu/stainai");
+  //   window.location.href =
+  //     `https://stainaiviewer.azurewebsites.net/auth/logout-bridge/?return_to=${returnTo}`;
   // };
   const handleLogout = () => {
     try {
@@ -31,9 +38,16 @@ const NavBar = () => {
 
     setUser(null);
 
-    const returnTo = encodeURIComponent("https://imaging.howard.edu/stainai");
-    window.location.href =
-      `https://stainaiviewer.azurewebsites.net/auth/logout-bridge/?return_to=${returnTo}`;
+    // 背景通知 viewer 登出，不跳頁
+    const iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = "https://stainaiviewer.azurewebsites.net/auth/logout-silent/";
+    document.body.appendChild(iframe);
+
+    // optional: 幾秒後移除
+    setTimeout(() => {
+      iframe.remove();
+    }, 3000);
   };
 
   // Newly added function to handle opening the viewer with token authentication
