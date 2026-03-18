@@ -7,7 +7,9 @@ export default function LogoutSync() {
       localStorage.removeItem("STAINAI_ACCESS_TOKEN");
     } catch (e) {}
 
-    window.parent?.postMessage({ type: "STAINAI_LOGOUT_SYNC_DONE" }, "*");
+    if (window.parent) {
+      window.parent.postMessage({ type: "STAINAI_LOGOUT_SYNC_DONE" }, "*");
+    }
   }, []);
 
   return null;

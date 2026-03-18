@@ -43,6 +43,7 @@ import DashBoard from "./stainai/components/page-components/user/dashboard/dashb
 import ContactUs from "./stainai/components/page-components/contact-us/contact-us.component";
 import UploadImages from "./stainai/components/page-components/upload-images/upload-images.component";
 import LearnMore from "./stainai/components/page-components/learn-more/learn-more.component";
+import LogoutSync from "./stainai/components/page-components/user/LogoutSync";
 
 import { UserProvider } from "./stainai/hook/auth/user.hook";
 
