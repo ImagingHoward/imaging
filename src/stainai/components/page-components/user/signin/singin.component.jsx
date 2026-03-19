@@ -42,15 +42,21 @@ const SignIn = () => {
       const result = await response.json();
 
       if (!response.ok || !result.token) {
-        alert(result.message || "Failed to open viewer");
-        return (window.location = "/stainai");
+        window.location = "/stainai";
+        return;
       }
 
-      const viewerUrl = `https://stainaiviewer.azurewebsites.net/auth/login-bridge/?token=${encodeURIComponent(result.token)}`;
-      window.location = viewerUrl;
+      const viewerUrl =
+        `https://stainaiviewer.azurewebsites.net/auth/login-bridge/?token=${encodeURIComponent(result.token)}`;
+
+      // 導到剛剛預先開好的 viewer 分頁
+      window.open(viewerUrl, "stainaiViewerWindow");
+
+      // 目前這個 signin 頁回主首頁
+      window.location = "/stainai";
     } catch (error) {
       console.error("Error opening viewer after login:", error);
-      return (window.location = "/stainai");
+      window.location = "/stainai";
     }
   };
 
@@ -71,7 +77,7 @@ const SignIn = () => {
         // localStorage.setItem('STAINAI_USER_PROFILE', JSON.stringify(result.user));
         // setUser(result.user);
         // return (window.location = "/stainai");
-        localStorage.setItem('STAINAI_USER_PROFILE', JSON.stringify(result.user));
+        localStorage.setItem("STAINAI_USER_PROFILE", JSON.stringify(result.user));
         setUser(result.user);
 
         const afterLogin = localStorage.getItem("STAINAI_AFTER_LOGIN");
