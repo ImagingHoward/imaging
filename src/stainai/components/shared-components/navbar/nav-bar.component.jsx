@@ -46,6 +46,9 @@ const NavBar = () => {
       const parsedUser = storedUser ? JSON.parse(storedUser) : null;
 
       if (!parsedUser) {
+        // window.location.href = "/stainai/user/signin";
+        // return;
+        localStorage.setItem("STAINAI_AFTER_LOGIN", "open_viewer");
         window.location.href = "/stainai/user/signin";
         return;
       }

@@ -21,6 +21,39 @@ const SignIn = () => {
 
   password.current = watch("password", "");
 
+  // Newly added function to handle opening the viewer with token authentication
+  const openViewerAfterLogin = async (signedInUser) => {
+    const stainaiURL = process.env.REACT_APP_STAINAI_URL;
+
+    try {
+      const response = await fetch(`${stainaiURL}/user/create-viewer-token`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userid: signedInUser.userid,
+          email: signedInUser.email,
+          firstname: signedInUser.firstname,
+          lastname: signedInUser.lastname,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.token) {
+        alert(result.message || "Failed to open viewer");
+        return (window.location = "/stainai");
+      }
+
+      const viewerUrl = `https://stainaiviewer.azurewebsites.net/auth/login-bridge/?token=${encodeURIComponent(result.token)}`;
+      window.location = viewerUrl;
+    } catch (error) {
+      console.error("Error opening viewer after login:", error);
+      return (window.location = "/stainai");
+    }
+  };
+
   const onSubmit = async (data) => {
     const stainaiURL = process.env.REACT_APP_STAINAI_URL;
     try {
@@ -35,8 +68,19 @@ const SignIn = () => {
       const result = await response.json();
 
       if (response.ok) {
+        // localStorage.setItem('STAINAI_USER_PROFILE', JSON.stringify(result.user));
+        // setUser(result.user);
+        // return (window.location = "/stainai");
         localStorage.setItem('STAINAI_USER_PROFILE', JSON.stringify(result.user));
         setUser(result.user);
+
+        const afterLogin = localStorage.getItem("STAINAI_AFTER_LOGIN");
+
+        if (afterLogin === "open_viewer") {
+          localStorage.removeItem("STAINAI_AFTER_LOGIN");
+          return openViewerAfterLogin(result.user);
+        }
+
         return (window.location = "/stainai");
       } else {
         setErrorMessage(result.message)
