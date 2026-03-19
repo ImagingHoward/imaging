@@ -49,11 +49,8 @@ const SignIn = () => {
       const viewerUrl =
         `https://stainaiviewer.azurewebsites.net/auth/login-bridge/?token=${encodeURIComponent(result.token)}`;
 
-      // 導到剛剛預先開好的 viewer 分頁
-      window.open(viewerUrl, "stainaiViewerWindow");
-
-      // 目前這個 signin 頁回主首頁
-      window.location = "/stainai";
+      // 直接同分頁進 viewer，最穩
+      window.location = viewerUrl;
     } catch (error) {
       console.error("Error opening viewer after login:", error);
       window.location = "/stainai";

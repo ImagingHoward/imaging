@@ -49,8 +49,6 @@ const NavBar = () => {
         // window.location.href = "/stainai/user/signin";
         // return;
         // Open the viewer in a new tab and redirect to signin page in the current tab
-        window.open("about:blank", "stainaiViewerWindow");
-
         localStorage.setItem("STAINAI_AFTER_LOGIN", "open_viewer");
         window.location.href = "/stainai/user/signin";
         return;
