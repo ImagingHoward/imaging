@@ -19,6 +19,8 @@ const SignIn = () => {
 
   const password = useRef({});
 
+  const redirectTarget = new URLSearchParams(window.location.search).get("redirect");
+
   password.current = watch("password", "");
 
   // Newly added function to handle opening the viewer with token authentication
@@ -77,10 +79,7 @@ const SignIn = () => {
         localStorage.setItem("STAINAI_USER_PROFILE", JSON.stringify(result.user));
         setUser(result.user);
 
-        const afterLogin = localStorage.getItem("STAINAI_AFTER_LOGIN");
-
-        if (afterLogin === "open_viewer") {
-          localStorage.removeItem("STAINAI_AFTER_LOGIN");
+        if (redirectTarget === "viewer") {
           return openViewerAfterLogin(result.user);
         }
 

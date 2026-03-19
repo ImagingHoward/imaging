@@ -49,9 +49,11 @@ const NavBar = () => {
         // window.location.href = "/stainai/user/signin";
         // return;
         // Open the viewer in a new tab and redirect to signin page in the current tab
-        localStorage.setItem("STAINAI_AFTER_LOGIN", "open_viewer");
-        window.open("/stainai/user/signin", "_blank");
-        return;
+        // localStorage.setItem("STAINAI_AFTER_LOGIN", "open_viewer");
+        // window.open("/stainai/user/signin", "_blank");
+        // return;
+          window.open("/stainai/user/signin?redirect=viewer", "_blank");
+  return;
       }
 
       const response = await fetch(`${stainaiURL}/user/create-viewer-token`, {
