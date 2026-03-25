@@ -46,14 +46,8 @@ const NavBar = () => {
       const parsedUser = storedUser ? JSON.parse(storedUser) : null;
 
       if (!parsedUser) {
-        // window.location.href = "/stainai/user/signin";
-        // return;
-        // Open the viewer in a new tab and redirect to signin page in the current tab
-        // localStorage.setItem("STAINAI_AFTER_LOGIN", "open_viewer");
-        // window.open("/stainai/user/signin", "_blank");
-        // return;
-          window.open("/stainai/user/signin?redirect=viewer", "_blank");
-  return;
+        window.open("/stainai/user/signin?redirect=viewer", "_blank");
+        return;
       }
 
       const response = await fetch(`${stainaiURL}/user/create-viewer-token`, {
@@ -99,13 +93,16 @@ const NavBar = () => {
               <a href="/stainai/learn-more">About StainAI</a>
             </div>
           </li>
-          <li>
+          {/* <li>
             <a href="#">TRY IT</a>
             <div className={classes.dropdownContent}>
               <a href="/stainai/upload-images">Upload Your Data</a>
               <a href="#" onClick={handleOpenViewer}>See Your Result</a>
               <a href="https://stainaimicroglia.azurewebsites.net/" target="_blank">Stainai Microglia</a>
             </div>
+          </li> */}
+          <li>
+            <a href="#" onClick={handleOpenViewer}>TRY IT</a>
           </li>
           <li>
             <a href="/stainai/contact-us">CONTACT US</a>
@@ -140,7 +137,7 @@ const NavBar = () => {
                   </li>
                 </ul>
               </li>
-              <li>Try it
+              {/* <li>Try it
                 <ul>
                   <li>
                     <a href="/stainai/upload-images">Upload Your Data</a>
@@ -152,6 +149,9 @@ const NavBar = () => {
                     <a href="https://stainaimicroglia.azurewebsites.net/" target="_blank">Stainai Microglia</a>
                   </li>
                 </ul>
+              </li> */}
+              <li>
+                <a href="#" onClick={handleOpenViewer}>Try it</a>
               </li>
               <li>
                 <a href="/stainai/contact-us">CONTACT US</a>

@@ -73,9 +73,6 @@ const SignIn = () => {
       const result = await response.json();
 
       if (response.ok) {
-        // localStorage.setItem('STAINAI_USER_PROFILE', JSON.stringify(result.user));
-        // setUser(result.user);
-        // return (window.location = "/stainai");
         localStorage.setItem("STAINAI_USER_PROFILE", JSON.stringify(result.user));
         setUser(result.user);
 
