@@ -18,22 +18,40 @@ const NavBar = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // const handleLogout = () => {
+  //   try {
+  //     localStorage.removeItem("STAINAI_USER_PROFILE");
+  //     localStorage.removeItem("STAINAI_ACCESS_TOKEN");
+  //   } catch (e) {}
+
+  //   setUser(null);
+
+  //   const iframe = document.createElement("iframe");
+  //   iframe.style.display = "none";
+  //   iframe.src = "https://stainaiviewer.azurewebsites.net/auth/logout-silent/";
+  //   document.body.appendChild(iframe);
+
+  //   setTimeout(() => {
+  //     iframe.remove();
+  //   }, 3000);
+  // };
   const handleLogout = () => {
     try {
       localStorage.removeItem("STAINAI_USER_PROFILE");
       localStorage.removeItem("STAINAI_ACCESS_TOKEN");
-    } catch (e) {}
+    } catch (error) {
+      console.error("Failed to clear PRBase login state:", error);
+    }
 
     setUser(null);
 
-    const iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = "https://stainaiviewer.azurewebsites.net/auth/logout-silent/";
-    document.body.appendChild(iframe);
-
-    setTimeout(() => {
-      iframe.remove();
-    }, 3000);
+    /*
+    * Navigate to the Viewer as a top-level request.
+    * The Viewer clears its Django session and redirects back to PRBase.
+    */
+    window.location.replace(
+      "https://stainaiviewer.azurewebsites.net/auth/logout-bridge/"
+    );
   };
 
   // Newly added function to handle opening the viewer with token authentication
