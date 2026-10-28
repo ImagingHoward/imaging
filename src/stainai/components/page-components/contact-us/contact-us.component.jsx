@@ -69,7 +69,7 @@ const ContactUs = () => {
               : (
                 <form onSubmit={(e) => e.preventDefault()}>
                   <div>
-                    <div className={classes.title}>PSRSON INFO</div>
+                    <div className={classes.title}>PERSON INFO</div>
                     <div className={classes.row}>
                       <div className={classes.inputGroup}>
                         First Name
