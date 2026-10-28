@@ -1,18 +1,55 @@
 @mixin header()
     position: relative
-    background: url("../../../assets/contact_hero.png") center center / cover no-repeat
-    background-size: 100% 100%
     width: 100%
     height: 550px
-    @media screen and (max-width: 1024px)
-        min-height: 450px
-    @media screen and (max-width: 690px)
-        background: url("../../../assets/APP files/Contact us page/Contact_Top.svg") center center / cover no-repeat
-        width: auto
+    background: transparent
+    isolation: isolate
+
+    .navbar
+        position: relative
+        z-index: 2
+
+    .headerArtwork
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: clamp(280px, 28vw, 480px)
+        z-index: 1
+        pointer-events: none
+
+    .circleCells
+        position: absolute
+        top: 0
+        right: 0
+        display: block
         height: 100%
+        width: auto
+        max-width: none
+
+    .contactUsLogo
+        position: absolute
+        left: 8.5%
+        bottom: 0
+        display: block
+        width: 38%
+        height: auto
+
+    @media screen and (max-width: 1024px)
+        height: 450px
+
+    @media screen and (max-width: 690px)
+        height: 360px
+
+        .headerArtwork
+            height: 260px
+
+        .contactUsLogo
+            left: 6%
+            width: 58%
 
 @mixin section()
-    background: url("../../../assets/contact_section.svg") center center / cover no-repeat
+    background: transparent
     width: 100%
     min-height: 550px
 

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import classes from "./contact-us.module.sass";
 
 import NavBar from "../../shared-components/navbar/nav-bar.component";
-import Hero from "../../shared-components/hero/hero.component";
+import circleCells from "../../../assets/APP files/Contact us page/circle cells.png";
+import contactUsLogo from "../../../assets/APP files/Contact us page/contact us logo.png";
 
 const ContactUs = () => {
   const [status, setStatus] = useState('');
@@ -35,8 +36,24 @@ const ContactUs = () => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.header}>
-        <NavBar />
-        <Hero logo="" title="" blur="" button="" url="" />
+        <div className={classes.navbar}>
+          <NavBar />
+        </div>
+
+        <div className={classes.headerArtwork}>
+          <img
+            className={classes.circleCells}
+            src={circleCells}
+            alt=""
+            aria-hidden="true"
+          />
+
+          <img
+            className={classes.contactUsLogo}
+            src={contactUsLogo}
+            alt="Connect with us"
+          />
+        </div>
       </div>
       <div className={classes.section}>
         <div className={classes.contactUs}>
