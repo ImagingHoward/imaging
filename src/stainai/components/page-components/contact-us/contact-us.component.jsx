@@ -45,7 +45,7 @@ const ContactUs = () => {
               <div className={classes.title}>CONTACT INFO</div>
               <div className={classes.contactEmail}>info@StainAI.net</div>
               <div>PI: Tsang-Wei Tu</div>
-              <div>email: tsangwei.tu@howard.edu</div>
+              <div>Email: tsangwei.tu@howard.edu</div>
             </div>
             <div>
               <div className={classes.title}>ADDRESS</div>
